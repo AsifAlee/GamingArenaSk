@@ -5,9 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face{
+  font-family: "Acme-Regular";
+  src: local('Acme-Regular'),url('./assets/fonts/Acme-Regular.ttf') format('truetype')
+}
+
+@font-face{
+  font-family: "PixelNes";
+  src: local('PixelNes'),url('./assets/fonts/Pixel\ NES.otf') format('truetype')
 }

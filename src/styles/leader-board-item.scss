@@ -1,0 +1,74 @@
+.leader-board-item{
+    display: flex;
+    font-size: 3vw;
+    width: 95%;
+    margin-top: 1vw !important;
+    height: 12vw;
+    background-image: url('../assets//images/lb-rank-bar.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    .left-div{
+        display: flex;
+      .index{
+        background-image: url('../assets/images//rank-bg.png');
+      
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 10vw;
+    margin-left: 2vw;
+
+      }
+      .user-info{
+        display: flex;
+        .avatar{
+            width: 10vw;
+            border-radius: 100%;
+        }
+        .nameNLevel{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .name{
+            font-family: 'Acme-Regular';
+            color: white;
+            width: 10vw;
+    border: 1px solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+            }
+            .level-img{
+             width: 10vw;
+            }
+        }
+
+      }
+    }
+    .right-div{
+        background-image: url('../assets//images/rank-point-bar.png');
+         width: 12vw;
+         height: 5vw;
+         background-size: 100% 100%;
+         background-repeat: no-repeat;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-right: 3vw;
+        img{
+  width: 4vw;
+        }
+        .span{
+
+        }
+
+    }
+}

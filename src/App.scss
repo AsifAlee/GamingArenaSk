@@ -1,0 +1,123 @@
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App{
+  background-image: url('./assets//images/bg.jpg');
+  background-size: 100% 100%;
+  // min-height: 100vw;
+  background-repeat: no-repeat;
+
+  .header{
+    background-image: url('./assets/images/header.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 75vw;
+    position: relative;
+
+    .guide-btn{
+    background-image: url('./assets//images/guide.png');
+    width: 17vw;
+    height: 7vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 40vw;
+    }
+
+  }
+  .event-gifting{
+    background-image: url('./assets//images/event-gifting.png');
+    width: 17vw;
+    height: 7vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+  
+    top: 40vw;
+   
+  }
+
+  .main-tabs{
+    display: flex;
+    justify-content: space-around;
+    .gaming-zone{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/gaming-zone.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+
+    }
+
+    .gaming-zone-off{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/gaming-zone-off.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+
+    }
+
+    .claw-crane{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/claw-crane.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+    .claw-crane-off{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/claw-crane-off.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+
+    .lucky-wheel{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/talent-wheel.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+
+    .lucky-wheel-off{
+      width: 20vw;
+      height: 11vw;
+      background-image: url('./assets/images/talent-wheel-off.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+
+
+}
+
+
+
+
+
+
+
+

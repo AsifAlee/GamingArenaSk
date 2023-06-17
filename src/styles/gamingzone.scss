@@ -1,0 +1,53 @@
+.gaming-zone{
+   
+    .game-tabs{
+        display: flex;
+        justify-content: center;
+        gap: 6vw;
+      .billiards{
+        background-image: url('../assets/images/billiards.png');
+        width: 24vw;
+        height: 7vw;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+         
+      }
+      .billiards-off{
+        background-image: url('../assets/images/billiards-off.png');
+        width: 24vw;
+        height: 7vw;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+         
+      }
+
+      .foosball{
+        background-image: url('../assets/images/foosbal.png');
+        width: 24vw;
+        height: 7vw;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+         
+      }
+      .foosball-off{
+        background-image: url('../assets/images/foosbal-off.png');
+        width: 24vw;
+        height: 7vw;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+         
+      }
+
+    }
+
+
+
+  }

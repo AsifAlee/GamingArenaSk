@@ -1,0 +1,406 @@
+.billiards-section {
+  .record-details-btns {
+    display: flex;
+    justify-content: space-between;
+    .records-btn {
+      background-image: url("../assets/images//records.png");
+      width: 17vw;
+      height: 7vw;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+    .details-btn {
+      background-image: url("../assets/images/details.png");
+      width: 12vw;
+      height: 7vw;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  .game-points {
+    background-image: url("../assets/images/beans-pot-counter.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    width: 27vw;
+    height: 9vw;
+
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-family: "Acme-Regular";
+
+    font-size: 2.5vw;
+  }
+
+  .billiard-game {
+    background-image: url("../assets/images/billiard-game-bg.png");
+
+    width: 100%;
+    height: 132vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    .table {
+      width: 45vw;
+      height: 82vw;
+      background-image: url("../assets/images/table.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      border: 1px solid;
+      right: 16vw;
+      top: 19vw;
+    }
+
+    .cue {
+      height: 67vw;
+      width: 10vw;
+      position: absolute;
+      left: 19vw;
+      top: 18vw;
+      background-image: url("../assets/images/cue-bg.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 60vw;
+      }
+    }
+    .recharge-cue {
+      width: 18vw;
+      height: 9vw;
+      background-image: url("../assets/images//recharge-cue.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      bottom: 35vw;
+      left: 16vw;
+      background-color: transparent;
+      border: none;
+    }
+    .recharge-cue-off {
+      width: 18vw;
+      height: 9vw;
+      background-image: url("../assets/images/recharge-cue-off.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      bottom: 35vw;
+      left: 16vw;
+      background-color: transparent;
+      border: none;
+    }
+
+    .play-section {
+      width: 75%;
+      height: 14vw;
+      border: 1px solid;
+      position: absolute;
+      bottom: 9vw;
+      left: 12vw;
+      display: flex;
+      align-items: center;
+
+      .xPlay {
+        display: flex;
+        justify-content: center;
+        gap: 2vw;
+        align-items: center;
+        width: 48vw;
+        height: 14vw;
+        .x1 {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x1.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+        .x1-off {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x1-off.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+
+        .x10 {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x10.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+        .x10-off {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x10-off.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+
+        .x100 {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x100.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+        .x100-off {
+          width: 12vw;
+          height: 11vw;
+          background-image: url("../assets/images/x100-off.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+      }
+      .playBtn {
+        width: 20vw;
+        height: 13vw;
+        background-image: url("../assets/images/play.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    .balls-potted {
+      width: 27vw;
+      height: 7vw;
+      background-image: url("../assets/images/ball-potted-bg.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      bottom: 0vw;
+      left: 34vw;
+      background-color: transparent;
+      border: none;
+      img {
+        width: 5vw;
+      }
+      span {
+        font-size: 3vw;
+        font-family: "Acme-Regular";
+        position: relative;
+        bottom: 1vw;
+        left: 1vw;
+        color: #610c0a;
+      }
+    }
+  }
+  .rest-section {
+    width: 98%;
+    // min-height: 310vw;
+    background-image: url("../assets/images/billiards-rest-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    
+
+    .rewards {
+      background-image: url("../assets/images/rewards-bg.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      width: 95%;
+      height: 74vw;
+      margin-top: 23vw;
+      margin-left: 3vw;
+      display: inline-block;
+      position: relative;
+
+      .title {
+        position: absolute;
+        left: 14vw;
+        top: -5vw;
+        width: 63vw;
+      }
+    }
+
+    .beans-pot {
+      width: 55vw;
+      height: 55vw;
+      background-image: url("../assets/images/beanspot-bg.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 21vw;
+
+      display: inline-block;
+      background-position: center;
+
+      .title {
+        display: inline-block;
+        margin-top: -5vw;
+        margin-left: 5vw;
+        width: 45vw;
+      }
+      .beans-pot-img {
+        margin-top: 10vw;
+        margin-left: 17vw;
+        width: 19vw;
+      }
+
+      .beans-potted {
+        width: 27vw;
+        height: 7vw;
+        background-image: url("../assets/images/ball-potted-bg.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 9vw;
+        margin-left: 13vw;
+        background-color: transparent;
+        border: none;
+        img {
+          width: 5vw;
+        }
+        span {
+          font-size: 2.5vw;
+          font-family: "Acme-Regular";
+          position: relative;
+          bottom: 1vw;
+          left: 1vw;
+          color: #610c0a;
+        }
+      }
+    }
+
+    .leaderboard {
+      min-height: 234vw;
+      .title {
+        margin: 0 auto;
+        display: inherit;
+        width: 58vw;
+
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 11vw;
+      }
+      .bottom-line {
+        width: 90%;
+        height: 8vw;
+        background-image: url("../assets//images/lb-tabs-bar.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        margin-left: 6vw;
+      }
+
+      .leader-board-main-sec {
+        .topRank {
+          position: relative;
+          background-image: url("../assets/images/topRank-bg.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          width: 86%;
+          height: 80vw;
+          margin: 0 auto;
+          .top1 {
+            position: absolute;
+            left: 30vw;
+            top: 4vw;
+          }
+          .top2 {
+            left: 3vw;
+            top: 17vw;
+            position: absolute;
+          }
+          .top3 {
+            position: absolute;
+            right: 4vw;
+            top: 17vw;
+          }
+        }
+        .restWinners {
+          margin-top: 2vw;
+          height: 92vw;
+          width: 82%;
+          margin: 0 auto;
+          position: relative;
+          overflow-y: auto;
+         
+
+        
+        }
+        .see-more{
+        
+          width: 15vw;
+          height: 7vw;
+          margin: 0 auto;
+          background-image: url('../assets//images/see-more.png');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border: none;
+          background-color: transparent;
+          display: block;
+          position: relative;
+    top: 2vw;
+         
+      
+
+        }
+        .see-less{
+          display: block;
+          width: 15vw;
+          height: 7vw;
+          margin: 0 auto;
+          background-image: url('../assets//images/see-less.png');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border: none;
+          background-color: transparent;
+          position: relative;
+    top: 2vw;
+      
+      
+
+        }
+      }
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 2vw;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #684163; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }
+}

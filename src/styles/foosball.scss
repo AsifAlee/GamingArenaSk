@@ -1,0 +1,42 @@
+.billiards-section{
+    .record-details-btns {
+        display: flex;
+        justify-content: space-between;
+        .records-btn {
+          background-image: url("../assets/images//records.png");
+          width: 17vw;
+          height: 7vw;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+          
+        }
+        .details-btn {
+          background-image: url("../assets/images/details.png");
+          width: 12vw;
+          height: 7vw;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-color: transparent;
+          border: none;
+        }
+      }
+    
+      .game-points {
+        background-image: url("../assets/images/beans-pot-counter.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    
+        width: 27vw;
+        height: 9vw;
+    
+        border: none;
+        background-color: transparent;
+        color: white;
+        font-family: "Acme-Regular";
+    
+        font-size: 2.5vw;
+        margin-top: 1vw;
+      }
+}

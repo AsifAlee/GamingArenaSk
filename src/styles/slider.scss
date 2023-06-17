@@ -1,0 +1,24 @@
+.slider{
+    width: 38vw;
+    height: 39vw;
+    // border: 1px solid;
+    margin-left: 25vw;
+    margin-top: 13vw;
+    position: relative;
+    .left-arrow{
+      width: 5vw;
+      position: absolute;   
+      top: 18vw;
+    }
+    .right-arrow{
+        width: 5vw;   
+        position: absolute;
+        right: 0;
+        top: 18vw;
+      }
+      .reward-img{
+        width: 27vw;
+        position: absolute;
+        left: 6vw;
+      }
+}
