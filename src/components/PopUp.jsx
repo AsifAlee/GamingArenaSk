@@ -21,7 +21,6 @@ const PopUp = (props) => {
   }, []);
   return (
     <div className="overlay">
-      <button className="closeBtn" onClick={popUpHandler}></button>
       <div
         className="background"
         style={{
@@ -32,7 +31,7 @@ const PopUp = (props) => {
               : isRewards
               ? "58vw"
               : isGame
-              ? "63vw"
+              ? "85vw"
               : isMilestone
               ? "83vw"
               : ""
@@ -42,6 +41,7 @@ const PopUp = (props) => {
           // }`,
         }}
       >
+        <button className="closeBtn" onClick={popUpHandler}></button>
         {children}
       </div>
     </div>

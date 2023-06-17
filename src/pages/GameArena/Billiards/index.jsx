@@ -15,15 +15,21 @@ import LeaderBoard from "./LeaderBoard";
 import { testData } from "../../../testData";
 import BilliardsDetail from "../../PopUps/BilliardsDetail";
 import BillardsRecords from "../../PopUps/BillardsRecords";
+import table from "../../../assets/images/table.png";
+import BilliardGame from "../../PopUps/BilliardGame";
 const Billiards = () => {
   const [isQueRecharged, setIsQueRecharged] = useState(false);
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
+  const [gamePopUp, setGamePopup] = useState(false);
   const toggleDetailPopUp = () => {
     setDetailPopup((prevState) => !prevState);
   };
   const toggleRecordsPopup = () => {
     setRecordsPopup((prevState) => !prevState);
+  };
+  const toggleGamePopUp = () => {
+    setGamePopup((prevState) => !prevState);
   };
   const [playXBtns, setPlayXButtons] = useState({
     x1: true,
@@ -66,6 +72,10 @@ const Billiards = () => {
 
   const rechargeQue = () => {
     setIsQueRecharged((prev) => !prev);
+    setGamePopup(true);
+  };
+  const playGame = () => {
+    setGamePopup(true);
   };
   return (
     <div className="billiards-section">
@@ -78,7 +88,9 @@ const Billiards = () => {
       </div>
 
       <div className="billiard-game">
-        <div className="table"></div>
+        <div>
+          <img className="table" src={table} />
+        </div>
         <div className="cue">
           <img src={cue} />
         </div>
@@ -105,7 +117,7 @@ const Billiards = () => {
               onClick={setPlayXTabs}
             />
           </div>
-          <button className="playBtn" />
+          <button className="playBtn" onClick={playGame} />
         </div>
         <div className="balls-potted">
           <img src={ballPottedIcon} />
@@ -150,6 +162,7 @@ const Billiards = () => {
       {recordsPopup && (
         <BillardsRecords toggleRecordsPopup={toggleRecordsPopup} />
       )}
+      {gamePopUp && <BilliardGame toggleGamePopUp={toggleGamePopUp} />}
     </div>
   );
 };

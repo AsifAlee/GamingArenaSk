@@ -4,14 +4,19 @@ import LuckyWheel from "./pages/TalentWheel/LuckyWheel";
 import GamingZone from "./pages/GameArena/GamingZone";
 import Guide from "./pages/PopUps/Guide";
 import { AppContext } from "./MyContext";
+import EventGifting from "./pages/PopUps/EventGifting";
 
 function App() {
   const { toggleGuidePopup, guidePopup } = useContext(AppContext);
+  const [eventGifting, setEventGifting] = useState(false);
   const [mainTabs, setMainTabs] = useState({
     gamingZone: true,
     clawCrane: false,
     luckyWheel: false,
   });
+  const toggleEventGifting = () => {
+    setEventGifting((prevState) => !prevState);
+  };
   const switchMainTab = (event) => {
     switch (event.target.name) {
       case "gaming-zone":
@@ -28,10 +33,10 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <button className="guide-btn" onClick={() => toggleGuidePopup()} />
+        <button className="guide-btn" onClick={toggleGuidePopup} />
       </div>
       <div style={{ display: "flex", justifyContent: "end" }}>
-        <button className="event-gifting" />
+        <button className="event-gifting" onClick={toggleEventGifting} />
       </div>
       <div className="main-tabs">
         <button
@@ -51,6 +56,7 @@ function App() {
         />
       </div>
       {guidePopup && <Guide />}
+      {eventGifting && <EventGifting toggleEventGifting={toggleEventGifting} />}
 
       {mainTabs.gamingZone && <GamingZone />}
     </div>

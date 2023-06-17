@@ -51,9 +51,9 @@
     .table {
       width: 45vw;
       height: 82vw;
-      background-image: url("../assets/images/table.png");
-      background-size: contain;
-      background-repeat: no-repeat;
+      // background-image: url("../assets/images/table.png");
+      // background-size: contain;
+      // background-repeat: no-repeat;
       position: absolute;
       border: 1px solid;
       right: 16vw;
@@ -263,25 +263,29 @@
       }
 
       .beans-potted {
-        width: 27vw;
-        height: 7vw;
-        background-image: url("../assets/images/ball-potted-bg.png");
+        width: 28vw;
+        height: 11vw;
+        background-image: url("../assets/images/beans-pot-counter.png");
         background-repeat: no-repeat;
         background-size: contain;
-        margin-top: 9vw;
+        margin-top: 1vw;
         margin-left: 13vw;
         background-color: transparent;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
         img {
           width: 5vw;
         }
         span {
-          font-size: 2.5vw;
+          font-size: 2.3vw;
           font-family: "Acme-Regular";
           position: relative;
-          bottom: 1vw;
+          
           left: 1vw;
-          color: #610c0a;
+          color:white;
         }
       }
     }

@@ -1,20 +1,19 @@
 import React from "react";
 import PopUp from "../../components/PopUp";
 import title from "../../assets/images/popup/billiards-pop-title.png";
-import bg from "../../assets/images/popup/billiards-detail-bg.png";
+import bg from "../../assets/images/popup/foosball-detail-bg.png";
 import "../../styles/popup.scss";
-
-const BilliardsDetail = ({ toggleDetailPopUp }) => {
+const FoosballDetails = ({ toggleDetailPopUp }) => {
   return (
     <PopUp popUpHandler={toggleDetailPopUp} bg={bg}>
-      <div className="billiards">
+      <div className="foosball">
         <div className="details">
           <img src={title} className="title" />
-          <h3 className="heading">BILLIARDS DETAILS</h3>
+          <h3 className="heading">FOOSBALL DETAILS</h3>
         </div>
       </div>
     </PopUp>
   );
 };
 
-export default BilliardsDetail;
+export default FoosballDetails;
