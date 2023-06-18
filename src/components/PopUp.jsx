@@ -4,7 +4,7 @@ const PopUp = (props) => {
   const {
     children,
     bg,
-
+    eventGifting,
     popUpHandler,
     isAccPopUp,
     isRewards,
@@ -22,7 +22,7 @@ const PopUp = (props) => {
   return (
     <div className="overlay">
       <div
-        className="background"
+        className="content"
         style={{
           backgroundImage: `url(${bg})`,
           minHeight: `${
@@ -36,9 +36,9 @@ const PopUp = (props) => {
               ? "83vw"
               : ""
           }`,
-          // width: `${
-          //   isAccPopUp ? "85%" : isRewards ? "85%" : isMilestone ? "98%" : ""
-          // }`,
+          width: `${
+            eventGifting ? "95%" : isRewards ? "85%" : isMilestone ? "98%" : ""
+          }`,
         }}
       >
         <button className="closeBtn" onClick={popUpHandler}></button>

@@ -21,7 +21,7 @@ const Topper = ({ notFirstRank, index, user }) => {
         <img className="frame" src={getFrame()} />
         <img className="avatar" src={user.avatar ? user.avatar : unknow} />
       </div>
-      <div className={`content`}>
+      <div className={`topper-content`}>
         <div className="info">
           <span className="name">{user.nickname}</span>
           <img className="lvl-img" src={level} />

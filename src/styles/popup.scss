@@ -16,13 +16,14 @@
   padding-top: 5vw;
   overflow: auto;
 
-  .background {
+  .content {
     width: 80%;
     // min-height: 106vw;
     background-repeat: no-repeat;
     position: relative;
     background-size: 100% 100%;
     // height: 321vw;
+    // overflow-y: auto;
 
     .closeBtn {
       background-image: url("../assets/images//popup/cross.png");
@@ -38,9 +39,7 @@
       top: -20vw;
       position: absolute;
     }
-
   }
-
 
   .guide-pop-up {
     .title {
@@ -50,158 +49,337 @@
       margin-left: -3vw;
       margin-top: -15vw;
     }
-    .heading {
-      font-family: "PixelNes";
-      text-align: center;
-      color: white;
-      font-size: 4vw;
-    }
+    .guide-main-content{
+      height: 116vw;
+      overflow-y: auto;
 
-    .section-info{
-      color: white;
-      margin-left: 10vw;
-      font-family: 'PixelNes';
-      font-size: 2.5vw;
-      margin-top: 2vw;
-      
-      ul{
-        margin-left: 5vw;
-      }
+      .event-gifts{
+        width: 80%;
+        background-image: url("../assets/images/popup/event-gifts-bg.png");
+        height: 65vw;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        margin: 0 auto;
+        margin-top: 4vw !important;
 
-    }
-
-    .guide-content {
-      width: 60vw;
-      margin: 1.5vw auto 0 auto;
-
-    }
-  }
-  .billiards{
+        .title {
+          width: 56vw;
+          margin-left: 4vw;
+          margin-top: -9vw;
+        }
   
-    
-      .title {
-        width: 100%;
-        height: 27vw;
-        object-fit: contain;
-        margin-left: -3vw;
-        margin-top: -15vw;
       }
+   
       .heading {
         font-family: "PixelNes";
         text-align: center;
         color: white;
         font-size: 4vw;
-        letter-spacing: .7vw;
       }
-    
   
+      .section-info {
+        color: white;
+        margin-left: 10vw;
+        font-family: "Acme-Regular";
+        font-size: 2.5vw;
+        margin-top: 2vw;
+  
+        ul {
+          margin-left: 5vw;
+        }
+      }
+  
+      .guide-content {
+        width: 60vw;
+        margin: 1.5vw auto 0 auto;
+      }
 
-
-  .game{
-    .content{
-      font-size: 4vw;
-      font-family: 'Acme-Regular';
-      color: white;
-      width: 71%;
+    }
+ 
+  }
+  .billiards {
+    .title {
+      width: 100%;
+      height: 27vw;
+      object-fit: contain;
+      margin-left: -3vw;
+      margin-top: -15vw;
+    }
+    .heading {
+      font-family: "PixelNes";
       text-align: center;
-      border: 1px solid;
-      margin: 0 auto;
+      color: white;
+      font-size: 4vw;
+      letter-spacing: 0.7vw;
+    }
 
-      .reward{
-        display: flex;
-        flex-direction: column;
-        width: 20vw;
+    .game {
+      .content {
+        font-size: 4vw;
+        font-family: "Acme-Regular";
+        color: white;
+        width: 71%;
+        text-align: center;
         border: 1px solid;
-        justify-content: center;
-        align-items: center;
         margin: 0 auto;
-        img{
-          width: 13vw;
+
+        .reward {
+          display: flex;
+          flex-direction: column;
+          width: 20vw;
+          border: 1px solid;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+          img {
+            width: 13vw;
+          }
+          span {
+            font-size: 2vw;
+          }
         }
-        span{
-          font-size: 2vw;
+
+        .claw-points {
+          width: 27vw;
+          height: 8vw;
+          background-color: saddlebrown;
+          border-radius: 2vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 3vw;
+          margin: 0 auto;
+          gap: 1vw;
+
+          img {
+            width: 6vw;
+          }
         }
       }
-
-      .claw-points{
-        width: 27vw;
-        height: 8vw;
-        background-color: saddlebrown;
-        border-radius: 2vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 3vw;
-        margin: 0 auto;
-        gap: 1vw;
-
-        img{
-          width: 6vw;
-        }
-    
-      }
-
-    }
-
-  }
-  }
-
-  .event-gifting-popup{
-    .title {
-      width: 100%;
-      height: 27vw;
-      object-fit: contain;
-      margin-left: -3vw;
-      margin-top: -15vw;
-    }
-    .heading {
-      font-family: "PixelNes";
-      text-align: center;
-      color: white;
-      font-size: 4vw;
-      letter-spacing: .7vw;
     }
   }
+
+  // .event-gifting-popup {
+  //   .title {
+  //     width: 100%;
+  //     height: 27vw;
+  //     object-fit: contain;
+  //     margin-left: -3vw;
+  //     margin-top: -15vw;
+  //   }
+  //   .heading {
+  //     font-family: "PixelNes";
+  //     text-align: center;
+  //     color: white;
+  //     font-size: 4vw;
+  //     letter-spacing: 0.7vw;
+  //   }
+
+  //   .gifts {
+  //     width: 95%;
+  //     background-image: url("../assets/images/popup/event-gifts-bg.png");
+  //     height: 65vw;
+  //     background-repeat: no-repeat;
+  //     background-size: 100% 100%;
+  //     margin: 0 auto;
+
+  //     .title {
+  //       width: 56vw;
+  //       margin-left: 8vw;
+  //       margin-top: -9vw;
+  //     }
+  //   }
+  //   .gifting-rewards {
+  //     // margin-top: 10vw;
+  //     .title {
+  //       font-family: "PixelNes";
+  //       font-size: 4vw;
+  //       letter-spacing: 0.7vw;
+  //       color: white;
+  //       text-align: center;
+  //     }
+  //     .tabs {
+  //       display: flex;
+  //       justify-content: space-evenly;
+  //       align-items: center;
+  //       .talents {
+  //         width: 25vw;
+  //         height: 12.5vw;
+  //         background-image: url("../assets//images/popup/talent.png");
+  //         background-repeat: no-repeat;
+  //         background-size: 100% 100%;
+  //         background-color: transparent;
+  //         border: none;
+  //       }
+  //       .gifters {
+  //         width: 25vw;
+  //         height: 12.5vw;
+  //         background-image: url("../assets//images/popup/gifters.png");
+  //         background-repeat: no-repeat;
+  //         background-size: 100% 100%;
+  //         background-color: transparent;
+  //         border: none;
+  //       }
+
+  //       .blackNWhite {
+  //         filter: grayscale(100%);
+  //       }
+  //     }
+  //     .base {
+  //       width: 69vw;
+  //       margin-left: 5vw;
+  //     }
+
+  //     .rewards {
+  //       width: 95%;
+  //       background-image: url("../assets/images/popup/event-gifts-bg.png");
+  //       height: 65vw;
+  //       background-repeat: no-repeat;
+  //       background-size: 100% 100%;
+  //       margin: 0 auto;
+
+  //       .title {
+  //         width: 56vw;
+  //         margin-left: 8vw;
+  //         margin-top: -9vw;
+  //       }
+  //     }
+  //   }
+  //   .leader-board {
+  //     margin-top: 8vw;
+  //     .title {
+  //       width: 100%;
+  //       height: 27vw;
+  //       object-fit: contain;
+  //       margin-left: -3vw;
+  //       margin-top: -15vw;
+  //     }
+  //     .topRank {
+  //       position: relative;
+  //       background-image: url("../assets/images/topRank-bg.png");
+  //       background-size: 100% 100%;
+  //       background-repeat: no-repeat;
+  //       width: 86%;
+  //       height: 80vw;
+  //       margin: 0 auto;
+  //       .top1 {
+  //         position: absolute;
+  //         left: 30vw;
+  //         top: 40vw;
+  //       }
+  //       .top2 {
+  //         left: 3vw;
+  //         top: 50vw;
+  //         position: absolute;
+  //       }
+  //       .top3 {
+  //         position: absolute;
+  //         right: 4vw;
+  //         top: 50vw;
+  //       }
+
+  //       .tabs {
+  //         display: flex;
+  //         justify-content: space-evenly;
+  //         align-items: center;
+  //         .talents {
+  //           width: 25vw;
+  //           height: 12.5vw;
+  //           background-image: url("../assets//images/popup/talent.png");
+  //           background-repeat: no-repeat;
+  //           background-size: 100% 100%;
+  //           background-color: transparent;
+  //           border: none;
+  //         }
+  //         .gifters {
+  //           width: 25vw;
+  //           height: 12.5vw;
+  //           background-image: url("../assets//images/popup/gifters.png");
+  //           background-repeat: no-repeat;
+  //           background-size: 100% 100%;
+  //           background-color: transparent;
+  //           border: none;
+  //         }
   
- .foosball{
-  .details{
-    
-    .title {
-      width: 100%;
-      height: 27vw;
-      object-fit: contain;
-      margin-left: -3vw;
-      margin-top: -15vw;
-    }
-    .heading {
-      font-family: "PixelNes";
-      text-align: center;
-      color: white;
-      font-size: 4vw;
-      letter-spacing: .7vw;
-    }
-  
-}
-.records{
-  .title {
-    width: 100%;
-    height: 27vw;
-    object-fit: contain;
-    margin-left: -3vw;
-    margin-top: -15vw;
-  }
-  .heading {
-    font-family: "PixelNes";
-    text-align: center;
-    color: white;
-    font-size: 4vw;
-    letter-spacing: .7vw;
-  }
-}
- }
-    
+  //         .blackNWhite {
+  //           filter: grayscale(100%);
+  //         }
+  //       }
+  //       .base {
+  //         width: 69vw;
+  //         margin-left: 5vw;
+  //       }
+  //     }
 
-  
+  //     .restWinners {
+  //       margin-top: 27vw !important;
+  //       height: 92vw;
+  //       width: 82%;
+  //       margin: 0 auto;
+  //       position: relative;
+  //       overflow-y: auto;
+  //     }
+  //     .see-more {
+  //       width: 15vw;
+  //       height: 7vw;
+  //       margin: 0 auto;
+  //       background-image: url("../assets//images/see-more.png");
+  //       background-size: 100% 100%;
+  //       background-repeat: no-repeat;
+  //       border: none;
+  //       background-color: transparent;
+  //       display: block;
+  //       position: relative;
+  //       top: 2vw;
+  //     }
+  //     .see-less {
+  //       display: block;
+  //       width: 15vw;
+  //       height: 7vw;
+  //       margin: 0 auto;
+  //       background-image: url("../assets//images/see-less.png");
+  //       background-size: 100% 100%;
+  //       background-repeat: no-repeat;
+  //       border: none;
+  //       background-color: transparent;
+  //       position: relative;
+  //       top: 2vw;
+  //     }
+  //   }
 
-
+  //   .foosball {
+  //     .details {
+  //       .title {
+  //         width: 100%;
+  //         height: 27vw;
+  //         object-fit: contain;
+  //         margin-left: -3vw;
+  //         margin-top: -15vw;
+  //       }
+  //       .heading {
+  //         font-family: "PixelNes";
+  //         text-align: center;
+  //         color: white;
+  //         font-size: 4vw;
+  //         letter-spacing: 0.7vw;
+  //       }
+  //     }
+  //     .records {
+  //       .title {
+  //         width: 100%;
+  //         height: 27vw;
+  //         object-fit: contain;
+  //         margin-left: -3vw;
+  //         margin-top: -15vw;
+  //       }
+  //       .heading {
+  //         font-family: "PixelNes";
+  //         text-align: center;
+  //         color: white;
+  //         font-size: 4vw;
+  //         letter-spacing: 0.7vw;
+  //       }
+  //     }
+  //   }
+  // }
 }
