@@ -18,12 +18,9 @@
 
   .content {
     width: 80%;
-    // min-height: 106vw;
     background-repeat: no-repeat;
     position: relative;
     background-size: 100% 100%;
-    // height: 321vw;
-    // overflow-y: auto;
 
     .closeBtn {
       background-image: url("../assets/images//popup/cross.png");
@@ -49,53 +46,78 @@
       margin-left: -3vw;
       margin-top: -15vw;
     }
-    .guide-main-content{
+    .guide-main-content {
       height: 116vw;
       overflow-y: auto;
 
-      .event-gifts{
-        width: 80%;
+      .event-gifts {
+        width: 100%;
         background-image: url("../assets/images/popup/event-gifts-bg.png");
-        height: 65vw;
+        height: 72vw;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin: 0 auto;
         margin-top: 4vw !important;
+        font-family: "Acme-Regular";
+        color: white;
 
         .title {
-          width: 56vw;
-          margin-left: 4vw;
-          margin-top: -9vw;
+          width: 57vw;
+          margin-left: 11vw;
+          margin-top: -10vw;
         }
-  
+        .gifts {
+          width: 55vw;
+          height: 24vw;
+          margin-left: 14vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .single-gift {
+            flex: 1;
+            img {
+              width: 15vw;
+            }
+            .gift-name {
+              background-image: url("../assets//images/text-bg.png");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              width: 16vw;
+              height: 8vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 2.5vw;
+            }
+          }
+        }
       }
-   
+
       .heading {
         font-family: "PixelNes";
         text-align: center;
         color: white;
         font-size: 4vw;
       }
-  
+
       .section-info {
         color: white;
         margin-left: 10vw;
         font-family: "Acme-Regular";
         font-size: 2.5vw;
         margin-top: 2vw;
-  
+
         ul {
           margin-left: 5vw;
         }
       }
-  
+
       .guide-content {
         width: 60vw;
         margin: 1.5vw auto 0 auto;
       }
-
     }
- 
   }
   .billiards {
     .title {
@@ -153,6 +175,36 @@
 
           img {
             width: 6vw;
+          }
+        }
+      }
+    }
+
+    .details {
+      .title {
+        width: 100%;
+        height: 27vw;
+        object-fit: contain;
+        margin-left: -3vw;
+        margin-top: -15vw;
+      }
+      .heading {
+        font-family: "PixelNes";
+        text-align: center;
+        color: white;
+        font-size: 4vw;
+        letter-spacing: 0.7vw;
+      }
+
+      .content {
+        width: 86%;
+        height: 62vw;
+        border: 1px solid;
+        margin: 0 auto;
+        table{
+          tr th{
+            color: white;
+            
           }
         }
       }
@@ -300,7 +352,7 @@
   //           background-color: transparent;
   //           border: none;
   //         }
-  
+
   //         .blackNWhite {
   //           filter: grayscale(100%);
   //         }

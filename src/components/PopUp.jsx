@@ -10,6 +10,7 @@ const PopUp = (props) => {
     isRewards,
     isGame,
     isMilestone,
+    isDetail,
   } = props;
 
   useEffect(() => {
@@ -28,8 +29,8 @@ const PopUp = (props) => {
           minHeight: `${
             isAccPopUp
               ? "74vw"
-              : isRewards
-              ? "58vw"
+              : isDetail
+              ? "83vw"
               : isGame
               ? "85vw"
               : isMilestone
@@ -37,7 +38,7 @@ const PopUp = (props) => {
               : ""
           }`,
           width: `${
-            eventGifting ? "95%" : isRewards ? "85%" : isMilestone ? "98%" : ""
+            eventGifting ? "95%" : isDetail ? "87%" : isMilestone ? "98%" : ""
           }`,
         }}
       >

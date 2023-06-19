@@ -22,6 +22,23 @@ const Billiards = () => {
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
   const [gamePopUp, setGamePopup] = useState(false);
+  const rewards = [
+    {
+      rank: "Top 1st",
+      reward: "50% of beans pot",
+      img: "beansbag",
+    },
+    {
+      rank: "Top 2nd",
+      reward: "30% of beans pot",
+      img: "beansbag",
+    },
+    {
+      rank: "Top 3rd",
+      reward: "20% of beans pot",
+      img: "beansbag",
+    },
+  ];
   const toggleDetailPopUp = () => {
     setDetailPopup((prevState) => !prevState);
   };
@@ -127,7 +144,7 @@ const Billiards = () => {
       <div className="rest-section">
         <div className="rewards">
           <img src={rewardsTitle} className="title" />
-          <Slider />
+          <Slider rewards={rewards} billiards={true} />
         </div>
         <div className="beans-pot">
           <img src={beansPotTitle} className="title" />

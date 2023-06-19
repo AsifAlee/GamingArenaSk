@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/slider.scss";
 import leftArow from "../assets/images/left-arrow.png";
 import rightArrow from "../assets/images/right-arrow.png";
-import top1st from "../assets/images/top-1st.png";
+import { getRewardsImage } from "../functions";
 
-const Slider = ({ rewards }) => {
+const Slider = ({ rewards, foosball, billiards }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const nextSlide = () => {
+    console.log(currentIndex);
+    setCurrentIndex((prevState) =>
+      prevState === rewards.length - 1 ? 0 : prevState + 1
+    );
+  };
+  const prevSlide = () => {
+    setCurrentIndex((prevState) =>
+      prevState === 0 ? rewards.length - 1 : prevState - 1
+    );
+  };
+
   return (
-    <div className="slider">
-      <img className="left-arrow" src={leftArow} />
-      <img src={top1st} className="reward-img" />
-      <img className="right-arrow" src={rightArrow} />
+    <div className={`slider ${foosball && "foosball-slider"}`}>
+      <img className="left-arrow" src={leftArow} onClick={prevSlide} />
+      {billiards && (
+        <div className="billiards-reward-item">
+          <p>{rewards[currentIndex]?.rank}</p>
+          <img src={getRewardsImage(rewards[currentIndex]?.img)} />
+          <p style={{ textAlign: "center" }}>{rewards[currentIndex]?.reward}</p>
+        </div>
+      )}
+      {foosball && (
+        <div>
+          <p style={{ textAlign: "center" }}>{rewards[currentIndex].rank}</p>
+          <div className="foosball-reward-item">
+            {rewards[currentIndex].reward.map((rew) => (
+              <div className="single-item">
+                <img src={getRewardsImage(rew.img)} />
+                <div className="text">
+                  <span>{rew.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <img className="right-arrow" src={rightArrow} onClick={nextSlide} />
     </div>
   );
 };

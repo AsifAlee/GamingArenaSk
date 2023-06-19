@@ -7,6 +7,7 @@ import "../../styles/popup.scss";
 import { AppContext } from "../../MyContext";
 import { useContext } from "react";
 import Accordion from "../../components/Accordion";
+import { baseUrl } from "../../service/api";
 
 const Guide = () => {
   const { toggleGuidePopup } = useContext(AppContext);
@@ -17,6 +18,22 @@ const Guide = () => {
         <div className="guide-main-content">
           <div className="event-gifts">
             <img src={eventGiftTitle} className="title" />
+            <div className="gifts">
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <div className="gift-name">Empower</div>
+              </div>
+
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <div className="gift-name">Game World</div>
+              </div>
+
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <div className="gift-name">Chocolate</div>
+              </div>
+            </div>
           </div>
           <h3 className="heading">HOW TO PLAY</h3>
           <div className="section-info">
