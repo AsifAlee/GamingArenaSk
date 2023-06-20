@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/slider.scss";
 import leftArow from "../assets/images/left-arrow.png";
 import rightArrow from "../assets/images/right-arrow.png";
 import { getRewardsImage } from "../functions";
+import { baseUrl } from "../service/api";
 
-const Slider = ({ rewards, foosball, billiards }) => {
+const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  let intervalId = null;
   const nextSlide = () => {
     console.log(currentIndex);
     setCurrentIndex((prevState) =>
@@ -18,8 +20,21 @@ const Slider = ({ rewards, foosball, billiards }) => {
     );
   };
 
+  useEffect(() => {
+    intervalId = setInterval(nextSlide, 3000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
-    <div className={`slider ${foosball && "foosball-slider"}`}>
+    <div
+      className={`slider ${
+        (foosball && "foosball-slider") ||
+        (eventGifting && "event-gifting-slider")
+      }`}
+    >
       <img className="left-arrow" src={leftArow} onClick={prevSlide} />
       {billiards && (
         <div className="billiards-reward-item">
@@ -28,13 +43,13 @@ const Slider = ({ rewards, foosball, billiards }) => {
           <p style={{ textAlign: "center" }}>{rewards[currentIndex]?.reward}</p>
         </div>
       )}
-      {foosball && (
+      {foosball || eventGifting ? (
         <div>
           <p style={{ textAlign: "center" }}>{rewards[currentIndex].rank}</p>
           <div className="foosball-reward-item">
             {rewards[currentIndex].reward.map((rew) => (
               <div className="single-item">
-                <img src={getRewardsImage(rew.img)} />
+                <img src={baseUrl + "/streamkar/rewards/" + rew.img} />
                 <div className="text">
                   <span>{rew.name}</span>
                 </div>
@@ -42,6 +57,8 @@ const Slider = ({ rewards, foosball, billiards }) => {
             ))}
           </div>
         </div>
+      ) : (
+        ""
       )}
 
       <img className="right-arrow" src={rightArrow} onClick={nextSlide} />

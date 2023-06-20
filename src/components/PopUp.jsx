@@ -30,7 +30,7 @@ const PopUp = (props) => {
             isAccPopUp
               ? "74vw"
               : isDetail
-              ? "83vw"
+              ? "119vw"
               : isGame
               ? "85vw"
               : isMilestone
@@ -38,7 +38,7 @@ const PopUp = (props) => {
               : ""
           }`,
           width: `${
-            eventGifting ? "95%" : isDetail ? "87%" : isMilestone ? "98%" : ""
+            eventGifting ? "95%" : isDetail ? "93%" : isMilestone ? "98%" : ""
           }`,
         }}
       >

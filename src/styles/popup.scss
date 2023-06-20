@@ -198,240 +198,77 @@
 
       .content {
         width: 86%;
-        height: 62vw;
-        border: 1px solid;
+        // height: 62vw;
         margin: 0 auto;
-        table{
-          tr th{
+        overflow-y: auto;
+        height: 92vw;
+        table {
+          border: 2px solid white;
+
+          font-family: "Acme-Regular";
+          margin: 0 auto;
+          width: 95%;
+          font-size: 3vw;
+
+          border-collapse: collapse;
+          border-spacing: 0;
+          border-radius: 2vw;
+
+          .head {
+            background-color: #b579bc;
+          }
+          tr th {
             color: white;
+            border-right: 2px solid white;
+            padding: 1vw;
+          }
+          tr th:last-child {
+            border-right: none;
+          }
+          tr td {
+            color: white;
+            border-right: 2px solid white;
+            padding: 1vw;
+            text-align: center;
+          }
+
+          tr td:last-child {
+            border-right: none;
+          }
+
+      
+          .reward-row {
+            height: 41vw;
+
+            .reward-item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .giftImg {
+                width: 9vw;
+              }
+              .text{
+                font-size: 2vw;
+                font-family: 'Acme-Regular';
+              }
+            }
+          }
+        }
+        .claw-points {
+          margin-top: 5vw;
+        }
+        .que {
+          margin-top: 4vw;
+
+          table {
+            tr{
+
+              padding: 1vw;
+            }
             
           }
         }
       }
     }
   }
-
-  // .event-gifting-popup {
-  //   .title {
-  //     width: 100%;
-  //     height: 27vw;
-  //     object-fit: contain;
-  //     margin-left: -3vw;
-  //     margin-top: -15vw;
-  //   }
-  //   .heading {
-  //     font-family: "PixelNes";
-  //     text-align: center;
-  //     color: white;
-  //     font-size: 4vw;
-  //     letter-spacing: 0.7vw;
-  //   }
-
-  //   .gifts {
-  //     width: 95%;
-  //     background-image: url("../assets/images/popup/event-gifts-bg.png");
-  //     height: 65vw;
-  //     background-repeat: no-repeat;
-  //     background-size: 100% 100%;
-  //     margin: 0 auto;
-
-  //     .title {
-  //       width: 56vw;
-  //       margin-left: 8vw;
-  //       margin-top: -9vw;
-  //     }
-  //   }
-  //   .gifting-rewards {
-  //     // margin-top: 10vw;
-  //     .title {
-  //       font-family: "PixelNes";
-  //       font-size: 4vw;
-  //       letter-spacing: 0.7vw;
-  //       color: white;
-  //       text-align: center;
-  //     }
-  //     .tabs {
-  //       display: flex;
-  //       justify-content: space-evenly;
-  //       align-items: center;
-  //       .talents {
-  //         width: 25vw;
-  //         height: 12.5vw;
-  //         background-image: url("../assets//images/popup/talent.png");
-  //         background-repeat: no-repeat;
-  //         background-size: 100% 100%;
-  //         background-color: transparent;
-  //         border: none;
-  //       }
-  //       .gifters {
-  //         width: 25vw;
-  //         height: 12.5vw;
-  //         background-image: url("../assets//images/popup/gifters.png");
-  //         background-repeat: no-repeat;
-  //         background-size: 100% 100%;
-  //         background-color: transparent;
-  //         border: none;
-  //       }
-
-  //       .blackNWhite {
-  //         filter: grayscale(100%);
-  //       }
-  //     }
-  //     .base {
-  //       width: 69vw;
-  //       margin-left: 5vw;
-  //     }
-
-  //     .rewards {
-  //       width: 95%;
-  //       background-image: url("../assets/images/popup/event-gifts-bg.png");
-  //       height: 65vw;
-  //       background-repeat: no-repeat;
-  //       background-size: 100% 100%;
-  //       margin: 0 auto;
-
-  //       .title {
-  //         width: 56vw;
-  //         margin-left: 8vw;
-  //         margin-top: -9vw;
-  //       }
-  //     }
-  //   }
-  //   .leader-board {
-  //     margin-top: 8vw;
-  //     .title {
-  //       width: 100%;
-  //       height: 27vw;
-  //       object-fit: contain;
-  //       margin-left: -3vw;
-  //       margin-top: -15vw;
-  //     }
-  //     .topRank {
-  //       position: relative;
-  //       background-image: url("../assets/images/topRank-bg.png");
-  //       background-size: 100% 100%;
-  //       background-repeat: no-repeat;
-  //       width: 86%;
-  //       height: 80vw;
-  //       margin: 0 auto;
-  //       .top1 {
-  //         position: absolute;
-  //         left: 30vw;
-  //         top: 40vw;
-  //       }
-  //       .top2 {
-  //         left: 3vw;
-  //         top: 50vw;
-  //         position: absolute;
-  //       }
-  //       .top3 {
-  //         position: absolute;
-  //         right: 4vw;
-  //         top: 50vw;
-  //       }
-
-  //       .tabs {
-  //         display: flex;
-  //         justify-content: space-evenly;
-  //         align-items: center;
-  //         .talents {
-  //           width: 25vw;
-  //           height: 12.5vw;
-  //           background-image: url("../assets//images/popup/talent.png");
-  //           background-repeat: no-repeat;
-  //           background-size: 100% 100%;
-  //           background-color: transparent;
-  //           border: none;
-  //         }
-  //         .gifters {
-  //           width: 25vw;
-  //           height: 12.5vw;
-  //           background-image: url("../assets//images/popup/gifters.png");
-  //           background-repeat: no-repeat;
-  //           background-size: 100% 100%;
-  //           background-color: transparent;
-  //           border: none;
-  //         }
-
-  //         .blackNWhite {
-  //           filter: grayscale(100%);
-  //         }
-  //       }
-  //       .base {
-  //         width: 69vw;
-  //         margin-left: 5vw;
-  //       }
-  //     }
-
-  //     .restWinners {
-  //       margin-top: 27vw !important;
-  //       height: 92vw;
-  //       width: 82%;
-  //       margin: 0 auto;
-  //       position: relative;
-  //       overflow-y: auto;
-  //     }
-  //     .see-more {
-  //       width: 15vw;
-  //       height: 7vw;
-  //       margin: 0 auto;
-  //       background-image: url("../assets//images/see-more.png");
-  //       background-size: 100% 100%;
-  //       background-repeat: no-repeat;
-  //       border: none;
-  //       background-color: transparent;
-  //       display: block;
-  //       position: relative;
-  //       top: 2vw;
-  //     }
-  //     .see-less {
-  //       display: block;
-  //       width: 15vw;
-  //       height: 7vw;
-  //       margin: 0 auto;
-  //       background-image: url("../assets//images/see-less.png");
-  //       background-size: 100% 100%;
-  //       background-repeat: no-repeat;
-  //       border: none;
-  //       background-color: transparent;
-  //       position: relative;
-  //       top: 2vw;
-  //     }
-  //   }
-
-  //   .foosball {
-  //     .details {
-  //       .title {
-  //         width: 100%;
-  //         height: 27vw;
-  //         object-fit: contain;
-  //         margin-left: -3vw;
-  //         margin-top: -15vw;
-  //       }
-  //       .heading {
-  //         font-family: "PixelNes";
-  //         text-align: center;
-  //         color: white;
-  //         font-size: 4vw;
-  //         letter-spacing: 0.7vw;
-  //       }
-  //     }
-  //     .records {
-  //       .title {
-  //         width: 100%;
-  //         height: 27vw;
-  //         object-fit: contain;
-  //         margin-left: -3vw;
-  //         margin-top: -15vw;
-  //       }
-  //       .heading {
-  //         font-family: "PixelNes";
-  //         text-align: center;
-  //         color: white;
-  //         font-size: 4vw;
-  //         letter-spacing: 0.7vw;
-  //       }
-  //     }
-  //   }
-  // }
 }

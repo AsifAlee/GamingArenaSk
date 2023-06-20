@@ -70,6 +70,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 1vw;
           }
         }
 
@@ -83,4 +84,12 @@
 .foosball-slider{
   width: 60vw !important;
   left: -4vw !important;
+}
+
+.event-gifting-slider{
+  width: 60vw !important;
+  left: 14vw !important;
+  top: 5vw;
+  margin-top: 0;
+  margin-left: 0;
 }

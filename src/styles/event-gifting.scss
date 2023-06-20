@@ -73,18 +73,47 @@
       letter-spacing: 0.7vw;
     }
   
-    .gifts {
-      width: 86%;
+    .event-gifts {
+      width: 100%;
       background-image: url("../assets/images/popup/event-gifts-bg.png");
-      height: 65vw;
+      height: 72vw;
       background-repeat: no-repeat;
       background-size: 100% 100%;
       margin: 0 auto;
-  
+      margin-top: 4vw !important;
+      font-family: "Acme-Regular";
+      color: white;
+
       .title {
-        width: 56vw;
-        margin-left: 8vw;
-        margin-top: -9vw;
+        width: 61vw;
+        margin-left: 14vw;
+        margin-top: -12vw;
+      }
+      .gifts {
+        width: 55vw;
+        height: 24vw;
+        margin-left: 18vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .single-gift {
+          flex: 1;
+          img {
+            width: 15vw;
+          }
+          .gift-name {
+            background-image: url("../assets//images/text-bg.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 16vw;
+            height: 8vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5vw;
+          }
+        }
       }
     }
     .gifting-rewards {
@@ -129,18 +158,19 @@
       }
   
       .rewards {
-        width: 86%;
+        width: 98%;
         background-image: url("../assets/images/popup/event-gifts-bg.png");
-        height: 65vw;
+        height: 70vw;
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin: 0 auto;
-        margin-top: 3vw !important;
+        margin-top: 7vw !important;
+        position: relative;
   
         .title {
           width: 56vw;
-          margin-left: 8vw;
-          margin-top: -9vw;
+          margin-left: 15vw;
+          margin-top: -13vw;
         }
       }
     }

@@ -5,6 +5,7 @@ import GamingZone from "./pages/GameArena/GamingZone";
 import Guide from "./pages/PopUps/Guide";
 import { AppContext } from "./MyContext";
 import EventGifting from "./pages/PopUps/EventGifting";
+import ClawCrane from "./pages/ClawCrane/ClawCrane";
 
 function App() {
   const { toggleGuidePopup, guidePopup } = useContext(AppContext);
@@ -58,7 +59,13 @@ function App() {
       {guidePopup && <Guide />}
       {eventGifting && <EventGifting toggleEventGifting={toggleEventGifting} />}
 
-      {mainTabs.gamingZone && <GamingZone />}
+      {mainTabs.gamingZone ? (
+        <GamingZone />
+      ) : mainTabs.clawCrane ? (
+        <ClawCrane />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

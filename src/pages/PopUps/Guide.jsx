@@ -20,7 +20,7 @@ const Guide = () => {
             <img src={eventGiftTitle} className="title" />
             <div className="gifts">
               <div className="single-gift">
-                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
                 <div className="gift-name">Empower</div>
               </div>
 
@@ -30,7 +30,7 @@ const Guide = () => {
               </div>
 
               <div className="single-gift">
-                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
                 <div className="gift-name">Chocolate</div>
               </div>
             </div>

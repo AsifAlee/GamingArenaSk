@@ -5,17 +5,133 @@ import taBar from "../../assets/images/lb-tabs-bar.png";
 import eventGifting from "../../assets/images/popup/event-gifting-title.png";
 import rewardsTitle from "../../assets/images/rewrads-title.png";
 import leaderboardTitle from "../../assets/images/lb-heading.png";
-
+import eventGiftTitle from "../../assets/images/popup/event-gifts-title.png";
 import Topper from "../../components/Topper";
 import { testData } from "../../testData";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
 import close from "../../assets/images/popup/cross.png";
 import "../../styles/event-gifting.scss";
+import { baseUrl } from "../../service/api";
+import Slider from "../../components/Slider";
 const EventGifting = ({ toggleEventGifting }) => {
   const [tabs, setTabs] = useState({
     talent: true,
     gifter: false,
   });
+  const [rewardTabs, setRewardTabs] = useState({
+    talent: true,
+    gifter: false,
+  });
+  const talentRewards = [
+    {
+      rank: "1st",
+      reward: [
+        {
+          name: "Rusty Ranger entrance x5 Days",
+          img: "rustyRanger.png",
+        },
+        {
+          name: "Game Master frame (New) x5 Days ",
+          img: "gameMasterProfileFrame.png",
+        },
+        {
+          name: "3,000,000 gems",
+          img: "gems.png",
+        },
+      ],
+    },
+    {
+      rank: "Top 2nd",
+      reward: [
+        {
+          name: "Rusty Ranger entrance x3 Days",
+          img: "rustyRanger.png",
+        },
+
+        {
+          name: "Game Master frame (New) x3 Days",
+          img: "gameMasterProfileFrame.png",
+        },
+        {
+          name: "2,000,000 gems",
+          img: "gems.png",
+        },
+      ],
+    },
+    {
+      rank: "Top 3rd",
+      reward: [
+        {
+          name: "Rusty Ranger entrance x1 Day",
+          img: "rustyRanger.png",
+        },
+
+        {
+          name: "Game Master frame (New) x1 Day",
+          img: "gameMasterProfileFrame.png",
+        },
+        {
+          name: "1,000,000 gems",
+          img: "gems.png",
+        },
+      ],
+    },
+  ];
+  const gifterRewards = [
+    {
+      rank: "1st",
+      reward: [
+        {
+          name: "Solar Flare entrance x 5 Days",
+          img: "solar.png",
+        },
+        {
+          name: "Victorious frame x5 Days ",
+          img: "beanbag.png",
+        },
+        {
+          name: "3,000,000 Beans",
+          img: "beanbag.png",
+        },
+      ],
+    },
+    {
+      rank: "2nd",
+      reward: [
+        {
+          name: "Solar Flare entrance x 3 Days ",
+          img: "solar.png",
+        },
+
+        {
+          name: "Victorious frame x3 Days",
+          img: "beanbag.png",
+        },
+        {
+          name: "2,000,000 Beans",
+          img: "beanbag.png",
+        },
+      ],
+    },
+    {
+      rank: "3rd",
+      reward: [
+        {
+          name: "Solar Flare entrance x 1 Day ",
+          img: "solar.png",
+        },
+
+        {
+          name: "Victorious frame  x1 Day ",
+          img: "beanbag.png",
+        },
+        {
+          name: "1,000,000 Beans",
+          img: "beanbag.png",
+        },
+      ],
+    },
+  ];
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -40,6 +156,21 @@ const EventGifting = ({ toggleEventGifting }) => {
         });
     }
   };
+  const switchRewardTabs = (event) => {
+    switch (event.target.name) {
+      case "talent":
+        setRewardTabs({
+          talent: true,
+          gifter: false,
+        });
+        break;
+      case "gifter":
+        setRewardTabs({
+          talent: false,
+          gifter: true,
+        });
+    }
+  };
   return (
     <div className="event-gifting-popup ">
       {/* <div className="close-btn">
@@ -51,25 +182,46 @@ const EventGifting = ({ toggleEventGifting }) => {
         </div>
         <div className="inner-div">
           <img src={eventGifting} className="title" />
-          <div className="gifts">
-            <img className="title" src={eventGifting} />
+          <div className="event-gifts">
+            <img src={eventGiftTitle} className="title" />
+            <div className="gifts">
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
+                <div className="gift-name">Empower</div>
+              </div>
+
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
+                <div className="gift-name">Game World</div>
+              </div>
+
+              <div className="single-gift">
+                <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
+                <div className="gift-name">Chocolate</div>
+              </div>
+            </div>
           </div>
           <div className="gifting-rewards">
             <div className="tabs">
               <button
-                className={`talents ${!tabs.talent && "blackNWhite"}`}
+                className={`talents ${!rewardTabs.talent && "blackNWhite"}`}
                 name="talent"
-                onClick={switchTabs}
+                onClick={switchRewardTabs}
               />
               <button
-                className={`gifters ${!tabs.gifter && "blackNWhite"}`}
+                className={`gifters ${!rewardTabs.gifter && "blackNWhite"}`}
                 name="gifter"
-                onClick={switchTabs}
+                onClick={switchRewardTabs}
               />
             </div>
             <img src={taBar} className="base" />
             <div className="rewards">
               <img className="title" src={rewardsTitle} />
+              <Slider
+                eventGifting={true}
+                rewards={rewardTabs.talent ? talentRewards : gifterRewards}
+                foosball={false}
+              />
             </div>
           </div>
           <div className="leader-board">

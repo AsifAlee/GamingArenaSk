@@ -27,15 +27,15 @@ const Foosball = () => {
       reward: [
         {
           name: "Game Master frame x3 days",
-          img: "beansbag",
+          img: "beanbag.png",
         },
         {
           name: "Game Master room skin x3 days ",
-          img: "beansbag",
+          img: "beanbag.png",
         },
         {
           name: "3000 beans ",
-          img: "beansbag",
+          img: "beanbag.png",
         },
       ],
     },
@@ -44,12 +44,12 @@ const Foosball = () => {
       reward: [
         {
           name: "Game Master frame x2 day",
-          img: "beansbag",
+          img: "beanbag.png",
         },
 
         {
           name: "3000 beans ",
-          img: "beansbag",
+          img: "beanbag.png",
         },
       ],
     },
@@ -58,12 +58,12 @@ const Foosball = () => {
       reward: [
         {
           name: "Game Master room skin x1 days",
-          img: "beansbag",
+          img: "beanbag.png",
         },
 
         {
           name: "3000 beans ",
-          img: "beansbag",
+          img: "beanbag.png",
         },
       ],
     },
@@ -131,7 +131,7 @@ const Foosball = () => {
         <img src={leaderBoardTitle} className="leaderbrd-title" />
         <div className="rewards">
           <img src={rewardsTitle} className="title" />
-          <Slider foosball={true} rewards={rewards} />
+          <Slider foosball={true} rewards={rewards} eventGifting={false} />
         </div>
 
         <div className="leaderboard">

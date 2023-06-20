@@ -1,0 +1,130 @@
+.claw-crane {
+  .record-details-btns {
+    display: flex;
+    justify-content: space-between;
+    .records-btn {
+      background-image: url("../assets/images//records.png");
+      width: 17vw;
+      height: 7vw;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+    .details-btn {
+      background-image: url("../assets/images/details.png");
+      width: 12vw;
+      height: 7vw;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      border: none;
+    }
+
+    .game-points {
+      background-image: url("../assets/images/beans-pot-counter.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+
+      width: 27vw;
+      height: 9vw;
+
+      border: none;
+      background-color: transparent;
+      color: white;
+      font-family: "Acme-Regular";
+
+      font-size: 2.5vw;
+    }
+  }
+
+  .crane-game {
+    width: 90%;
+    height: 110vw;
+    background-image: url("../assets//images//claw-crane/game-bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 3vw auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .blackNWhite {
+      filter: grayscale(1);
+    }
+    .game {
+      width: 80%;
+      height: 80%;
+      background-image: url("../assets//images/claw-crane/game.png");
+      background-size: 100% 100%;
+      position: relative;
+      .get-btn {
+        position: absolute;
+
+        width: 24vw;
+        height: 15vw;
+        background-image: url("../assets//images/claw-crane/get-item.png");
+        background-size: 100% 100%;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        bottom: 4vw;
+        right: 6vw;
+      }
+    }
+  }
+  .leader-board {
+    background-image: url("../assets/images/claw-crane/lb-bg.png");
+    width: 90%;
+    height: 80vw;
+    background-size: 100% 100%;
+    margin: 15vw auto 0 auto;
+    position: relative;
+
+    .heading {
+      width: 60vw;
+      height: 23vw;
+      background-image: url("../assets/images/lb-heading.png");
+      background-size: 100% 100%;
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: -12vw;
+    }
+    .see-more {
+      width: 15vw;
+      height: 7vw;
+      margin: 0 auto;
+      background-image: url("../assets//images/see-more.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: transparent;
+      display: block;
+      position: absolute;
+      bottom: 5vw;
+    left: 0;
+    right: 0;
+}
+    }
+    .see-less {
+      display: block;
+      width: 15vw;
+      height: 7vw;
+      margin: 0 auto;
+      background-image: url("../assets//images/see-less.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: transparent;
+      position: absolute;
+      bottom: 5vw;
+    left: 0;
+    right: 0;
+}
+    }
+  
+

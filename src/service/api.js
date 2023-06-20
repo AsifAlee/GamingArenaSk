@@ -1,1 +1,1 @@
-export const baseUrl = "https://www.streamkarlive.live";
+export const baseUrl = "http://test.streamkar.tv";
