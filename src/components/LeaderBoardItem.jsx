@@ -2,8 +2,9 @@ import React from "react";
 import unknown from "../assets/images/unknown-user.png";
 import level from "../assets/images/level.PNG";
 import ballIcon from "../assets/images/ball-potted-icon.png";
+import clawPoint from "../assets/images/claw-crane/claw-point-icon.png";
 import "../styles/leader-board-item.scss";
-const LeaderBoardItem = ({ user, index }) => {
+const LeaderBoardItem = ({ user, index, isClawCrane }) => {
   return (
     <div className="leader-board-item">
       <div className="left-div">
@@ -17,8 +18,16 @@ const LeaderBoardItem = ({ user, index }) => {
         </div>
       </div>
       <div className="right-div">
-        <img src={ballIcon} />
-        <span>10</span>
+        {isClawCrane && (
+          <div className="extra-icon">
+            <img src={clawPoint} />
+          </div>
+        )}
+
+        <div className="game-score">
+          <img src={ballIcon} />
+          <span>10</span>
+        </div>
       </div>
     </div>
   );

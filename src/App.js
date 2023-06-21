@@ -6,6 +6,7 @@ import Guide from "./pages/PopUps/Guide";
 import { AppContext } from "./MyContext";
 import EventGifting from "./pages/PopUps/EventGifting";
 import ClawCrane from "./pages/ClawCrane/ClawCrane";
+import TalentWheel from "./pages/TalentWheel/TalentWheel";
 
 function App() {
   const { toggleGuidePopup, guidePopup } = useContext(AppContext);
@@ -64,7 +65,7 @@ function App() {
       ) : mainTabs.clawCrane ? (
         <ClawCrane />
       ) : (
-        ""
+        <TalentWheel />
       )}
     </div>
   );

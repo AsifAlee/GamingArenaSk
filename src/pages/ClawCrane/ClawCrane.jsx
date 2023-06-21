@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { testData } from "../../testData";
 import "../../styles/claw-crane.scss";
+import LeaderBoardItem from "../../components/LeaderBoardItem";
 
 const ClawCrane = () => {
   const toggleRecordsPopup = () => {};
@@ -24,12 +26,18 @@ const ClawCrane = () => {
 
       <div className="leader-board">
         <button className="heading" />
-        <div></div>
+        <div className="winners">
+          {testData.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
+            <LeaderBoardItem user={user} index={index + 1} isClawCrane={true} />
+          ))}
+        </div>
+
         <button
           className={isSeeMore ? "see-more" : "see-less"}
           onClick={() => setIsSeeMore((prevState) => !prevState)}
         />
       </div>
+      <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
     </div>
   );
 };
