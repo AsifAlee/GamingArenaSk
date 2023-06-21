@@ -6,7 +6,10 @@ import bottom from "../../assets/images/wheel/wheel-bottom.png";
 import vipBottom from "../../assets/images/wheel/vip-bottom.png";
 import "../../styles/talent-wheel.scss";
 import { tab } from "@testing-library/user-event/dist/tab";
+import { testData } from "../../testData";
+import LeaderBoardItem from "../../components/LeaderBoardItem";
 const TalentWheel = () => {
+  const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
     wheel: true,
     vipWheel: false,
@@ -105,6 +108,23 @@ const TalentWheel = () => {
           </div>
           <button className="spin" />
         </div>
+      </div>
+      <div className="leader-board">
+        <button className="heading" />
+        <div className="winners">
+          {testData.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
+            <LeaderBoardItem
+              user={user}
+              index={index + 1}
+              isClawCrane={false}
+            />
+          ))}
+        </div>
+
+        <button
+          className={isSeeMore ? "see-more" : "see-less"}
+          onClick={() => setIsSeeMore((prevState) => !prevState)}
+        />
       </div>
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
     </div>

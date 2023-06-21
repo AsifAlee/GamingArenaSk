@@ -238,6 +238,78 @@
       }
     }
   }
+
+  .leader-board {
+    background-image: url("../assets/images/claw-crane/lb-bg.png");
+    width: 90%;
+    height: 80vw;
+    background-size: 100% 100%;
+    margin: 15vw auto 0 auto;
+    position: relative;
+
+    .heading {
+      width: 60vw;
+      height: 23vw;
+      background-image: url("../assets/images/lb-heading.png");
+      background-size: 100% 100%;
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: -12vw;
+    }
+
+    .winners {
+      width: 81%;
+      height: 52vw;
+      position: absolute;
+      top: 15vw;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+    }
+    .see-more {
+      width: 15vw;
+      height: 7vw;
+      margin: 0 auto;
+      background-image: url("../assets//images/see-more.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: transparent;
+      display: block;
+      position: absolute;
+      bottom: 5vw;
+      left: 0;
+      right: 0;
+    }
+  }
+  .see-less {
+    display: block;
+    width: 15vw;
+    height: 7vw;
+    margin: 0 auto;
+    background-image: url("../assets//images/see-less.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    bottom: 5vw;
+    left: 0;
+    right: 0;
+  }
+  .rights{
+    font-family: 'Acme-Regular';
+    text-align: center;
+    color: white;
+    margin-top: 3vw;
+  }
+
   .rights{
     font-family: 'Acme-Regular';
     text-align: center;
