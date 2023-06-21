@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import { testData } from "../../testData";
 import "../../styles/claw-crane.scss";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
+import ClawCraneDetail from "../PopUps/ClawCraneDetail";
 
-const ClawCrane = () => {
-  const toggleRecordsPopup = () => {};
-  const toggleDetailPopUp = () => {};
+const ClawCrane = ({}) => {
+  const toggleRecordsPopup = () => {
+    setShowRecords((prevState) => !prevState);
+  };
+  const toggleDetailPopUp = () => {
+    setShowDetails((prevState) => !prevState);
+  };
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [getItem, setGetItem] = useState(false);
+  const [showRecords, setShowRecords] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <div className="claw-crane">
       <div className="record-details-btns">
@@ -37,6 +45,7 @@ const ClawCrane = () => {
           onClick={() => setIsSeeMore((prevState) => !prevState)}
         />
       </div>
+      {showDetails && <ClawCraneDetail toggleDetailPopUp={toggleDetailPopUp} />}
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
     </div>
   );

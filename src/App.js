@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import "./App.scss";
-import LuckyWheel from "./pages/TalentWheel/LuckyWheel";
 import GamingZone from "./pages/GameArena/GamingZone";
 import Guide from "./pages/PopUps/Guide";
 import { AppContext } from "./MyContext";
@@ -37,7 +36,7 @@ function App() {
       <div className="header">
         <button className="guide-btn" onClick={toggleGuidePopup} />
       </div>
-      <div style={{ display: "flex", justifyContent: "end" }}>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button className="event-gifting" onClick={toggleEventGifting} />
       </div>
       <div className="main-tabs">

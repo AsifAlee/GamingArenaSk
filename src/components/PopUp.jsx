@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import closeBtn from "../assets/images/popup/cross.png";
 import "../styles/popup.scss";
 const PopUp = (props) => {
   const {
@@ -24,26 +25,35 @@ const PopUp = (props) => {
     <div className="overlay">
       <div
         className="content"
-        style={{
-          backgroundImage: `url(${bg})`,
-          minHeight: `${
-            isAccPopUp
-              ? "74vw"
-              : isDetail
-              ? "119vw"
-              : isGame
-              ? "85vw"
-              : isMilestone
-              ? "83vw"
-              : ""
-          }`,
-          width: `${
-            eventGifting ? "95%" : isDetail ? "93%" : isMilestone ? "98%" : ""
-          }`,
-        }}
+        // style={{
+        //   backgroundImage: `url(${bg})`,
+        //   minHeight: `${
+        //     isAccPopUp
+        //       ? "74vw"
+        //       : isDetail
+        //       ? "119vw"
+        //       : isGame
+        //       ? "85vw"
+        //       : isMilestone
+        //       ? "83vw"
+        //       : ""
+        //   }`,
+        //   width: `${
+        //     eventGifting ? "95%" : isDetail ? "93%" : isMilestone ? "98%" : ""
+        //   }`,
+        // }}
       >
-        <button className="closeBtn" onClick={popUpHandler}></button>
-        {children}
+        <div className="closeBtn">
+          <img onClick={popUpHandler} src={closeBtn} />
+        </div>
+        <div
+          className="inner-div"
+          style={{
+            backgroundImage: `url(${bg})`,
+          }}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

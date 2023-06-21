@@ -2,7 +2,6 @@ import React from "react";
 import PopUp from "../../components/PopUp";
 import title from "../../assets/images/popup/billiards-pop-title.png";
 import bg from "../../assets/images/popup/billiards-detail-bg.png";
-import { getRewardsImage } from "../../functions";
 import "../../styles/popup.scss";
 import { baseUrl } from "../../service/api";
 
@@ -13,7 +12,7 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
         <div className="details">
           <img src={title} className="title" />
           <h3 className="heading">BILLIARDS DETAILS</h3>
-          <div className="content">
+          <div className="inner-content">
             <table>
               <tr className="head">
                 <th>Button Name</th>
@@ -28,7 +27,6 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                 <td>
                   <div
                     style={{
-                      // border: "1px solid red",
                       height: "37vw",
                       display: "flex",
                       flexWrap: "wrap",

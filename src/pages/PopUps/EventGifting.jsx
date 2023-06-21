@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import title from "../../assets/images/popup/event-gifts-title.png";
-import bg from "../../assets/images/popup/event-gifting-bg.png";
 import taBar from "../../assets/images/lb-tabs-bar.png";
 import eventGifting from "../../assets/images/popup/event-gifting-title.png";
 import rewardsTitle from "../../assets/images/rewrads-title.png";
@@ -173,11 +171,8 @@ const EventGifting = ({ toggleEventGifting }) => {
   };
   return (
     <div className="event-gifting-popup ">
-      {/* <div className="close-btn">
-        <img src={close} onClick={toggleEventGifting} />
-      </div> */}
       <div className="content">
-        <div className="close-btn">
+        <div className="closeBtn">
           <img src={close} onClick={toggleEventGifting} />
         </div>
         <div className="inner-div">
