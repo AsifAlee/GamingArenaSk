@@ -23,21 +23,34 @@
       border: none;
     }
 
+
     .game-points {
       background-image: url("../assets/images/beans-pot-counter.png");
       background-size: 100% 100%;
       background-repeat: no-repeat;
-
-      width: 27vw;
-      height: 9vw;
-
+  
+      width: 34vw;
+      height: 11vw;
+  
       border: none;
       background-color: transparent;
       color: white;
       font-family: "Acme-Regular";
-
-      font-size: 2.5vw;
+  
+      font-size: 2vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 0.1vw;
+      img{
+        width: 3vw;
+        margin-left: 1vw;
+      }
+      span{
+        margin-left: 1vw;
+      }
     }
+  
   }
 
   .wheel-game {
@@ -52,6 +65,13 @@
     .blackNWhite {
       filter: grayscale(1);
     }
+
+    .rotate-0{
+      transform: rotate(0deg) !important;
+      transition: transform 0s ease-in-out;
+
+
+  }
 
     .heading {
       width: 72vw;
@@ -133,6 +153,7 @@
           position: relative;
           top: 3vw;
           left: 3vw;
+          transition: transform 4s ease-in-out;
         }
         .top{
           z-index: 8;
@@ -181,11 +202,12 @@
         left: 15vw;
         z-index: 1;
 
-        .lucky-wheel-img {
+        .vip-wheel-img {
           width: 40vw;
           position: relative;
           top: 5vw;
           left: 5vw;
+          transition: transform 4s ease-in-out;
         }
         .top{
           z-index: 2;

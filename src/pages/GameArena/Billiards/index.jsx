@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import cue from "../../../assets/images/cue.png";
 import ballPottedIcon from "../../../assets/images/ball-potted-icon.png";
 import beansPotTitle from "../../../assets/images/beanspot-title.png";
@@ -17,8 +17,13 @@ import BilliardsDetail from "../../PopUps/BilliardsDetail";
 import BillardsRecords from "../../PopUps/BillardsRecords";
 import table from "../../../assets/images/table.png";
 import BilliardGame from "../../PopUps/BilliardGame";
+import { AppContext } from "../../../MyContext";
+import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
 const Billiards = () => {
+  const { info } = useContext(AppContext);
+
   const [isQueRecharged, setIsQueRecharged] = useState(false);
+
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
   const [gamePopUp, setGamePopup] = useState(false);
@@ -101,7 +106,10 @@ const Billiards = () => {
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <button className="game-points">My Gaming points:xx</button>
+        <div className="game-points">
+          <img src={gamePointIcon} />
+          <span>My Gaming points:{info?.gamePoints}</span>
+        </div>
       </div>
 
       <div className="billiard-game">

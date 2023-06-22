@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import wheel from "../../assets/images/wheel/lucky-wheel-inner-bg.png";
 import vipWheel from "../../assets/images/wheel/vip-wheel-inner.png";
 import bottom from "../../assets/images/wheel/wheel-bottom.png";
@@ -8,12 +8,21 @@ import { testData } from "../../testData";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
 import vipTop from "../../assets/images/wheel/vip-top.png";
 import wheelTop from "../../assets/images/wheel/wheel-top.png";
+import { AppContext } from "../../MyContext";
+import gamePointIcon from "../../assets/images/gaming-point-icon.png";
+import { baseUrl, testToken, testUserId } from "../../service/api";
+
 const TalentWheel = () => {
+  const { info } = useContext(AppContext);
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
     wheel: true,
     vipWheel: false,
   });
+  const vipStep = 45;
+  const luckyStep = 60;
+  const [rotateDeg, setRotateDeg] = useState(0);
+  const [isRotating, setIsRotating] = useState(false);
   const switchTabs = (event) => {
     switch (event.target.name) {
       case "wheel":
@@ -49,11 +58,36 @@ const TalentWheel = () => {
   };
   const toggleRecordsPopup = () => {};
   const toggleDetailPopUp = () => {};
+  const playGame = () => {
+    setIsRotating(true);
+    setRotateDeg(180);
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: 5, playCount: 1 }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setTimeout(() => {
+          setIsRotating(false);
+        }, 4000);
+      })
+      .catch((error) => {
+        console.error("Api error:", error.message);
+      });
+  };
   return (
     <div className="talent-wheel">
       <div className="record-details-btns">
         <button className="records-btn" onClick={() => toggleRecordsPopup()} />
-        <button className="game-points">My Gaming points:xx</button>
+        <div className="game-points">
+          <img src={gamePointIcon} />
+          <span>My Gaming points:{info.gamePoints}</span>
+        </div>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <div className="wheel-game">
@@ -74,7 +108,7 @@ const TalentWheel = () => {
           <div className="lucky-game">
             <p className="info">25K Beans = 1 Chance</p>
             <div className="spin-wheel">
-              <img src={wheelTop} />
+              <img src={wheelTop} className="top" />
               <img src={wheel} className="lucky-wheel-img" />
             </div>
             <img src={bottom} className="bottom" />
@@ -83,8 +117,12 @@ const TalentWheel = () => {
           <div className="vip-game">
             <p className="info">25K Beans = 1 Chance</p>
             <div className="spin-wheel">
-              <img src={vipTop} />
-              <img src={vipWheel} className="lucky-wheel-img" />
+              <img src={vipTop} className="top" />
+              <img
+                src={vipWheel}
+                className={`vip-wheel-img ${!isRotating && "rotate-0"}`}
+                style={{ transform: `rotate(${rotateDeg}deg)` }}
+              />
             </div>
             <img src={vipBottom} className="vip-bottom" />
           </div>
@@ -108,7 +146,7 @@ const TalentWheel = () => {
               onClick={setPlayXTabs}
             />
           </div>
-          <button className="spin" />
+          <button className="spin" onClick={playGame} />
         </div>
       </div>
       <div className="leader-board">

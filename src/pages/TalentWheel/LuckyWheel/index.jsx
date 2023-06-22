@@ -9,8 +9,7 @@ const LuckyWheel = () => {
 
   const handleClick = () => {
     setIsRotating(true);
-    // let desiredRewardIndex = Math.floor(Math.random() * 8) + 1;
-    // console.log("desired num:", desiredRewardIndex);
+
     const rewardDegrees = 45;
     const desiredRotation = 8 * rewardDegrees;
     console.log("rotation degrees:", desiredRotation);

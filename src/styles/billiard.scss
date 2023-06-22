@@ -27,15 +27,26 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
-    width: 27vw;
-    height: 9vw;
+    width: 34vw;
+    height: 11vw;
 
     border: none;
     background-color: transparent;
     color: white;
     font-family: "Acme-Regular";
 
-    font-size: 2.5vw;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.1vw;
+    img{
+      width: 3vw;
+      margin-left: 1vw;
+    }
+    span{
+      margin-left: 1vw;
+    }
   }
 
   .billiard-game {
@@ -51,9 +62,7 @@
     .table {
       width: 45vw;
       height: 82vw;
-      // background-image: url("../assets/images/table.png");
-      // background-size: contain;
-      // background-repeat: no-repeat;
+     
       position: absolute;
       border: 1px solid;
       right: 16vw;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../../styles/foosball.scss";
 import game from "../../../assets/images/foosball/foosball-game.png";
 import goalIcon from "../../../assets/images/foosball/score-icon.png";
@@ -12,8 +12,12 @@ import today from "../../../assets/images/today.png";
 import previousDay from "../../../assets/images/previous-day.png";
 import FoosballDetails from "../../PopUps/FoosballDetails";
 import FoosballRecords from "../../PopUps/FoosballRecords";
+import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
+
+import { AppContext } from "../../../MyContext";
 
 const Foosball = () => {
+  const { info } = useContext(AppContext);
   const [playXbutton, setPlayXButton] = useState(false);
   const [leaderBoardTabs, setLeaderBoardTabs] = useState({
     today: true,
@@ -104,7 +108,10 @@ const Foosball = () => {
           // marginTop: "1vw",
         }}
       >
-        <button className="game-points">My Gaming points:xx</button>
+        <div className="game-points">
+          <img src={gamePointIcon} />
+          <span> My Gaming points:{info?.gamePoints}</span>
+        </div>
       </div>
       <div className="foosball-game">
         <img src={game} className="play-ground" />
