@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import wheel from "../../assets/images/wheel/lucky-wheel-inner-bg.png";
 import vipWheel from "../../assets/images/wheel/vip-wheel-inner.png";
-import vipWheelIner from "../../assets/images/wheel/vip-wheel-inner-bg.png";
 import bottom from "../../assets/images/wheel/wheel-bottom.png";
 import vipBottom from "../../assets/images/wheel/vip-bottom.png";
 import "../../styles/talent-wheel.scss";
-import { tab } from "@testing-library/user-event/dist/tab";
 import { testData } from "../../testData";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
+import vipTop from "../../assets/images/wheel/vip-top.png";
+import wheelTop from "../../assets/images/wheel/wheel-top.png";
 const TalentWheel = () => {
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
@@ -74,6 +74,7 @@ const TalentWheel = () => {
           <div className="lucky-game">
             <p className="info">25K Beans = 1 Chance</p>
             <div className="spin-wheel">
+              <img src={wheelTop} />
               <img src={wheel} className="lucky-wheel-img" />
             </div>
             <img src={bottom} className="bottom" />
@@ -82,6 +83,7 @@ const TalentWheel = () => {
           <div className="vip-game">
             <p className="info">25K Beans = 1 Chance</p>
             <div className="spin-wheel">
+              <img src={vipTop} />
               <img src={vipWheel} className="lucky-wheel-img" />
             </div>
             <img src={vipBottom} className="vip-bottom" />

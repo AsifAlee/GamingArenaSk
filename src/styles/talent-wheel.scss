@@ -112,7 +112,7 @@
       .info {
         z-index: 1;
         position: absolute;
-        top: 11vw;
+        top: 9vw;
         text-align: center;
         width: 100%;
         font-size: 3.5vw;
@@ -121,7 +121,7 @@
       .spin-wheel {
         width: 50vw;
         height: 50vw;
-        background-image: url("../assets/images/wheel/vip-wheel-outer.png");
+        background-image: url("../assets/images/wheel/lucky-wheel-outer-bg.png");
         background-size: 100% 100%;
         position: absolute;
         top: 17vw;
@@ -129,10 +129,17 @@
         z-index: 1;
 
         .lucky-wheel-img {
-            width: 39vw;
-            position: relative;
-            top: 6vw;
-            left: 6vw;
+          width: 44vw;
+          position: relative;
+          top: 3vw;
+          left: 3vw;
+        }
+        .top{
+          z-index: 8;
+          position: absolute;
+          left: 22vw;
+          width: 6vw;
+          top: -3vw;
         }
       }
       .bottom {
@@ -144,50 +151,57 @@
     }
 
     .vip-game {
-        width: 79vw;
-        height: 121vw;
-        background-image: url("../assets/images/wheel/vip-wheel-inner-bg.png");
-        background-size: 100% 100%;
-  
+      width: 79vw;
+      height: 121vw;
+      background-image: url("../assets/images/wheel/vip-wheel-inner-bg.png");
+      background-size: 100% 100%;
+
+      position: absolute;
+      top: 12vw;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+
+      .info {
+        z-index: 1;
         position: absolute;
-        top: 12vw;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-  
-        .info {
-          z-index: 1;
-          position: absolute;
-          top: 18vw;
-          text-align: center;
-          width: 100%;
-          font-size: 3.5vw;
+        top: 18vw;
+        text-align: center;
+        width: 100%;
+        font-size: 3.5vw;
+      }
+
+      .spin-wheel {
+        width: 50vw;
+        height: 50vw;
+        background-image: url("../assets/images/wheel/vip-wheel-outer.png");
+        background-size: 100% 100%;
+        position: absolute;
+        top: 25vw;
+        left: 15vw;
+        z-index: 1;
+
+        .lucky-wheel-img {
+          width: 40vw;
+          position: relative;
+          top: 5vw;
+          left: 5vw;
         }
-  
-        .spin-wheel {
-          width: 50vw;
-          height: 50vw;
-          background-image: url("../assets/images/wheel/vip-wheel-outer.png");
-          background-size: 100% 100%;
+        .top{
+          z-index: 2;
           position: absolute;
-          top: 23vw;
-          left: 15vw;
-          z-index: 1;
-  
-          .lucky-wheel-img {
-            width: 40vw;
-    position: relative;
-    top: 5vw;
-    left: 5vw;
-          }
-        }
-        .vip-bottom {
-            position: absolute;
-            bottom: 37vw;
-            left: 27vw;
-            width: 26vw;
+          left: 22vw;
+          width: 5vw;
+          top: -3vw;
         }
       }
+      .vip-bottom {
+        position: absolute;
+        bottom: 37vw;
+        left: 27vw;
+        width: 26vw;
+      }
+    }
 
     .play-btns {
       position: absolute;
@@ -303,13 +317,11 @@
     left: 0;
     right: 0;
   }
-  .rights{
-    font-family: 'Acme-Regular';
+  .rights {
+    font-family: "Acme-Regular";
     text-align: center;
     color: white;
     margin-top: 3vw;
     font-size: 3.5vw;
   }
-
- 
 }
