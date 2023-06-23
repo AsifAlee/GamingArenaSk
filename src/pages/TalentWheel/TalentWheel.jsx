@@ -19,8 +19,8 @@ const TalentWheel = () => {
     wheel: true,
     vipWheel: false,
   });
-  const vipStep = 45;
-  const luckyStep = 60;
+  const vipStep = 60;
+  const luckyStep = 51;
   const [rotateDegLucky, setRotateDegLucky] = useState(0);
   const [isRotatingLucky, setIsRotatingLucky] = useState(false);
   const [rotateDegVip, setRotateDegVip] = useState(0);
@@ -62,7 +62,7 @@ const TalentWheel = () => {
   const toggleDetailPopUp = () => {};
   const playVipGame = () => {
     setIsRotatingvip(true);
-    setRotateDegVip(180);
+    setRotateDegVip(6);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -85,7 +85,7 @@ const TalentWheel = () => {
 
   const playLuckyGame = () => {
     setIsRotatingLucky(true);
-    setRotateDegLucky(180);
+    setRotateDegLucky(7);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -137,7 +137,9 @@ const TalentWheel = () => {
               <img
                 src={wheel}
                 className={`lucky-wheel-img ${!isRotatingLucky && "rotate-0"}`}
-                style={{ transform: `rotate(${rotateDegLucky}deg)` }}
+                style={{
+                  transform: `rotate(${luckyStep * rotateDegLucky}deg)`,
+                }}
               />
             </div>
             <img src={bottom} className="bottom" />
@@ -150,7 +152,7 @@ const TalentWheel = () => {
               <img
                 src={vipWheel}
                 className={`vip-wheel-img ${!isRotatingVip && "rotate-0"}`}
-                style={{ transform: `rotate(${rotateDegVip}deg)` }}
+                style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
               />
             </div>
             <img src={vipBottom} className="vip-bottom" />

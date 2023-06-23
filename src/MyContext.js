@@ -23,6 +23,7 @@ const EventProvider = ({ children }) => {
     talentWheel: [],
     crawlCrane: [],
   });
+  const [selectedLng, setSelectedLng] = useState(1);
   const [guidePopup, setGuidePopup] = useState(false);
   const toggleGuidePopup = () => {
     setGuidePopup((prevState) => !prevState);
@@ -134,6 +135,7 @@ const EventProvider = ({ children }) => {
         info: info,
         freeGifts: freeGifts,
         leaderBoardData: leaderBoardData,
+        selectedLng: selectedLng,
       }}
     >
       {children}

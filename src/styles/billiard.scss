@@ -249,12 +249,12 @@
     }
 
     .beans-pot {
-      width: 55vw;
-      height: 55vw;
+      width: 73vw;
+      height: 91vw;
       background-image: url("../assets/images/beanspot-bg.png");
-      background-size: contain;
+      background-size: 100% 100%;
       background-repeat: no-repeat;
-      margin-left: 21vw;
+      margin-left: 13vw;
 
       display: inline-block;
       background-position: center;
@@ -263,22 +263,23 @@
         display: inline-block;
         margin-top: -5vw;
         margin-left: 5vw;
-        width: 45vw;
+        width: 60vw;
       }
       .beans-pot-img {
-        margin-top: 10vw;
-        margin-left: 17vw;
-        width: 19vw;
-      }
+        margin-top: 17vw;
+        margin-left: 19vw;
+        width: 29vw;
+    }
+      
 
       .beans-potted {
-        width: 28vw;
-        height: 11vw;
+        width: 35vw;
+        height: 14vw;
         background-image: url("../assets/images/beans-pot-counter.png");
         background-repeat: no-repeat;
-        background-size: contain;
-        margin-top: 1vw;
-        margin-left: 13vw;
+        background-size: 100% 100%;
+        margin-top: 5vw;
+        margin-left: 17vw;
         background-color: transparent;
         border: none;
         display: flex;
@@ -289,7 +290,7 @@
           width: 5vw;
         }
         span {
-          font-size: 2.3vw;
+          font-size: 3vw;
           font-family: "Acme-Regular";
           position: relative;
           
