@@ -21,8 +21,10 @@ const TalentWheel = () => {
   });
   const vipStep = 45;
   const luckyStep = 60;
-  const [rotateDeg, setRotateDeg] = useState(0);
-  const [isRotating, setIsRotating] = useState(false);
+  const [rotateDegLucky, setRotateDegLucky] = useState(0);
+  const [isRotatingLucky, setIsRotatingLucky] = useState(false);
+  const [rotateDegVip, setRotateDegVip] = useState(0);
+  const [isRotatingVip, setIsRotatingvip] = useState(false);
   const switchTabs = (event) => {
     switch (event.target.name) {
       case "wheel":
@@ -58,9 +60,9 @@ const TalentWheel = () => {
   };
   const toggleRecordsPopup = () => {};
   const toggleDetailPopUp = () => {};
-  const playGame = () => {
-    setIsRotating(true);
-    setRotateDeg(180);
+  const playVipGame = () => {
+    setIsRotatingvip(true);
+    setRotateDegVip(180);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -73,7 +75,30 @@ const TalentWheel = () => {
       .then((response) => response.json())
       .then((response) => {
         setTimeout(() => {
-          setIsRotating(false);
+          setIsRotatingvip(false);
+        }, 4000);
+      })
+      .catch((error) => {
+        console.error("Api error:", error.message);
+      });
+  };
+
+  const playLuckyGame = () => {
+    setIsRotatingLucky(true);
+    setRotateDegLucky(180);
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: 4, playCount: 1 }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setTimeout(() => {
+          setIsRotatingLucky(false);
         }, 4000);
       })
       .catch((error) => {
@@ -109,7 +134,11 @@ const TalentWheel = () => {
             <p className="info">25K Beans = 1 Chance</p>
             <div className="spin-wheel">
               <img src={wheelTop} className="top" />
-              <img src={wheel} className="lucky-wheel-img" />
+              <img
+                src={wheel}
+                className={`lucky-wheel-img ${!isRotatingLucky && "rotate-0"}`}
+                style={{ transform: `rotate(${rotateDegLucky}deg)` }}
+              />
             </div>
             <img src={bottom} className="bottom" />
           </div>
@@ -120,8 +149,8 @@ const TalentWheel = () => {
               <img src={vipTop} className="top" />
               <img
                 src={vipWheel}
-                className={`vip-wheel-img ${!isRotating && "rotate-0"}`}
-                style={{ transform: `rotate(${rotateDeg}deg)` }}
+                className={`vip-wheel-img ${!isRotatingVip && "rotate-0"}`}
+                style={{ transform: `rotate(${rotateDegVip}deg)` }}
               />
             </div>
             <img src={vipBottom} className="vip-bottom" />
@@ -146,7 +175,10 @@ const TalentWheel = () => {
               onClick={setPlayXTabs}
             />
           </div>
-          <button className="spin" onClick={playGame} />
+          <button
+            className="spin"
+            onClick={tabs.wheel === true ? playLuckyGame : playVipGame}
+          />
         </div>
       </div>
       <div className="leader-board">

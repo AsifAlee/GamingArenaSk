@@ -6,15 +6,17 @@ import { AppContext } from "./MyContext";
 import EventGifting from "./pages/PopUps/EventGifting";
 import ClawCrane from "./pages/ClawCrane/ClawCrane";
 import TalentWheel from "./pages/TalentWheel/TalentWheel";
+import FreeGift from "./pages/PopUps/FreeGift";
 
 function App() {
-  const { toggleGuidePopup, guidePopup } = useContext(AppContext);
+  const { toggleGuidePopup, guidePopup, freeGifts } = useContext(AppContext);
   const [eventGifting, setEventGifting] = useState(false);
   const [mainTabs, setMainTabs] = useState({
     gamingZone: true,
     clawCrane: false,
     luckyWheel: false,
   });
+  console.log("claimed free gifts:", freeGifts);
   const toggleEventGifting = () => {
     setEventGifting((prevState) => !prevState);
   };
@@ -66,6 +68,7 @@ function App() {
       ) : (
         <TalentWheel />
       )}
+      {freeGifts.isClaimed === false ? <FreeGift /> : ""}
     </div>
   );
 }

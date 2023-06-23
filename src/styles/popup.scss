@@ -40,7 +40,6 @@
 
   .inner-div {
     width: 100%;
-    // height: 100%;
     padding-bottom: 7vw;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -285,15 +284,38 @@
         }
       }
     }
-   .free-gifts{
-    .title {
-      width: 100%;
-      height: 27vw;
-      object-fit: contain;
-      margin-left: -3vw;
-      margin-top: -15vw;
-    }
-   }
+    .free-gifts {
+      .title {
+        width: 100%;
+        height: 27vw;
+        object-fit: contain;
+        margin-left: -3vw;
+        margin-top: -15vw;
+      }
+      .heading {
+        font-family: "Acme-Regular";
+        text-align: center;
+        color: white;
+        font-size: 4vw;
+        width: 74vw;
+      }
+      .gift-content {
+        height: 65vw;
+        position: relative;
 
+        .gift-img {
+          width: 38vw;
+          position: absolute;
+          bottom: 13vw;
+          left: 21vw;
+        }
+        .hand-icon {
+          width: 13vw;
+          position: absolute;
+          right: 10vw;
+          top: 24vw;
+        }
+      }
+    }
   }
 }
