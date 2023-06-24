@@ -61,6 +61,8 @@ const TalentWheel = () => {
   const toggleRecordsPopup = () => {};
   const toggleDetailPopUp = () => {};
   const playVipGame = () => {
+    console.log("vip game called");
+
     setIsRotatingvip(true);
     setRotateDegVip(6);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
@@ -70,7 +72,10 @@ const TalentWheel = () => {
         token: testToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ type: 5, playCount: 1 }),
+      body: JSON.stringify({
+        type: 5,
+        playCount: playXBtns.x1 ? 1 : playXBtns.x10 ? 10 : 100,
+      }),
     })
       .then((response) => response.json())
       .then((response) => {
@@ -84,6 +89,7 @@ const TalentWheel = () => {
   };
 
   const playLuckyGame = () => {
+    console.log("lucky game called");
     setIsRotatingLucky(true);
     setRotateDegLucky(7);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
@@ -93,7 +99,10 @@ const TalentWheel = () => {
         token: testToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ type: 4, playCount: 1 }),
+      body: JSON.stringify({
+        type: 4,
+        playCount: playXBtns.x1 ? 1 : playXBtns.x10 ? 10 : 100,
+      }),
     })
       .then((response) => response.json())
       .then((response) => {
@@ -136,7 +145,9 @@ const TalentWheel = () => {
               <img src={wheelTop} className="top" />
               <img
                 src={wheel}
-                className={`lucky-wheel-img ${!isRotatingLucky && "rotate-0"}`}
+                className={`lucky-wheel-img ${
+                  isRotatingLucky === false && "rotate-0"
+                }`}
                 style={{
                   transform: `rotate(${luckyStep * rotateDegLucky}deg)`,
                 }}
@@ -151,7 +162,9 @@ const TalentWheel = () => {
               <img src={vipTop} className="top" />
               <img
                 src={vipWheel}
-                className={`vip-wheel-img ${!isRotatingVip && "rotate-0"}`}
+                className={`vip-wheel-img ${
+                  isRotatingVip === false && "rotate-0"
+                }`}
                 style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
               />
             </div>

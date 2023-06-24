@@ -3,6 +3,7 @@ import { testData } from "../../testData";
 import "../../styles/claw-crane.scss";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
 import ClawCraneDetail from "../PopUps/ClawCraneDetail";
+import { baseUrl, testToken, testUserId } from "../../service/api";
 
 const ClawCrane = ({}) => {
   const toggleRecordsPopup = () => {
@@ -15,6 +16,23 @@ const ClawCrane = ({}) => {
   const [getItem, setGetItem] = useState(false);
   const [showRecords, setShowRecords] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+
+  const playCrawlCrane = () => {
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: 3, playCount: 1 }),
+    })
+      .then((response) => response.json())
+      .then((response) => {})
+      .catch((error) => {
+        console.error("Api error:", error.message);
+      });
+  };
 
   return (
     <div className="claw-crane">

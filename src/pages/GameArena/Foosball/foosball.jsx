@@ -15,10 +15,13 @@ import FoosballRecords from "../../PopUps/FoosballRecords";
 import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
 
 import { AppContext } from "../../../MyContext";
+import { baseUrl, testToken, testUserId } from "../../../service/api";
 
 const Foosball = () => {
   const { info } = useContext(AppContext);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [playXbutton, setPlayXButton] = useState(false);
+  const [inputValue, setInputValue] = useState(1);
   const [leaderBoardTabs, setLeaderBoardTabs] = useState({
     today: true,
     yest: false,
@@ -94,6 +97,53 @@ const Foosball = () => {
         });
     }
   };
+  const onUpCheck = (e) => {
+    let max;
+    if (/[+-.]/.test(e.key)) {
+      setInputValue("");
+    } else {
+      if (info.gamePoints <= 99 && info.gamePoints > 0) {
+        max = info.gamePoints;
+      } else if (info.gamePoints > 99) {
+        max = 99;
+      } else if (info.gamePoints === 0) {
+        max = 1;
+      }
+      let number = inputValue > max ? max : inputValue <= 0 ? "" : inputValue;
+      setInputValue(parseInt(number));
+    }
+  };
+  const playGame = () => {
+    setIsPlaying(true);
+    fetch(`${baseUrl}/api/activity/eidF/playGame`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 2,
+        playCount: inputValue,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setIsPlaying(false);
+      })
+      .catch((error) => {
+        console.error("Api error:", error.message);
+        setIsPlaying(false);
+      });
+  };
+  const onChangeHandle = (event) => {
+    // if (!event.target.value) {
+    //   setIsInputZero(true);
+    // } else {
+    //   setIsInputZero(false);
+    // }
+    setInputValue(parseInt(event.target.value));
+  };
   return (
     <div className="foosball-section">
       <div className="record-details-btns">
@@ -123,11 +173,21 @@ const Foosball = () => {
               onClick={() => setPlayXButton((prevState) => !prevState)}
             />
             <div>
-              <input className="enter-value" />
+              <input
+                className="enter-value"
+                type="number"
+                onChange={onChangeHandle}
+                value={inputValue}
+                onKeyUp={onUpCheck}
+              />
               <span>Max Value=99</span>
             </div>
           </div>
-          <button className="playBtn" />
+          <button
+            className={`playBtn ${isPlaying && "blackNWhite"}`}
+            onClick={playGame}
+            disabled={isPlaying}
+          />
         </div>
         <div className="balls-potted">
           <img src={goalIcon} />

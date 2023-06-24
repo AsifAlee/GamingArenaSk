@@ -38,9 +38,11 @@ const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
       <img className="left-arrow" src={leftArow} onClick={prevSlide} />
       {billiards && (
         <div className="billiards-reward-item">
-          <p>{rewards[currentIndex]?.rank}</p>
+          <p className="rank">{rewards[currentIndex]?.rank}</p>
           <img src={getRewardsImage(rewards[currentIndex]?.img)} />
-          <p style={{ textAlign: "center" }}>{rewards[currentIndex]?.reward}</p>
+          <p className="text" style={{ textAlign: "center" }}>
+            {rewards[currentIndex]?.reward}
+          </p>
         </div>
       )}
       {foosball || eventGifting ? (

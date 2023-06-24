@@ -23,6 +23,10 @@
     }
   }
 
+  .blackNWhite{
+    filter: grayscale(1);
+  }
+
   .game-points {
     background-image: url("../assets/images/beans-pot-counter.png");
     background-size: 100% 100%;
@@ -123,6 +127,7 @@
           display: block;
           font-family: "Acme-Regular";
           border: none;
+          padding: 2vw;
         }
         span {
           font-family: "Acme-Regular";
