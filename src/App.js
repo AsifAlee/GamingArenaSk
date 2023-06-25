@@ -7,9 +7,16 @@ import EventGifting from "./pages/PopUps/EventGifting";
 import ClawCrane from "./pages/ClawCrane/ClawCrane";
 import TalentWheel from "./pages/TalentWheel/TalentWheel";
 import FreeGift from "./pages/PopUps/FreeGift";
+import LanguageDropdown from "./components/LanguageDropDown";
 
 function App() {
-  const { toggleGuidePopup, guidePopup, freeGifts } = useContext(AppContext);
+  const {
+    toggleGuidePopup,
+    guidePopup,
+    freeGifts,
+    selectedLng,
+    changeLanguage,
+  } = useContext(AppContext);
   const [eventGifting, setEventGifting] = useState(false);
   const [mainTabs, setMainTabs] = useState({
     gamingZone: true,
@@ -37,6 +44,10 @@ function App() {
     <div className="App">
       <div className="header">
         <button className="guide-btn" onClick={toggleGuidePopup} />
+        <LanguageDropdown
+          selectedLanguage={selectedLng}
+          changeLanguage={changeLanguage}
+        />
       </div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <button className="event-gifting" onClick={toggleEventGifting} />

@@ -19,9 +19,11 @@ import table from "../../../assets/images/table.png";
 import BilliardGame from "../../PopUps/BilliardGame";
 import { AppContext } from "../../../MyContext";
 import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
+import Marquee from "react-fast-marquee";
+import "../../../styles/marquee.scss";
 const Billiards = () => {
-  const { info } = useContext(AppContext);
-
+  const { info, marqueeData } = useContext(AppContext);
+  console.log("marquee data:", marqueeData);
   const [isQueRecharged, setIsQueRecharged] = useState(false);
 
   const [detailPopup, setDetailPopup] = useState(false);
@@ -111,6 +113,21 @@ const Billiards = () => {
           <span>My Gaming points:{info?.gamePoints}</span>
         </div>
       </div>
+      <Marquee className="marquee">
+        {marqueeData?.billiards?.map((item) => (
+          <div className="marquee-item">
+            <img src={item?.portrait} className="user-img" />
+            <div className="user-details">
+              <span className="name">
+                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+              </span>
+              <span>
+                has ranked and potted x number_of_balls in billiards game
+              </span>
+            </div>
+          </div>
+        ))}
+      </Marquee>
 
       <div className="billiard-game">
         <div>

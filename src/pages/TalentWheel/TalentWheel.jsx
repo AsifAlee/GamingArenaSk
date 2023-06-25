@@ -11,9 +11,11 @@ import wheelTop from "../../assets/images/wheel/wheel-top.png";
 import { AppContext } from "../../MyContext";
 import gamePointIcon from "../../assets/images/gaming-point-icon.png";
 import { baseUrl, testToken, testUserId } from "../../service/api";
+import Marquee from "react-fast-marquee";
+import "../../styles/marquee.scss";
 
 const TalentWheel = () => {
-  const { info } = useContext(AppContext);
+  const { info, marqueeData } = useContext(AppContext);
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
     wheel: true,
@@ -124,6 +126,19 @@ const TalentWheel = () => {
         </div>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
+      <Marquee className="marquee">
+        {marqueeData?.vipWheel?.map((item) => (
+          <div className="marquee-item">
+            <img src={item?.portrait} className="user-img" />
+            <div className="user-details">
+              <span className="name">
+                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+              </span>
+              <span>has won rewards_name for x days.Congratulations!</span>
+            </div>
+          </div>
+        ))}
+      </Marquee>
       <div className="wheel-game">
         <button className="heading" />
         <div className="wheel-tabs">

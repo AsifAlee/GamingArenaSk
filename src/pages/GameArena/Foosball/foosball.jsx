@@ -13,12 +13,14 @@ import previousDay from "../../../assets/images/previous-day.png";
 import FoosballDetails from "../../PopUps/FoosballDetails";
 import FoosballRecords from "../../PopUps/FoosballRecords";
 import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
+import Marquee from "react-fast-marquee";
 
 import { AppContext } from "../../../MyContext";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
+import "../../../styles/marquee.scss";
 
 const Foosball = () => {
-  const { info } = useContext(AppContext);
+  const { info, marqueeData } = useContext(AppContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playXbutton, setPlayXButton] = useState(false);
   const [inputValue, setInputValue] = useState(1);
@@ -163,6 +165,19 @@ const Foosball = () => {
           <span> My Gaming points:{info?.gamePoints}</span>
         </div>
       </div>
+      <Marquee className="marquee">
+        {marqueeData?.foosball?.map((item) => (
+          <div className="marquee-item">
+            <img src={item?.portrait} className="user-img" />
+            <div className="user-details">
+              <span className="name">
+                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+              </span>
+              <span>has ranked and scored x in foosball game</span>
+            </div>
+          </div>
+        ))}
+      </Marquee>
       <div className="foosball-game">
         <img src={game} className="play-ground" />
         <div className="play-section">

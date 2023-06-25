@@ -4,11 +4,17 @@ import "../../styles/claw-crane.scss";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
 import ClawCraneDetail from "../PopUps/ClawCraneDetail";
 import { baseUrl, testToken, testUserId } from "../../service/api";
+import Marquee from "react-fast-marquee";
+import "../../styles/marquee.scss";
+import { useContext } from "react";
+import { AppContext } from "../../MyContext";
 
 const ClawCrane = ({}) => {
   const toggleRecordsPopup = () => {
     setShowRecords((prevState) => !prevState);
   };
+  const { info, marqueeData } = useContext(AppContext);
+
   const toggleDetailPopUp = () => {
     setShowDetails((prevState) => !prevState);
   };
@@ -41,6 +47,17 @@ const ClawCrane = ({}) => {
         <button className="game-points">My Gaming points:xx</button>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
+      <Marquee className="marquee">
+        {marqueeData?.clawCrane?.map((item) => (
+          <div className="marquee-item">
+            <img src={item?.portrait} className="user-img" />
+            <div className="user-details">
+              <span className="name">{`${item?.nickname?.slice(0, 6)}`}</span>
+              <span>has won reward_name from Claw Crane.</span>
+            </div>
+          </div>
+        ))}
+      </Marquee>
       <div className="crane-game">
         <div className="game">
           <button

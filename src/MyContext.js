@@ -23,6 +23,12 @@ const EventProvider = ({ children }) => {
     talentWheel: [],
     crawlCrane: [],
   });
+  const [marqueeData, setMarqueeData] = useState({
+    billiards: [],
+    foosball: [],
+    clawCrane: [],
+    vipWheel: [],
+  });
   const [selectedLng, setSelectedLng] = useState(1);
   const [guidePopup, setGuidePopup] = useState(false);
   const toggleGuidePopup = () => {
@@ -117,6 +123,45 @@ const EventProvider = ({ children }) => {
       .catch((error) => console.error("api error:", error));
   };
 
+  const getMarqueeData = (rankIndex) => {
+    fetch(
+      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=${rankIndex}&pageNum=1&pageSize=20`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if (rankIndex === 1) {
+          setMarqueeData((prevState) => ({
+            ...prevState,
+            billiards: response.data.list,
+          }));
+        }
+        if (rankIndex === 2) {
+          setMarqueeData((prevState) => ({
+            ...prevState,
+            foosball: response.data.list,
+          }));
+        }
+        if (rankIndex === 3) {
+          setMarqueeData((prevState) => ({
+            ...prevState,
+            clawCrane: response.data.list,
+          }));
+        }
+        if (rankIndex === 4) {
+          setMarqueeData((prevState) => ({
+            ...prevState,
+            vipWheel: response.data.list,
+          }));
+        }
+      })
+      .catch((error) => {
+        console.error("api error", error.message);
+      });
+  };
+  const changeLanguage = (index) => {
+    setSelectedLng(index);
+  };
+
   useEffect(() => {
     getInfo();
     getBilliardsLeaderBoardData();
@@ -125,6 +170,10 @@ const EventProvider = ({ children }) => {
     getEventSendLeaderBoardData();
     getEventRecvLeaderBoardData();
     getWheelLeaderBoardData();
+    getMarqueeData(1);
+    getMarqueeData(2);
+    getMarqueeData(3);
+    getMarqueeData(4);
   }, []);
 
   return (
@@ -135,7 +184,9 @@ const EventProvider = ({ children }) => {
         info: info,
         freeGifts: freeGifts,
         leaderBoardData: leaderBoardData,
+        marqueeData: marqueeData,
         selectedLng: selectedLng,
+        changeLanguage: changeLanguage,
       }}
     >
       {children}
