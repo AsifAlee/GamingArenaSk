@@ -19,9 +19,54 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/WaterSplashFrame.png";
   } else if (rewDesc?.includes("Royal Carriage")) {
     rewImg = baseUrl + "/streamkar/rewards/royal.png";
+  } else if (rewDesc?.includes("Beans")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Moon Knight Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/moonKnightFrame.png";
+  } else if (rewDesc?.includes("Moon Knight room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/moonKnightSkin.png";
+  } else if (rewDesc?.includes("Sailor Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/sailorFrame.png";
+  } else if (rewDesc?.includes("Sailor room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/sailorRoomSkin.png";
+  } else if (rewDesc?.includes("Victorious Room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Battle Room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/battleSkin.png";
+  } else if (rewDesc?.includes("Pirate Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/pirateFrame.png";
+  } else if (rewDesc?.includes("Pirate room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/pirateRoomSkin.png";
+  } else if (rewDesc?.includes("Combat room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/combatSkin.png";
+  } else if (rewDesc?.includes("Sea Wolf room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/seaWolfRoomSkin.png";
+  } else if (rewDesc?.includes("Sea Wolf frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/seawolfFrame.png";
+  } else if (rewDesc?.includes("Desert Knight room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/desertnightFrame.png";
+  } else if (rewDesc?.includes("Desert Knight frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/desertnightFrame.png";
+  } else if (rewDesc?.includes("Blazing Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/blazingFrame.png";
+  } else if (rewDesc?.includes("Maven Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/mavenFrame.png";
+  } else if (rewDesc?.includes("Samurai Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Night Shadow room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/nightShadow.png";
+  } else if (rewDesc?.includes("Neon lights room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/neonRoomSkin.png";
+  } else if (rewDesc?.includes("Mysterio Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/mysterioFrame.png";
+  } else if (rewDesc?.includes("Victorious Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Combat room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/combatSkin.png";
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }
+  console.log("rew image:", rewDesc);
 
   return rewImg;
 }

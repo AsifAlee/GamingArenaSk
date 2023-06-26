@@ -18,9 +18,11 @@ import Marquee from "react-fast-marquee";
 import { AppContext } from "../../../MyContext";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
 import "../../../styles/marquee.scss";
+import FoosBallGame from "../../PopUps/FoosballGame";
 
 const Foosball = () => {
-  const { info, marqueeData } = useContext(AppContext);
+  const { info, marqueeData, getInfo } = useContext(AppContext);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [playXbutton, setPlayXButton] = useState(false);
   const [inputValue, setInputValue] = useState(1);
@@ -28,8 +30,12 @@ const Foosball = () => {
     today: true,
     yest: false,
   });
+  const [rewardData, setRewardData] = useState([]);
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
+  const [gameErrCode, setGameErrCode] = useState(null);
+  const [gamePopUp, setGamePopUp] = useState(false);
+
   const rewards = [
     {
       rank: "Top 1st",
@@ -83,6 +89,9 @@ const Foosball = () => {
   const toggleRecordsPopup = () => {
     setRecordsPopup((prevState) => !prevState);
   };
+  const toggleGamePopUp = () => {
+    setGamePopUp((prevState) => !prevState);
+  };
   const changeLeaderBrdTabs = (name) => {
     switch (name) {
       case "today":
@@ -117,7 +126,7 @@ const Foosball = () => {
   };
   const playGame = () => {
     setIsPlaying(true);
-    fetch(`${baseUrl}/api/activity/eidF/playGame`, {
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
         userId: testUserId,
@@ -132,10 +141,15 @@ const Foosball = () => {
       .then((response) => response.json())
       .then((response) => {
         setIsPlaying(false);
+        setGameErrCode(response.errorCode);
+        setGamePopUp(true);
+        setRewardData(response?.data);
+        getInfo();
       })
       .catch((error) => {
         console.error("Api error:", error.message);
         setIsPlaying(false);
+        setGamePopUp(false);
       });
   };
   const onChangeHandle = (event) => {
@@ -157,7 +171,6 @@ const Foosball = () => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          // marginTop: "1vw",
         }}
       >
         <div className="game-points">
@@ -206,7 +219,7 @@ const Foosball = () => {
         </div>
         <div className="balls-potted">
           <img src={goalIcon} />
-          <span>Daily Score:0</span>
+          <span>Daily Score:{info.totalFoosballScore}</span>
         </div>
       </div>
       <div className="rest-section">
@@ -241,6 +254,13 @@ const Foosball = () => {
       )}
 
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
+      {gamePopUp && (
+        <FoosBallGame
+          toggleGamePopUp={toggleGamePopUp}
+          data={rewardData}
+          gameErrCode={gameErrCode}
+        />
+      )}
     </div>
   );
 };

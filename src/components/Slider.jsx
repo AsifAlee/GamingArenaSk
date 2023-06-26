@@ -40,6 +40,7 @@ const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
         <div className="billiards-reward-item">
           <p className="rank">{rewards[currentIndex]?.rank}</p>
           <img src={getRewardsImage(rewards[currentIndex]?.img)} />
+
           <p className="text" style={{ textAlign: "center" }}>
             {rewards[currentIndex]?.reward}
           </p>

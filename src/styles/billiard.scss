@@ -196,16 +196,19 @@
     }
 
     .balls-potted {
-      width: 27vw;
-      height: 7vw;
+      width: 32vw;
+      height: 8vw;
       background-image: url("../assets/images/ball-potted-bg.png");
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: 100% 100%;
       position: absolute;
       bottom: 0vw;
       left: 34vw;
       background-color: transparent;
       border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       img {
         width: 5vw;
       }
@@ -213,7 +216,6 @@
         font-size: 3vw;
         font-family: "Acme-Regular";
         position: relative;
-        bottom: 1vw;
         left: 1vw;
         color: #610c0a;
       }

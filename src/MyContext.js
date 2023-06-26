@@ -7,6 +7,8 @@ const AppContext = createContext("");
 const EventProvider = ({ children }) => {
   const [info, setInfo] = useState({
     gamePoints: 0,
+    rechargeCue: false,
+    totalBillardsScore: 0,
   });
   const closeFreeGift = () => {
     setFreeGifts({ ...freeGifts, isClaimed: true });
@@ -45,6 +47,9 @@ const EventProvider = ({ children }) => {
           setInfo({
             ...info,
             gamePoints: response.data.gamePoints,
+            rechargeCue: response.data.rechargeCue,
+            totalBillardsScore: response.data.balls,
+            totalFoosballScore: response.data.foosballScores,
           });
           setFreeGifts({
             ...freeGifts,
@@ -187,6 +192,7 @@ const EventProvider = ({ children }) => {
         marqueeData: marqueeData,
         selectedLng: selectedLng,
         changeLanguage: changeLanguage,
+        getInfo: getInfo,
       }}
     >
       {children}

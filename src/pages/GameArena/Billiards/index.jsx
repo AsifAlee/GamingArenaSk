@@ -20,15 +20,22 @@ import BilliardGame from "../../PopUps/BilliardGame";
 import { AppContext } from "../../../MyContext";
 import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
 import Marquee from "react-fast-marquee";
+import { baseUrl, testToken, testUserId } from "../../../service/api";
+import RechargeQue from "../../PopUps/RechargeQue";
 import "../../../styles/marquee.scss";
 const Billiards = () => {
-  const { info, marqueeData } = useContext(AppContext);
-  console.log("marquee data:", marqueeData);
-  const [isQueRecharged, setIsQueRecharged] = useState(false);
+  const { info, marqueeData, getInfo } = useContext(AppContext);
+  const { rechargeCue, totalBillardsScore } = info;
 
+  const [queCode, setQueCode] = useState(null);
+  const [rechargeMsg, setRechargeMsg] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
   const [gamePopUp, setGamePopup] = useState(false);
+  const [showRechargeQue, setShowRechargeQue] = useState(false);
+  const [gameErrCode, setGameErrCode] = useState(null);
+  const [rewardData, setRewardData] = useState([]);
   const rewards = [
     {
       rank: "Top 1st",
@@ -55,6 +62,10 @@ const Billiards = () => {
   const toggleGamePopUp = () => {
     setGamePopup((prevState) => !prevState);
   };
+  const toggleQuePopUp = () => {
+    setShowRechargeQue((prevState) => !prevState);
+  };
+
   const [playXBtns, setPlayXButtons] = useState({
     x1: true,
     x10: false,
@@ -94,12 +105,53 @@ const Billiards = () => {
     }
   };
 
-  const rechargeQue = () => {
-    setIsQueRecharged((prev) => !prev);
-    setGamePopup(true);
+  const doRechargeQue = () => {
+    fetch(`${baseUrl}/api/activity/gamingArena/rechargeCue`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+      },
+    })
+      .then((response) => response?.json())
+      .then((response) => {
+        setRechargeMsg(response.msg);
+        setQueCode(response?.errorCode);
+        // if (response.errorCode === 0) setIsQueRecharged(true);
+        // if (response.errorCode === 10000008) setIsQueRecharged(true);
+        getInfo();
+        setShowRechargeQue(true);
+      })
+      .catch((error) => {
+        console.error("api error", error.messsage);
+      });
   };
   const playGame = () => {
-    setGamePopup(true);
+    setIsPlaying(true);
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
+      method: "POST",
+      headers: {
+        userId: testUserId,
+        token: testToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 1,
+        playCount: playXBtns.x1 ? 1 : playXBtns.x10 ? 10 : 100,
+      }),
+    })
+      .then((response) => response?.json())
+      .then((response) => {
+        setIsPlaying(false);
+        setGamePopup(true);
+        setRewardData(response?.data);
+        setGameErrCode(response.errorCode);
+        getInfo();
+      })
+      .catch((error) => {
+        setIsPlaying(false);
+        console.error("api error", error.messsage);
+      });
   };
   return (
     <div className="billiards-section">
@@ -137,8 +189,9 @@ const Billiards = () => {
           <img src={cue} />
         </div>
         <button
-          className={isQueRecharged ? "recharge-cue-off" : "recharge-cue"}
-          onClick={() => rechargeQue()}
+          className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}
+          onClick={() => doRechargeQue()}
+          disabled={rechargeCue === true}
         />
 
         <div className="play-section">
@@ -159,11 +212,19 @@ const Billiards = () => {
               onClick={setPlayXTabs}
             />
           </div>
-          <button className="playBtn" onClick={playGame} />
+          <button
+            className="playBtn"
+            onClick={playGame}
+            style={{
+              filter:
+                isPlaying === true || (rechargeCue === false && "grayScale(1)"),
+            }}
+            disabled={isPlaying === true || rechargeCue === false}
+          />
         </div>
         <div className="balls-potted">
           <img src={ballPottedIcon} />
-          <span>Balls Potted:0</span>
+          <span>Balls Potted:{totalBillardsScore}</span>
         </div>
       </div>
       <div className="rest-section">
@@ -204,7 +265,20 @@ const Billiards = () => {
       {recordsPopup && (
         <BillardsRecords toggleRecordsPopup={toggleRecordsPopup} />
       )}
-      {gamePopUp && <BilliardGame toggleGamePopUp={toggleGamePopUp} />}
+      {gamePopUp && (
+        <BilliardGame
+          toggleGamePopUp={toggleGamePopUp}
+          data={rewardData}
+          gameErrCode={gameErrCode}
+        />
+      )}
+      {showRechargeQue && (
+        <RechargeQue
+          toggleQuePopUp={toggleQuePopUp}
+          queCode={queCode}
+          msg={rechargeMsg}
+        />
+      )}
     </div>
   );
 };
