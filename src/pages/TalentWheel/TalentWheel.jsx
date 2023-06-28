@@ -3,7 +3,6 @@ import wheel from "../../assets/images/wheel/lucky-wheel-inner-bg.png";
 import vipWheel from "../../assets/images/wheel/vip-wheel-inner.png";
 import bottom from "../../assets/images/wheel/wheel-bottom.png";
 import vipBottom from "../../assets/images/wheel/vip-bottom.png";
-import "../../styles/talent-wheel.scss";
 import { testData } from "../../testData";
 import LeaderBoardItem from "../../components/LeaderBoardItem";
 import vipTop from "../../assets/images/wheel/vip-top.png";
@@ -12,21 +11,40 @@ import { AppContext } from "../../MyContext";
 import gamePointIcon from "../../assets/images/gaming-point-icon.png";
 import { baseUrl, testToken, testUserId } from "../../service/api";
 import Marquee from "react-fast-marquee";
+import "../../styles/talent-wheel.scss";
 import "../../styles/marquee.scss";
+import VipWheel from "../../components/VipWheel";
+import LuckyWheel from "../../components/LuckyWheel";
+import LuckyWheelPopUp from "../PopUps/LuckyWheelPopUp";
 
 const TalentWheel = () => {
-  const { info, marqueeData } = useContext(AppContext);
+  const { info, marqueeData, getInfo } = useContext(AppContext);
+  const possibleLuckyRewards = [
+    "gems",
+    "Victorious room skin (NEW)",
+    "Charmed Frame",
+    "Victorious frame (NEW)",
+    "Brave Heart frame",
+    "SVIP",
+  ];
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
     wheel: true,
     vipWheel: false,
   });
-  const vipStep = 60;
+  const vipStep = 45;
   const luckyStep = 51;
   const [rotateDegLucky, setRotateDegLucky] = useState(0);
   const [isRotatingLucky, setIsRotatingLucky] = useState(false);
   const [rotateDegVip, setRotateDegVip] = useState(0);
   const [isRotatingVip, setIsRotatingvip] = useState(false);
+  const [rewardData, setRewardData] = useState([]);
+  const [gameErrCode, setGameErrCode] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [luckyPopUp, setLuckyPopUp] = useState(false);
+  const toggleLuckyPopup = () => {
+    setLuckyPopUp((prevState) => !prevState);
+  };
   const switchTabs = (event) => {
     switch (event.target.name) {
       case "wheel":
@@ -90,10 +108,40 @@ const TalentWheel = () => {
       });
   };
 
+  const findLuckyAngle = (rewards) => {
+    if (rewards.length === 0) {
+      setRotateDegLucky(0);
+    } else {
+      switch (rewards[0].desc) {
+        case "Charmed Frame":
+          setRotateDegLucky(1);
+          break;
+        case "Brave Heart frame":
+          setRotateDegLucky(2);
+          break;
+        case "Victorious frame (NEW)":
+          setRotateDegLucky(3);
+          break;
+        case "SVIP":
+          setRotateDegLucky(4);
+          break;
+        case "gems":
+          setRotateDegLucky(5);
+          break;
+
+        case "Victorious room skin (NEW)":
+          setRotateDegLucky(6);
+          break;
+        default:
+          setIsRotatingLucky(0);
+          break;
+      }
+    }
+  };
+
   const playLuckyGame = () => {
     console.log("lucky game called");
     setIsRotatingLucky(true);
-    setRotateDegLucky(7);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -108,8 +156,13 @@ const TalentWheel = () => {
     })
       .then((response) => response.json())
       .then((response) => {
+        findLuckyAngle(response?.data?.rewardDTOList);
         setTimeout(() => {
           setIsRotatingLucky(false);
+          setLuckyPopUp(true);
+          setGameErrCode(response.errorCode);
+          setRewardData(response?.data);
+          getInfo();
         }, 4000);
       })
       .catch((error) => {
@@ -154,37 +207,47 @@ const TalentWheel = () => {
           />
         </div>
         {tabs.wheel ? (
-          <div className="lucky-game">
-            <p className="info">25K Beans = 1 Chance</p>
-            <div className="spin-wheel">
-              <img src={wheelTop} className="top" />
-              <img
-                src={wheel}
-                className={`lucky-wheel-img ${
-                  isRotatingLucky === false && "rotate-0"
-                }`}
-                style={{
-                  transform: `rotate(${luckyStep * rotateDegLucky}deg)`,
-                }}
-              />
-            </div>
-            <img src={bottom} className="bottom" />
-          </div>
+          // <div className="lucky-game">
+          //   <p className="info">25K Beans = 1 Chance</p>
+          //   <div className="spin-wheel">
+          //     <img src={wheelTop} className="top" />
+          //     <img
+          //       src={wheel}
+          //       className={`lucky-wheel-img ${
+          //         isRotatingLucky === false && "rotate-0"
+          //       }`}
+          //       style={{
+          //         transform: `rotate(${luckyStep * rotateDegLucky}deg)`,
+          //       }}
+          //     />
+          //   </div>
+          //   <img src={bottom} className="bottom" />
+          // </div>
+          <LuckyWheel
+            isRotatingLucky={isRotatingLucky}
+            luckyStep={luckyStep}
+            rotateDegLucky={rotateDegLucky}
+          />
         ) : (
-          <div className="vip-game">
-            <p className="info">25K Beans = 1 Chance</p>
-            <div className="spin-wheel">
-              <img src={vipTop} className="top" />
-              <img
-                src={vipWheel}
-                className={`vip-wheel-img ${
-                  isRotatingVip === false && "rotate-0"
-                }`}
-                style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
-              />
-            </div>
-            <img src={vipBottom} className="vip-bottom" />
-          </div>
+          // <div className="vip-game">
+          //   <p className="info">25K Beans = 1 Chance</p>
+          //   <div className="spin-wheel">
+          //     <img src={vipTop} className="top" />
+          //     <img
+          //       src={vipWheel}
+          //       className={`vip-wheel-img ${
+          //         isRotatingVip === false && "rotate-0"
+          //       }`}
+          //       style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
+          //     />
+          //   </div>
+          //   <img src={vipBottom} className="vip-bottom" />
+          // </div>
+          <VipWheel
+            isRotatingVip={isRotatingVip}
+            vipStep={vipStep}
+            rotateDegVip={rotateDegVip}
+          />
         )}
 
         <div className="play-btns" style={{ bottom: tabs.vipWheel && "21vw" }}>
@@ -229,6 +292,13 @@ const TalentWheel = () => {
         />
       </div>
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
+      {luckyPopUp && (
+        <LuckyWheelPopUp
+          toggleLuckyPopup={toggleLuckyPopup}
+          gameErrCode={gameErrCode}
+          data={rewardData}
+        />
+      )}
     </div>
   );
 };

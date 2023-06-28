@@ -23,7 +23,6 @@ function App() {
     clawCrane: false,
     luckyWheel: false,
   });
-  console.log("claimed free gifts:", freeGifts);
   const toggleEventGifting = () => {
     setEventGifting((prevState) => !prevState);
   };

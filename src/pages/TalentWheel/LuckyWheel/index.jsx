@@ -6,13 +6,20 @@ import { useState } from "react";
 const LuckyWheel = () => {
   const [rotateDeg, setRotateDeg] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
+  const possibleRewards = [
+    "gems",
+    "Victorious room skin (NEW)",
+    "Charmed Frame",
+    "Victorious frame (NEW)",
+    "Brave Heart frame",
+    "SVIP",
+  ];
 
   const handleClick = () => {
     setIsRotating(true);
 
     const rewardDegrees = 45;
     const desiredRotation = 8 * rewardDegrees;
-    console.log("rotation degrees:", desiredRotation);
 
     setRotateDeg(desiredRotation);
     setTimeout(() => {

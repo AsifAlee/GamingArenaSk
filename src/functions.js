@@ -84,7 +84,6 @@ export function getRewardsImage(rewDesc) {
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }
-  console.log("rew image:", rewDesc);
 
   return rewImg;
 }
