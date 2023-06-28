@@ -6,6 +6,10 @@ import vipTop from "../assets/images/wheel/vip-top.png";
 import "../styles/talent-wheel.scss";
 import "../styles/talent-wheel.scss";
 const VipWheel = ({ isRotatingVip, vipStep, rotateDegVip }) => {
+  console.log("is rotating lucky:", isRotatingVip);
+  console.log("lucky step:", vipStep);
+  console.log("rotate deg lucky:", rotateDegVip);
+
   return (
     <div className="vip-game">
       <p className="info">25K Beans = 1 Chance</p>

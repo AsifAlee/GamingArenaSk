@@ -16,6 +16,7 @@ import "../../styles/marquee.scss";
 import VipWheel from "../../components/VipWheel";
 import LuckyWheel from "../../components/LuckyWheel";
 import LuckyWheelPopUp from "../PopUps/LuckyWheelPopUp";
+import VipWheelPopup from "../PopUps/VipWheelPopUp";
 
 const TalentWheel = () => {
   const { info, marqueeData, getInfo } = useContext(AppContext);
@@ -32,7 +33,7 @@ const TalentWheel = () => {
     wheel: true,
     vipWheel: false,
   });
-  const vipStep = 45;
+  const vipStep = 40;
   const luckyStep = 51;
   const [rotateDegLucky, setRotateDegLucky] = useState(0);
   const [isRotatingLucky, setIsRotatingLucky] = useState(false);
@@ -42,8 +43,13 @@ const TalentWheel = () => {
   const [gameErrCode, setGameErrCode] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [luckyPopUp, setLuckyPopUp] = useState(false);
+  const [vipPopup, setVipPopup] = useState(false);
+
   const toggleLuckyPopup = () => {
     setLuckyPopUp((prevState) => !prevState);
+  };
+  const toggleVipPopup = () => {
+    setVipPopup((prevState) => !prevState);
   };
   const switchTabs = (event) => {
     switch (event.target.name) {
@@ -84,7 +90,7 @@ const TalentWheel = () => {
     console.log("vip game called");
 
     setIsRotatingvip(true);
-    setRotateDegVip(6);
+
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -99,8 +105,15 @@ const TalentWheel = () => {
     })
       .then((response) => response.json())
       .then((response) => {
+        findVipLuckyAngle(response?.data?.rewardDTOList);
+
         setTimeout(() => {
           setIsRotatingvip(false);
+          setLuckyPopUp(true);
+          setGameErrCode(response.errorCode);
+          setRewardData(response?.data);
+          getInfo();
+          setRotateDegVip(0);
         }, 4000);
       })
       .catch((error) => {
@@ -134,6 +147,43 @@ const TalentWheel = () => {
           break;
         default:
           setIsRotatingLucky(0);
+          break;
+      }
+    }
+  };
+
+  const findVipLuckyAngle = (rewards) => {
+    if (rewards.length === 0) {
+      setRotateDegVip(0);
+    } else {
+      switch (rewards[0].desc) {
+        case "Bumblebee entrance":
+          setRotateDegVip(1);
+          break;
+        case "Enlightening Room Skin":
+          setRotateDegVip(2);
+          break;
+        case "SVIP":
+          setRotateDegVip(3);
+          break;
+        case "gems":
+          setRotateDegVip(4);
+          break;
+        case "Victorious frame (NEW)":
+          setRotateDegVip(5);
+          break;
+
+        case "Victorious room skin (NEW)":
+          setRotateDegVip(6);
+          break;
+        case "Game Master frame":
+          setRotateDegVip(7);
+          break;
+        case "Game Master room skin":
+          setRotateDegVip(8);
+          break;
+        default:
+          setRotateDegVip(0);
           break;
       }
     }
@@ -295,6 +345,13 @@ const TalentWheel = () => {
       {luckyPopUp && (
         <LuckyWheelPopUp
           toggleLuckyPopup={toggleLuckyPopup}
+          gameErrCode={gameErrCode}
+          data={rewardData}
+        />
+      )}
+      {vipPopup && (
+        <VipWheelPopup
+          toggleVipPopup={toggleVipPopup}
           gameErrCode={gameErrCode}
           data={rewardData}
         />

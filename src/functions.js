@@ -81,6 +81,10 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/svip.png";
   } else if (rewDesc?.includes("Bumblebee entrance ")) {
     rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
+  } else if (rewDesc?.includes("Game Master room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Game Master frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }
