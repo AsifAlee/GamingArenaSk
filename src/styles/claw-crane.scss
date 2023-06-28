@@ -26,15 +26,17 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
 
-      width: 27vw;
-      height: 9vw;
-
+      width: 34vw;
+      height: 11vw;
       border: none;
       background-color: transparent;
       color: white;
       font-family: "Acme-Regular";
-
-      font-size: 2.5vw;
+      font-size: 2vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 0.1vw;
     }
   }
 

@@ -8,22 +8,32 @@ import Marquee from "react-fast-marquee";
 import "../../styles/marquee.scss";
 import { useContext } from "react";
 import { AppContext } from "../../MyContext";
+import ClawCranePopUp from "../PopUps/ClawCrane";
 
 const ClawCrane = ({}) => {
+  const { info, marqueeData, getInfo } = useContext(AppContext);
   const toggleRecordsPopup = () => {
     setShowRecords((prevState) => !prevState);
   };
-  const { info, marqueeData } = useContext(AppContext);
+  const [gameErrCode, setGameErrCode] = useState(null);
+  const [rewardData, setRewardData] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [gamePopUp, setGamePopup] = useState(false);
+  const [gameMsg, setGameMsg] = useState("");
 
   const toggleDetailPopUp = () => {
     setShowDetails((prevState) => !prevState);
   };
+  const toggleGamePopUp = () => {
+    setGamePopup((prevState) => !prevState);
+  };
   const [isSeeMore, setIsSeeMore] = useState(false);
-  const [getItem, setGetItem] = useState(false);
   const [showRecords, setShowRecords] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
   const playCrawlCrane = () => {
+    setIsPlaying(true);
+
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -34,8 +44,16 @@ const ClawCrane = ({}) => {
       body: JSON.stringify({ type: 3, playCount: 1 }),
     })
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setIsPlaying(false);
+        setGamePopup(true);
+        setRewardData(response?.data);
+        setGameErrCode(response.errorCode);
+        getInfo();
+        setGameMsg(response?.msg);
+      })
       .catch((error) => {
+        setIsPlaying(false);
         console.error("Api error:", error.message);
       });
   };
@@ -44,7 +62,9 @@ const ClawCrane = ({}) => {
     <div className="claw-crane">
       <div className="record-details-btns">
         <button className="records-btn" onClick={() => toggleRecordsPopup()} />
-        <button className="game-points">My Gaming points:xx</button>
+        <button className="game-points">
+          My Gaming points:{info?.gamePoints}
+        </button>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <Marquee className="marquee">
@@ -61,8 +81,10 @@ const ClawCrane = ({}) => {
       <div className="crane-game">
         <div className="game">
           <button
-            className={`get-btn ${getItem === false && "blackNWhite"}`}
-            onClick={() => setGetItem((prevState) => !prevState)}
+            className={`get-btn ${isPlaying === true && "blackNWhite"}`}
+            onClick={() => {
+              playCrawlCrane();
+            }}
           />
         </div>
       </div>
@@ -81,6 +103,14 @@ const ClawCrane = ({}) => {
         />
       </div>
       {showDetails && <ClawCraneDetail toggleDetailPopUp={toggleDetailPopUp} />}
+      {gamePopUp && (
+        <ClawCranePopUp
+          toggleGamePopUp={toggleGamePopUp}
+          data={rewardData}
+          gameErrCode={gameErrCode}
+          gameMsg={gameMsg}
+        />
+      )}
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
     </div>
   );

@@ -59,10 +59,28 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/neonRoomSkin.png";
   } else if (rewDesc?.includes("Mysterio Frame")) {
     rewImg = baseUrl + "/streamkar/rewards/mysterioFrame.png";
-  } else if (rewDesc?.includes("Victorious Frame")) {
+  } else if (rewDesc?.includes("Victorious frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Victorious Room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
   } else if (rewDesc?.includes("Combat room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/combatSkin.png";
+  } else if (rewDesc?.includes("Victory slide")) {
+    rewImg = baseUrl + "/streamkar/rewards/victorySlide.png";
+  } else if (rewDesc?.includes("Phantom entrance")) {
+    rewImg = baseUrl + "/streamkar/rewards/phantom.png";
+  } else if (rewDesc?.includes("Phoenix entrance")) {
+    rewImg = baseUrl + "/streamkar/rewards/phoenix.png";
+  } else if (rewDesc?.includes("Charmed Frame")) {
+    rewImg = baseUrl + "/streamkar/rewards/charmedFrame.png";
+  } else if (rewDesc?.includes("gems")) {
+    rewImg = baseUrl + "/streamkar/rewards/gems.png";
+  } else if (rewDesc?.includes("SVIP")) {
+    rewImg = baseUrl + "/streamkar/rewards/svip.png";
+  } else if (rewDesc?.includes("SVIP")) {
+    rewImg = baseUrl + "/streamkar/rewards/svip.png";
+  } else if (rewDesc?.includes("Bumblebee entrance ")) {
+    rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }
