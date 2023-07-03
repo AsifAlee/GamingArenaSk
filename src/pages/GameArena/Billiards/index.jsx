@@ -120,10 +120,10 @@ const Billiards = () => {
     fetch(`${baseUrl}/api/activity/gamingArena/rechargeCue`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
-        // userId: user.uid,
-        // token: user.token,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user.uid,
+        token: user.token,
       },
     })
       .then((response) => response?.json())
@@ -144,10 +144,10 @@ const Billiards = () => {
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
-        // userId: user.uid,
-        // token: user.token,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user.uid,
+        token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

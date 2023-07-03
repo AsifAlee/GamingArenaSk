@@ -57,12 +57,14 @@ const ClawCrane = ({}) => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setIsPlaying(false);
-        setGamePopup(true);
-        setRewardData(response?.data);
-        setGameErrCode(response.errorCode);
-        getInfo();
-        setGameMsg(response?.msg);
+        setTimeout(() => {
+          setIsPlaying(false);
+          setGamePopup(true);
+          setRewardData(response?.data);
+          setGameErrCode(response.errorCode);
+          getInfo();
+          setGameMsg(response?.msg);
+        }, 4000);
       })
       .catch((error) => {
         setIsPlaying(false);

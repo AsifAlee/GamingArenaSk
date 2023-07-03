@@ -272,10 +272,12 @@ const EventGifting = ({ toggleEventGifting }) => {
                 />
               ))}
             </div>
-            <button
-              className={isSeeMore ? "see-more" : "see-less"}
-              onClick={() => setIsMore((prevState) => !prevState)}
-            />
+            {selectedData.length > 10 && (
+              <button
+                className={isSeeMore ? "see-more" : "see-less"}
+                onClick={() => setIsMore((prevState) => !prevState)}
+              />
+            )}
           </div>
         </div>
       </div>

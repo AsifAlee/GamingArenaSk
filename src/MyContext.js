@@ -50,7 +50,7 @@ const EventProvider = ({ children }) => {
 
   const getInfo = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${testUserId}`
+      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${user.uid}`
     ).then((response) =>
       response
         .json()
@@ -196,7 +196,7 @@ const EventProvider = ({ children }) => {
   };
   const getRecords = (type) => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getRecord?userId=${testUserId}&pageNum=10&pageSize=20&type=${type}`
+      `${baseUrl}/api/activity/gamingArena/getRecord?userId=${user.uid}&pageNum=10&pageSize=20&type=${type}`
     )
       .then((response) => response.json())
       .then((response) => {
