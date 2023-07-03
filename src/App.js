@@ -23,6 +23,11 @@ function App() {
     clawCrane: false,
     luckyWheel: false,
   });
+  const [showGiftPopup, setShowGiftPopup] = useState(true);
+  const closeGiftPopup = () => {
+    setShowGiftPopup(false);
+  };
+
   const toggleEventGifting = () => {
     setEventGifting((prevState) => !prevState);
   };
@@ -39,6 +44,7 @@ function App() {
         break;
     }
   };
+
   return (
     <div className="App">
       <div className="header">
@@ -78,7 +84,11 @@ function App() {
       ) : (
         <TalentWheel />
       )}
-      {freeGifts.isClaimed === false ? <FreeGift /> : ""}
+      {freeGifts.isClaimed === true && showGiftPopup ? (
+        <FreeGift closeGiftPopup={closeGiftPopup} />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

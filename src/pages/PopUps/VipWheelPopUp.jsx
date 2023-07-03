@@ -8,21 +8,21 @@ import bg from "../../assets/images/popup/foosball-detail-bg.png";
 import "../../styles/popup.scss";
 import { getRewardsImage } from "../../functions";
 
-const VipWheelPopup = ({ toggleLuckyPopup, data, gameErrCode }) => {
+const VipWheelPopup = ({ toggleVipPopup, data, gameErrCode, respMsg }) => {
   const { rewardDTOList } = data || {};
   return (
-    <PopUp popUpHandler={toggleLuckyPopup} bg={bg} isGame={true}>
+    <PopUp popUpHandler={toggleVipPopup} bg={bg} isGame={true}>
       <div className="billiards">
         <div className="game">
           <img
-            src={rewardDTOList.length > 0 ? congrats : oops}
+            src={rewardDTOList?.length > 0 ? congrats : oops}
             className="title"
           />
 
           <div className="content">
-            {gameErrCode === 0 && (
+            {gameErrCode === 0 ? (
               <div className="game-sucess">
-                {rewardDTOList.length <= 0 ? (
+                {rewardDTOList?.length <= 0 ? (
                   <div>
                     Better luck again, You didn't win any reward this time.
                   </div>
@@ -40,13 +40,13 @@ const VipWheelPopup = ({ toggleLuckyPopup, data, gameErrCode }) => {
                   </>
                 )}
               </div>
-            )}
-
-            {gameErrCode === 10000004 && (
+            ) : gameErrCode === 10000004 ? (
               <div className="game-failed">
                 Insufficient Points to Spin the wheel, receive more event gifts,
                 and Spin again!
               </div>
+            ) : (
+              respMsg
             )}
           </div>
         </div>

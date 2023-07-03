@@ -316,6 +316,76 @@
           width: 3vw;
         }
       }
+
+      .records {
+        .inner-content {
+          width: 90%;
+          // height: 62vw;
+          margin: 4vw auto 0 auto;
+          overflow-y: auto;
+          height: 92vw;
+          padding: 2vw;
+
+          table {
+            border: 0.4vw solid white;
+
+            font-family: "Acme-Regular";
+            margin: 0 auto;
+            width: 95%;
+            font-size: 3vw;
+
+            border-collapse: separate !important;
+            border-spacing: 0;
+            border-radius: 2vw;
+
+            table,
+            th,
+            td {
+              border: 0.4vw solid white;
+            }
+
+            .head {
+              background-color: #b579bc;
+            }
+            tr th {
+              color: white;
+              border-right: 0.4vw solid white;
+              padding: 1vw;
+            }
+            tr th:last-child {
+              border-right: none;
+            }
+            tr td {
+              color: white;
+              border-right: 0.4vw solid white;
+              padding: 1vw;
+              text-align: center;
+            }
+
+            tr td:last-child {
+              border-right: none;
+            }
+
+            .reward-row {
+              height: 41vw;
+
+              .reward-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 8vw;
+                .giftImg {
+                  width: 9vw;
+                }
+                .text {
+                  font-size: 2vw;
+                  font-family: "Acme-Regular";
+                }
+              }
+            }
+          }
+        }
+      }
     }
     .free-gifts {
       .title {
@@ -332,7 +402,7 @@
         font-size: 4vw;
         width: 74vw;
       }
-      .gift-content {
+      .gift-box {
         height: 65vw;
         position: relative;
 
@@ -349,8 +419,45 @@
           top: 24vw;
         }
       }
-    }
+      .gift-opened {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 22vw;
+        .text {
+          font-family: "Acme-Regular";
+          text-align: center;
+          color: white;
+          font-size: 4vw;
+          width: 60vw;
+        }
 
+
+        .rewards{
+          display: flex;
+          justify-content: center;
+          .reward-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20vw;
+            justify-content: center;
+            .giftImg {
+              width: 20vw;
+            }
+            .text {
+              font-size: 2vw;
+              font-family: "Acme-Regular";
+            }
+          
+        }
+        }
+  
     
+      }
+
+      
+    }
   }
 }

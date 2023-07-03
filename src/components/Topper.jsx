@@ -19,11 +19,11 @@ const Topper = ({ notFirstRank, index, user }) => {
     <div className="topper">
       <div className="images">
         <img className="frame" src={getFrame()} />
-        <img className="avatar" src={user.avatar ? user.avatar : unknow} />
+        <img className="avatar" src={user?.avatar ? user?.avatar : unknow} />
       </div>
       <div className={`topper-content`}>
         <div className="info">
-          <span className="name">{user.nickname}</span>
+          <span className="name">{user?.nickname}</span>
           <img className="lvl-img" src={level} />
           <div className="score">
             <img src={ballIcon} />

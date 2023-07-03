@@ -303,6 +303,7 @@
     }
 
     .leaderboard {
+      
       min-height: 234vw;
       .title {
         margin: 0 auto;
@@ -395,6 +396,14 @@
       
 
         }
+      }
+
+      .noData{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Acme-Regular';
+    color: white;
       }
     }
   }

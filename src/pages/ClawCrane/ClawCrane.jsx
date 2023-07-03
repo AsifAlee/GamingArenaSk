@@ -9,12 +9,21 @@ import "../../styles/marquee.scss";
 import { useContext } from "react";
 import { AppContext } from "../../MyContext";
 import ClawCranePopUp from "../PopUps/ClawCrane";
-
+import ClawCraneRecords from "../PopUps/ClawCraneRecords";
+import SvgPlayer from "../../components/SvgPlayer";
+import { ReactComponent as Logo } from "../../logo.svg";
+import clawCraneSvg from "../../assets/svgs/Claw_Crane_Game.svga";
+import clawCraneImg from "../../assets/images/claw-crane/game.png";
+// import poolGame from "../../assets/svgs/PoolGame.svga";
+import IconMenu from "../../assets/svgs/Claw_Crane_Game.svga";
 const ClawCrane = ({}) => {
-  const { info, marqueeData, getInfo } = useContext(AppContext);
+  const { info, marqueeData, getInfo, user, leaderBoardData } =
+    useContext(AppContext);
   const toggleRecordsPopup = () => {
     setShowRecords((prevState) => !prevState);
   };
+  let { crawlCrane } = leaderBoardData;
+
   const [gameErrCode, setGameErrCode] = useState(null);
   const [rewardData, setRewardData] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,6 +36,7 @@ const ClawCrane = ({}) => {
   const toggleGamePopUp = () => {
     setGamePopup((prevState) => !prevState);
   };
+
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [showRecords, setShowRecords] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -37,8 +47,10 @@ const ClawCrane = ({}) => {
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user.uid,
+        token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ type: 3, playCount: 1 }),
@@ -80,6 +92,15 @@ const ClawCrane = ({}) => {
       </Marquee>
       <div className="crane-game">
         <div className="game">
+          {isPlaying === false ? (
+            <img src={clawCraneImg} />
+          ) : (
+            <SvgPlayer src={clawCraneSvg} crane={true} />
+          )}
+          {/* <img src={clawCraneSvg} alt="Claw crane" /> */}
+          {/* <IconMenu /> */}
+          {/* <svg src={clawCraneSvg} /> */}
+
           <button
             className={`get-btn ${isPlaying === true && "blackNWhite"}`}
             onClick={() => {
@@ -92,7 +113,7 @@ const ClawCrane = ({}) => {
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {testData.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
+          {crawlCrane.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
             <LeaderBoardItem user={user} index={index + 1} isClawCrane={true} />
           ))}
         </div>
@@ -110,6 +131,9 @@ const ClawCrane = ({}) => {
           gameErrCode={gameErrCode}
           gameMsg={gameMsg}
         />
+      )}
+      {showRecords && (
+        <ClawCraneRecords toggleRecordsPopup={toggleRecordsPopup} />
       )}
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
     </div>

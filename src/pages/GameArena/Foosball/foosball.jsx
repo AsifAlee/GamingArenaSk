@@ -19,9 +19,12 @@ import { AppContext } from "../../../MyContext";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
 import "../../../styles/marquee.scss";
 import FoosBallGame from "../../PopUps/FoosballGame";
+import SvgPlayer from "../../../components/SvgPlayer";
+import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
 
 const Foosball = () => {
-  const { info, marqueeData, getInfo } = useContext(AppContext);
+  const { info, marqueeData, getInfo, user, leaderBoardData } =
+    useContext(AppContext);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [playXbutton, setPlayXButton] = useState(false);
@@ -35,6 +38,7 @@ const Foosball = () => {
   const [recordsPopup, setRecordsPopup] = useState(false);
   const [gameErrCode, setGameErrCode] = useState(null);
   const [gamePopUp, setGamePopUp] = useState(false);
+  const [gameMsg, setGameMsg] = useState("");
 
   const rewards = [
     {
@@ -125,12 +129,13 @@ const Foosball = () => {
     }
   };
   const playGame = () => {
-    setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user.uid,
+        token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -140,11 +145,16 @@ const Foosball = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setIsPlaying(false);
-        setGameErrCode(response.errorCode);
-        setGamePopUp(true);
-        setRewardData(response?.data);
-        getInfo();
+        setIsPlaying(true);
+
+        setGameMsg(response?.msg);
+        setTimeout(() => {
+          setIsPlaying(false);
+          setGameErrCode(response.errorCode);
+          setGamePopUp(true);
+          setRewardData(response?.data);
+          getInfo();
+        }, 4000);
       })
       .catch((error) => {
         console.error("Api error:", error.message);
@@ -192,7 +202,11 @@ const Foosball = () => {
         ))}
       </Marquee>
       <div className="foosball-game">
-        <img src={game} className="play-ground" />
+        {isPlaying === false ? (
+          <img src={game} className="play-ground" />
+        ) : (
+          <SvgPlayer src={foosballSvg} foosball={true} />
+        )}
         <div className="play-section">
           <div className="xPlay">
             <button
@@ -245,7 +259,13 @@ const Foosball = () => {
             />
           </div>
           <div className="bottom-line" />
-          <LeaderBoard data={testData} />
+          <LeaderBoard
+            data={
+              leaderBoardTabs.today
+                ? leaderBoardData.foosball
+                : leaderBoardData.foosballYest
+            }
+          />
         </div>
       </div>
       {detailPopup && <FoosballDetails toggleDetailPopUp={toggleDetailPopUp} />}
@@ -259,6 +279,7 @@ const Foosball = () => {
           toggleGamePopUp={toggleGamePopUp}
           data={rewardData}
           gameErrCode={gameErrCode}
+          gameMsg={gameMsg}
         />
       )}
     </div>

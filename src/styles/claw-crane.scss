@@ -55,10 +55,16 @@
       filter: grayscale(1);
     }
     .game {
-      width: 80%;
-      height: 80%;
-      background-image: url("../assets//images/claw-crane/game.png");
-      background-size: 100% 100%;
+      // width: 80%;
+      // height: 80%;
+      // background-image: url("../assets//images/claw-crane/game.png");
+      // background-size: 100% 100%;
+
+      img{
+        width: 71vw;
+      
+    }
+      }
       position: relative;
       .get-btn {
         position: absolute;
@@ -70,8 +76,9 @@
         background-color: transparent;
         border: none;
         position: absolute;
-        bottom: 4vw;
-        right: 6vw;
+        bottom: 15vw;
+    right: 16vw;
+
       }
     }
   }
@@ -146,4 +153,4 @@
     margin-top: 3vw;
     font-size: 3.5vw;
   }
-}
+

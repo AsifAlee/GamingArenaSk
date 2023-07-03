@@ -12,6 +12,7 @@ const PopUp = (props) => {
     isGame,
     isMilestone,
     isDetail,
+    isFreeGift,
   } = props;
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const PopUp = (props) => {
           className="inner-div"
           style={{
             backgroundImage: `url(${bg})`,
+            minHeight: isFreeGift && "90vw",
           }}
         >
           {children}

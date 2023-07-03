@@ -19,15 +19,10 @@ import LuckyWheelPopUp from "../PopUps/LuckyWheelPopUp";
 import VipWheelPopup from "../PopUps/VipWheelPopUp";
 
 const TalentWheel = () => {
-  const { info, marqueeData, getInfo } = useContext(AppContext);
-  const possibleLuckyRewards = [
-    "gems",
-    "Victorious room skin (NEW)",
-    "Charmed Frame",
-    "Victorious frame (NEW)",
-    "Brave Heart frame",
-    "SVIP",
-  ];
+  const { info, marqueeData, getInfo, user, leaderBoardData } =
+    useContext(AppContext);
+  let { talentWheel } = leaderBoardData;
+
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
     wheel: true,
@@ -44,6 +39,7 @@ const TalentWheel = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [luckyPopUp, setLuckyPopUp] = useState(false);
   const [vipPopup, setVipPopup] = useState(false);
+  const [respMsg, setRespMsg] = useState("");
 
   const toggleLuckyPopup = () => {
     setLuckyPopUp((prevState) => !prevState);
@@ -85,47 +81,14 @@ const TalentWheel = () => {
     }
   };
   const toggleRecordsPopup = () => {};
+
   const toggleDetailPopUp = () => {};
-  const playVipGame = () => {
-    console.log("vip game called");
-
-    setIsRotatingvip(true);
-
-    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
-      method: "POST",
-      headers: {
-        userId: testUserId,
-        token: testToken,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        type: 5,
-        playCount: playXBtns.x1 ? 1 : playXBtns.x10 ? 10 : 100,
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        findVipLuckyAngle(response?.data?.rewardDTOList);
-
-        setTimeout(() => {
-          setIsRotatingvip(false);
-          setLuckyPopUp(true);
-          setGameErrCode(response.errorCode);
-          setRewardData(response?.data);
-          getInfo();
-          setRotateDegVip(0);
-        }, 4000);
-      })
-      .catch((error) => {
-        console.error("Api error:", error.message);
-      });
-  };
 
   const findLuckyAngle = (rewards) => {
-    if (rewards.length === 0) {
+    if (rewards?.length === 0) {
       setRotateDegLucky(0);
     } else {
-      switch (rewards[0].desc) {
+      switch (rewards[0]?.desc) {
         case "Charmed Frame":
           setRotateDegLucky(1);
           break;
@@ -190,13 +153,15 @@ const TalentWheel = () => {
   };
 
   const playLuckyGame = () => {
-    console.log("lucky game called");
     setIsRotatingLucky(true);
+    setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user?.uid,
+        token: user?.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -206,13 +171,57 @@ const TalentWheel = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        findLuckyAngle(response?.data?.rewardDTOList);
+        if (response?.data?.rewardDTOList.length > 0) {
+          findLuckyAngle(response?.data?.rewardDTOList);
+        }
         setTimeout(() => {
           setIsRotatingLucky(false);
           setLuckyPopUp(true);
+          setIsPlaying(false);
+          setRespMsg(response.msg);
           setGameErrCode(response.errorCode);
           setRewardData(response?.data);
           getInfo();
+        }, 4000);
+      })
+      .catch((error) => {
+        console.error("Api error:", error.message);
+      });
+  };
+  const playVipGame = () => {
+    console.log("vip game called");
+    setIsPlaying(true);
+    setIsRotatingvip(true);
+
+    fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
+      method: "POST",
+      headers: {
+        // userId: testUserId,
+        // token: testToken,
+        userId: user?.uid,
+        token: user?.token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 5,
+        playCount: playXBtns.x1 ? 1 : playXBtns.x10 ? 10 : 100,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response?.data?.rewardDTOList.length > 0) {
+          findVipLuckyAngle(response?.data?.rewardDTOList);
+        }
+
+        setTimeout(() => {
+          setIsRotatingvip(false);
+          setVipPopup(true);
+          setGameErrCode(response.errorCode);
+          setRewardData(response?.data);
+          setRespMsg(response.msg);
+          getInfo();
+          setRotateDegVip(0);
+          setIsPlaying(false);
         }, 4000);
       })
       .catch((error) => {
@@ -319,7 +328,7 @@ const TalentWheel = () => {
             />
           </div>
           <button
-            className="spin"
+            className={`spin ${isPlaying && "blackNWhite"}`}
             onClick={tabs.wheel === true ? playLuckyGame : playVipGame}
           />
         </div>
@@ -327,11 +336,12 @@ const TalentWheel = () => {
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {testData.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
+          {talentWheel.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
             <LeaderBoardItem
               user={user}
               index={index + 1}
               isClawCrane={false}
+              isTalent={true}
             />
           ))}
         </div>
@@ -347,6 +357,7 @@ const TalentWheel = () => {
           toggleLuckyPopup={toggleLuckyPopup}
           gameErrCode={gameErrCode}
           data={rewardData}
+          respMsg={respMsg}
         />
       )}
       {vipPopup && (
@@ -354,6 +365,7 @@ const TalentWheel = () => {
           toggleVipPopup={toggleVipPopup}
           gameErrCode={gameErrCode}
           data={rewardData}
+          respMsg={respMsg}
         />
       )}
     </div>

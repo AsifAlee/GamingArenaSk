@@ -9,7 +9,7 @@ import gamePoinIcon from "../../assets/images/gaming-point-icon.png";
 import "../../styles/popup.scss";
 import { getRewardsImage } from "../../functions";
 
-const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode }) => {
+const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
   const { rewardDTOList, clawPoints, scores } = data || {};
   return (
     <PopUp popUpHandler={toggleGamePopUp} bg={bg} isGame={true}>
@@ -27,7 +27,7 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode }) => {
           />
 
           <div className="content">
-            {gameErrCode === 0 && scores > 0 && (
+            {gameErrCode === 0 && scores > 0 ? (
               <div className="game-sucess">
                 Congratulations You have scored
                 <div>
@@ -54,9 +54,7 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode }) => {
                   </div>
                 )}
               </div>
-            )}
-
-            {gameErrCode === 0 && scores === 0 && (
+            ) : gameErrCode === 0 && scores === 0 ? (
               <div className="game-sucess">
                 Oops! It looks like you missed the goal you have scored 0 & have
                 won
@@ -76,9 +74,27 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode }) => {
                   </div>
                 )}
               </div>
-            )}
-
-            {gameErrCode === 10000004 && (
+            ) : gameErrCode === 0 && scores === 0 ? (
+              <div className="game-sucess">
+                Oops! It looks like you missed the goal you have scored 0 & have
+                won
+                <div className="rewards">
+                  {rewardDTOList?.map((item) => (
+                    <div className="reward-item">
+                      <img src={getRewardsImage(item?.desc)} />
+                      <span>{`${item?.count} days`}</span>
+                    </div>
+                  ))}
+                </div>
+                {clawPoints > 0 && (
+                  <div>
+                    <span>& Got</span>
+                    <div className="claw-points">{clawPoints} claw points</div>
+                    <div>Play again to win more amazing rewards</div>
+                  </div>
+                )}
+              </div>
+            ) : gameErrCode === 10000004 ? (
               <div className="game-failed">
                 You don't have enough Gaming Points
                 <span>
@@ -87,6 +103,8 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode }) => {
                 to play this shot right now, send more event gifts to gain
                 gaming points. Come back again to play.
               </div>
+            ) : (
+              <div>{gameMsg}</div>
             )}
           </div>
         </div>

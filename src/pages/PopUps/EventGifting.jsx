@@ -11,7 +11,14 @@ import close from "../../assets/images/popup/cross.png";
 import "../../styles/event-gifting.scss";
 import { baseUrl } from "../../service/api";
 import Slider from "../../components/Slider";
+import { useContext } from "react";
+import { AppContext } from "../../MyContext";
 const EventGifting = ({ toggleEventGifting }) => {
+  const { leaderBoardData } = useContext(AppContext);
+  // let { eventGifter, eventRecvr } = leaderBoardData;
+
+  const [selectedData, setSelectedData] = useState(leaderBoardData.eventGifter);
+
   const [tabs, setTabs] = useState({
     talent: true,
     gifter: false,
@@ -138,6 +145,13 @@ const EventGifting = ({ toggleEventGifting }) => {
       document.body.style.overflow = "auto";
     };
   }, []);
+  // useEffect(() => {
+  //   if (rewardTabs.talent) {
+  //     setSelectedData(eventRecvr);
+  //   } else {
+  //     setSelectedData(eventGifter);
+  //   }
+  // }, [rewardTabs]);
   const [isSeeMore, setIsMore] = useState(false);
   const switchTabs = (event) => {
     switch (event.target.name) {
@@ -146,12 +160,14 @@ const EventGifting = ({ toggleEventGifting }) => {
           talent: true,
           gifter: false,
         });
+        setSelectedData(leaderBoardData.eventGifter);
         break;
       case "gifter":
         setTabs({
           talent: false,
           gifter: true,
         });
+        setSelectedData(leaderBoardData.eventRecvr);
     }
   };
   const switchRewardTabs = (event) => {
@@ -161,6 +177,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           talent: true,
           gifter: false,
         });
+
         break;
       case "gifter":
         setRewardTabs({
@@ -219,7 +236,7 @@ const EventGifting = ({ toggleEventGifting }) => {
               />
             </div>
           </div>
-          <div className="leader-board">
+          <div className="event-gft-leader-board">
             <img className="title" src={leaderboardTitle} />
             <div className="topRank">
               <div className="tabs">
@@ -237,18 +254,22 @@ const EventGifting = ({ toggleEventGifting }) => {
               <img src={taBar} className="base" />
 
               <div className="top1">
-                <Topper index={0} user={testData[0]} />
+                <Topper index={0} user={selectedData[0]} />
               </div>
               <div className="top2">
-                <Topper notFirstRank={true} index={1} user={testData[1]} />
+                <Topper notFirstRank={true} index={1} user={selectedData[1]} />
               </div>
               <div className="top3">
-                <Topper notFirstRank={true} index={2} user={testData[2]} />
+                <Topper notFirstRank={true} index={2} user={selectedData[2]} />
               </div>
             </div>
             <div className="restWinners">
-              {testData.slice(3, isSeeMore ? 10 : 20).map((user, index) => (
-                <LeaderBoardItem index={index + 4} user={user} />
+              {selectedData.slice(3, isSeeMore ? 10 : 20).map((user, index) => (
+                <LeaderBoardItem
+                  index={index + 4}
+                  user={user}
+                  isTalent={tabs.talent ? true : false}
+                />
               ))}
             </div>
             <button

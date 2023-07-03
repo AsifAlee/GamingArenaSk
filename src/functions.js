@@ -85,9 +85,50 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
   } else if (rewDesc?.includes("Game Master frame")) {
     rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("VIP")) {
+    rewImg = baseUrl + "/streamkar/rewards/vip.png";
+  } else if (rewDesc?.includes("Kingpin entrance")) {
+    rewImg = baseUrl + "/streamkar/rewards/kingpinFrame.png";
+  } else if (rewDesc?.includes("FireBrand room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
+  } else if (rewDesc?.includes("10 XP")) {
+    rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }
 
   return rewImg;
 }
+
+export const getLevelImage = (level, isTalent) => {
+  const talentLevelUrl = "http://test.streamkar.tv/streamkar/common/img/tlv";
+  const userLevelUrl = "http://test.streamkar.tv/streamkar/common/img/ulv";
+  if (isTalent) {
+    return `${talentLevelUrl}/${level}.png`;
+  } else {
+    return `${userLevelUrl}/${level}.png`;
+  }
+};
+
+export const beansPot = [
+  {
+    rank: 1,
+    percent: 40,
+  },
+  {
+    rank: 2,
+    percent: 30,
+  },
+  {
+    rank: 3,
+    percent: 15,
+  },
+  {
+    rank: 4,
+    percent: 10,
+  },
+  {
+    rank: 5,
+    percent: 5,
+  },
+];

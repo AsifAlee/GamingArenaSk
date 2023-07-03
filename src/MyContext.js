@@ -9,17 +9,28 @@ const EventProvider = ({ children }) => {
     gamePoints: 0,
     rechargeCue: false,
     totalBillardsScore: 0,
+    dayIndex: null,
   });
-  const closeFreeGift = () => {
-    setFreeGifts({ ...freeGifts, isClaimed: true });
-  };
+  const [user, setUser] = useState({
+    uid: 0,
+    token: undefined,
+  });
+  const [records, setRecords] = useState({
+    billiards: [],
+    foosball: [],
+    clawCrane: [],
+  });
+
   const [freeGifts, setFreeGifts] = useState({
     isClaimed: false,
-    closeFreeGift,
   });
   const [leaderBoardData, setLeaderBoardData] = useState({
     billiards: [],
+    billiardsYest: [],
+    foosballYest: [],
     foosball: [],
+    foosballYest: [],
+
     eventGifter: [],
     eventRecvr: [],
     talentWheel: [],
@@ -50,6 +61,7 @@ const EventProvider = ({ children }) => {
             rechargeCue: response.data.rechargeCue,
             totalBillardsScore: response.data.balls,
             totalFoosballScore: response.data.foosballScores,
+            dayIndex: response?.data?.dayIndex,
           });
           setFreeGifts({
             ...freeGifts,
@@ -61,60 +73,123 @@ const EventProvider = ({ children }) => {
   };
   const getBilliardsLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=5&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&pageNum=1&pageSize=10&dayIndex=1`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          billiards: response?.data?.list,
+        }));
+      })
+      .catch((error) => {
+        console.error("api error:", error);
+      });
+  };
+  const getBilliardsLeaderBoardDataYest = () => {
+    fetch(
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&pageNum=1&pageSize=10&dayIndex=${
+        info?.dayIndex - 1
+      }`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          billiards: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
   };
   const getFoosballLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=6&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=1`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          foosball: response?.data?.list,
+        }));
+      })
+      .catch((error) => {
+        console.error("api error:", error);
+      });
+  };
+
+  const getFoosballLeaderBoardDataYest = () => {
+    fetch(
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=1`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          foosballYest: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
   };
   const getCrawlLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=7&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=3&pageNum=1&pageSize=20`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          crawlCrane: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
   };
   const getEventSendLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=8&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=13&pageNum=1&pageSize=20&dayIndex=1`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          eventGifter: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
   };
   const getEventRecvLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=9&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=14&pageNum=1&pageSize=20&dayIndex=1`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          eventRecvr: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
   };
   const getWheelLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=5&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=4&pageNum=1&pageSize=20&dayIndex=1`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          talentWheel: response?.data?.list,
+        }));
+      })
       .catch((error) => {
         console.error("api error:", error);
       });
@@ -124,7 +199,24 @@ const EventProvider = ({ children }) => {
       `${baseUrl}/api/activity/gamingArena/getRecord?userId=${testUserId}&pageNum=10&pageSize=20&type=${type}`
     )
       .then((response) => response.json())
-      .then((response) => {})
+      .then((response) => {
+        if (type === 1)
+          setRecords((prevRec) => ({
+            ...prevRec,
+            billiards: response.data.list,
+          }));
+        else if (type === 2) {
+          setRecords((prevRec) => ({
+            ...prevRec,
+            foosball: response.data.list,
+          }));
+        } else {
+          setRecords((prevRec) => ({
+            ...prevRec,
+            clawCrane: response.data.list,
+          }));
+        }
+      })
       .catch((error) => console.error("api error:", error));
   };
 
@@ -170,7 +262,9 @@ const EventProvider = ({ children }) => {
   useEffect(() => {
     getInfo();
     getBilliardsLeaderBoardData();
+    getBilliardsLeaderBoardDataYest();
     getFoosballLeaderBoardData();
+    getFoosballLeaderBoardDataYest();
     getCrawlLeaderBoardData();
     getEventSendLeaderBoardData();
     getEventRecvLeaderBoardData();
@@ -179,6 +273,22 @@ const EventProvider = ({ children }) => {
     getMarqueeData(2);
     getMarqueeData(3);
     getMarqueeData(4);
+    getRecords(1);
+    getRecords(2);
+    getRecords(3);
+  }, []);
+
+  useEffect(() => {
+    try {
+      window.phone.getUserInfo(function (userInfo) {
+        setUser({
+          uid: userInfo.userId > 0 ? userInfo.userId : 0,
+          token: userInfo.token != "" ? userInfo.token : null,
+        });
+      });
+    } catch (_error) {
+      console.error("Can't get userInfo by window.phone.getUserInfo");
+    }
   }, []);
 
   return (
@@ -193,6 +303,8 @@ const EventProvider = ({ children }) => {
         selectedLng: selectedLng,
         changeLanguage: changeLanguage,
         getInfo: getInfo,
+        user: user,
+        records: records,
       }}
     >
       {children}

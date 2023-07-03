@@ -242,3 +242,24 @@ export const testData = [
     estimateBeans: 128686,
   },
 ];
+
+export const testRewards = [
+  {
+    type: 4,
+    id: 1078,
+    count: 6,
+    desc: "Phoenix entrance",
+  },
+  {
+    type: 4,
+    id: 1654,
+    count: 6,
+    desc: "Spaceship entrance",
+  },
+  {
+    type: 4,
+    id: 1635,
+    count: 8,
+    desc: "Phantom entrance",
+  },
+];

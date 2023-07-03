@@ -22,9 +22,20 @@ import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
 import Marquee from "react-fast-marquee";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
 import RechargeQue from "../../PopUps/RechargeQue";
+import billardSvg from "../../../assets/svgs/PoolGame.svga";
+import clawSvg from "../../../assets/svgs/Claw_Crane_Game.svga";
+import cueStick from "../../../assets/svgs/SnookerStick.svga";
+import poolSvg from "../../../assets/svgs/PoolGame.svga";
+
+// import billardSvg from "../../../assets/svgs/PoolGame.svga";
+
 import "../../../styles/marquee.scss";
+import SvgPlayer from "../../../components/SvgPlayer";
+
 const Billiards = () => {
-  const { info, marqueeData, getInfo } = useContext(AppContext);
+  const { info, marqueeData, getInfo, user, leaderBoardData } =
+    useContext(AppContext);
+
   const { rechargeCue, totalBillardsScore } = info;
 
   const [queCode, setQueCode] = useState(null);
@@ -111,6 +122,8 @@ const Billiards = () => {
       headers: {
         userId: testUserId,
         token: testToken,
+        // userId: user.uid,
+        // token: user.token,
       },
     })
       .then((response) => response?.json())
@@ -133,6 +146,8 @@ const Billiards = () => {
       headers: {
         userId: testUserId,
         token: testToken,
+        // userId: user.uid,
+        // token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -142,11 +157,13 @@ const Billiards = () => {
     })
       .then((response) => response?.json())
       .then((response) => {
-        setIsPlaying(false);
-        setGamePopup(true);
-        setRewardData(response?.data);
-        setGameErrCode(response.errorCode);
-        getInfo();
+        setTimeout(() => {
+          setIsPlaying(false);
+          setGamePopup(true);
+          setRewardData(response?.data);
+          setGameErrCode(response.errorCode);
+          getInfo();
+        }, 4000);
       })
       .catch((error) => {
         setIsPlaying(false);
@@ -182,11 +199,18 @@ const Billiards = () => {
       </Marquee>
 
       <div className="billiard-game">
-        <div>
+        {/* <img className="table" src={table} /> */}
+        {/* <SVGAPlayer src={billardSvg} /> */}
+        {/* <SVGAPlayer src={clawSvg} /> */}
+        {isPlaying == false ? (
           <img className="table" src={table} />
-        </div>
+        ) : (
+          <SvgPlayer src={poolSvg} snookerTable={true} />
+        )}
+
         <div className="cue">
-          <img src={cue} />
+          {/* <img src={cue} /> */}
+          <SvgPlayer src={cueStick} stick={true} />
         </div>
         <button
           className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}
@@ -257,7 +281,13 @@ const Billiards = () => {
             />
           </div>
           <div className="bottom-line" />
-          <LeaderBoard data={testData} />
+          <LeaderBoard
+            data={
+              leaderBoardTabs.today
+                ? leaderBoardData.billiards
+                : leaderBoardData.billiardsYest
+            }
+          />
         </div>
       </div>
 

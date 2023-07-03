@@ -4,7 +4,8 @@ import level from "../assets/images/level.PNG";
 import ballIcon from "../assets/images/ball-potted-icon.png";
 import clawPoint from "../assets/images/claw-crane/claw-point-icon.png";
 import "../styles/leader-board-item.scss";
-const LeaderBoardItem = ({ user, index, isClawCrane }) => {
+import { getLevelImage } from "../functions";
+const LeaderBoardItem = ({ user, index, isClawCrane, isTalent }) => {
   return (
     <div className="leader-board-item">
       <div className="left-div">
@@ -13,7 +14,13 @@ const LeaderBoardItem = ({ user, index, isClawCrane }) => {
           <img src={user.avatar ? user.avatar : unknown} className="avatar" />
           <div className="nameNLevel">
             <span className="name">{user.nickname}</span>
-            <img className="level-img" src={level} />
+            <img
+              className="level-img"
+              src={getLevelImage(
+                isTalent ? user.actorLevel : user.userLevel,
+                isTalent
+              )}
+            />
           </div>
         </div>
       </div>
@@ -26,7 +33,7 @@ const LeaderBoardItem = ({ user, index, isClawCrane }) => {
 
         <div className="game-score">
           <img src={ballIcon} />
-          <span>10</span>
+          <span>{user?.userScore}</span>
         </div>
       </div>
     </div>
