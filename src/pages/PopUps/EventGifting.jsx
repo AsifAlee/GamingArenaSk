@@ -13,6 +13,8 @@ import { baseUrl } from "../../service/api";
 import Slider from "../../components/Slider";
 import { useContext } from "react";
 import { AppContext } from "../../MyContext";
+import gemIcon from "../../assets/images/gems.png";
+import beansIcon from "../../assets/images/bean.png";
 const EventGifting = ({ toggleEventGifting }) => {
   const { leaderBoardData } = useContext(AppContext);
   // let { eventGifter, eventRecvr } = leaderBoardData;
@@ -36,7 +38,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "rustyRanger.png",
         },
         {
-          name: "Game Master frame (New) x5 Days ",
+          name: "Game Master frame  x5 Days ",
           img: "gameMasterProfileFrame.png",
         },
         {
@@ -54,7 +56,7 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Game Master frame (New) x3 Days",
+          name: "Game Master frame  x3 Days",
           img: "gameMasterProfileFrame.png",
         },
         {
@@ -72,7 +74,7 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Game Master frame (New) x1 Day",
+          name: "Game Master frame  x1 Day",
           img: "gameMasterProfileFrame.png",
         },
         {
@@ -199,17 +201,17 @@ const EventGifting = ({ toggleEventGifting }) => {
             <div className="gifts">
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
-                <div className="gift-name">Empower</div>
+                <div className="gift-name">Empower(50,000)</div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
-                <div className="gift-name">Game World</div>
+                <div className="gift-name">Game World (25,000)</div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
-                <div className="gift-name">Chocolate</div>
+                <div className="gift-name">Chocolate (5000)</div>
               </div>
             </div>
           </div>
@@ -254,13 +256,30 @@ const EventGifting = ({ toggleEventGifting }) => {
               <img src={taBar} className="base" />
 
               <div className="top1">
-                <Topper index={0} user={selectedData[0]} />
+                <Topper
+                  index={0}
+                  user={selectedData[0]}
+                  iconImg={tabs.talent ? gemIcon : beansIcon}
+                  estRewards={false}
+                />
               </div>
               <div className="top2">
-                <Topper notFirstRank={true} index={1} user={selectedData[1]} />
+                <Topper
+                  notFirstRank={true}
+                  index={1}
+                  user={selectedData[1]}
+                  iconImg={tabs.talent ? gemIcon : beansIcon}
+                  estRewards={false}
+                />
               </div>
               <div className="top3">
-                <Topper notFirstRank={true} index={2} user={selectedData[2]} />
+                <Topper
+                  notFirstRank={true}
+                  index={2}
+                  user={selectedData[2]}
+                  iconImg={tabs.talent ? gemIcon : beansIcon}
+                  estRewards={false}
+                />
               </div>
             </div>
             <div className="restWinners">
@@ -269,6 +288,7 @@ const EventGifting = ({ toggleEventGifting }) => {
                   index={index + 4}
                   user={user}
                   isTalent={tabs.talent ? true : false}
+                  iconImg={tabs.talent ? gemIcon : beansIcon}
                 />
               ))}
             </div>

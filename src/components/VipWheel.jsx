@@ -12,7 +12,7 @@ const VipWheel = ({ isRotatingVip, vipStep, rotateDegVip }) => {
 
   return (
     <div className="vip-game">
-      <p className="info">25K Beans = 1 Chance</p>
+      <p className="info">100K Beans = 1 Chance</p>
       <div className="spin-wheel">
         <img src={vipTop} className="top" />
         <img

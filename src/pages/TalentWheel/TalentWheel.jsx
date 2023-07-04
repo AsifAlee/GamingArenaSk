@@ -17,6 +17,7 @@ import VipWheel from "../../components/VipWheel";
 import LuckyWheel from "../../components/LuckyWheel";
 import LuckyWheelPopUp from "../PopUps/LuckyWheelPopUp";
 import VipWheelPopup from "../PopUps/VipWheelPopUp";
+import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 
 const TalentWheel = () => {
   const { info, marqueeData, getInfo, user, leaderBoardData } =
@@ -239,17 +240,31 @@ const TalentWheel = () => {
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <Marquee className="marquee">
-        {marqueeData?.vipWheel?.map((item) => (
-          <div className="marquee-item">
-            <img src={item?.portrait} className="user-img" />
-            <div className="user-details">
-              <span className="name">
-                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
-              </span>
-              <span>has won rewards_name for x days.Congratulations!</span>
+        {marqueeData?.vipWheel?.map((item) => {
+          let rewDescriptions = JSON.parse(item.desc);
+
+          return (
+            <div className="marquee-item">
+              <img src={item?.portrait} className="user-img" />
+              <div className="user-details">
+                <span className="name">
+                  {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+                </span>
+                <div>
+                  &nbsp; has &nbsp; won &nbsp;
+                  {rewDescriptions.map((rew) => {
+                    return (
+                      <span>{` ${rew.desc}, ${
+                        rew.count > 1 ? `${rew.count} days` : `${rew.count} day`
+                      }  `}</span>
+                    );
+                  })}
+                  .Congratulations!
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Marquee>
       <div className="wheel-game">
         <button className="heading" />
@@ -337,11 +352,16 @@ const TalentWheel = () => {
         <button className="heading" />
         <div className="winners">
           {talentWheel.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
-            <LeaderBoardItem
+            // <LeaderBoardItem
+            //   user={user}
+            //   index={index + 1}
+            //   isClawCrane={false}
+            //   isTalent={true}
+            // />
+            <LeaderBoardItemWthRewards
               user={user}
               index={index + 1}
               isClawCrane={false}
-              isTalent={true}
             />
           ))}
         </div>

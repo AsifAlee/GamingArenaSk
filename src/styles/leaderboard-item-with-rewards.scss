@@ -1,0 +1,113 @@
+.leader-board-item-with-rewards {
+  display: flex;
+  font-size: 3vw;
+  width: 100%;
+  margin-top: 1vw !important;
+  height: 16vw;
+  background-image: url("../assets//images/lb-rank-bar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  .left-div {
+    display: flex;
+    .index {
+      background-image: url("../assets/images//rank-bg.png");
+
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 8vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      height: 10vw;
+      margin-left: 2vw;
+    }
+    .user-info {
+      display: flex;
+      .avatar {
+        width: 10vw;
+        border-radius: 100%;
+      }
+      .nameNLevel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .name {
+          font-family: "Acme-Regular";
+          color: white;
+          // width: 10vw;
+          width: 18vw;
+          // border: 1px solid;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .level-img {
+          width: 10vw;
+        }
+      }
+    }
+  }
+  .right-div {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    .extra-icon {
+      img {
+        width: 6vw;
+      }
+    }
+    .game-score {
+      background-image: url("../assets//images/rank-point-bar.png");
+      width: 14vw;
+      height: 7vw;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 3vw;
+      img {
+        width: 4vw;
+      }
+      span {
+        font-size: 2vw;
+      }
+    }
+    .rewards{
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 36vw;
+      // border: 1px solid;
+     overflow-x: auto;
+     justify-content: center;
+     img{
+      width: 9vw;
+
+     }
+    }
+  }
+}
+
+.leaderboarditem-rewards {
+  display: flex;
+  flex-direction: column;
+  padding-right: 2vw;
+  align-items: center;
+  .bg-image {
+    width: 10vw;
+    height: 10vw;
+    background-color: #00ccff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    border: 2px solid white;
+  }
+}

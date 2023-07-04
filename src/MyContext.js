@@ -9,7 +9,12 @@ const EventProvider = ({ children }) => {
     gamePoints: 0,
     rechargeCue: false,
     totalBillardsScore: 0,
-    dayIndex: null,
+    dayIndex: 0,
+    beanPotList: [],
+    sendBeans: 0,
+    clawPoints: 0,
+    totalFoosballScore: 0,
+    receiveBeans: 0,
   });
   const [user, setUser] = useState({
     uid: 0,
@@ -62,6 +67,10 @@ const EventProvider = ({ children }) => {
             totalBillardsScore: response.data.balls,
             totalFoosballScore: response.data.foosballScores,
             dayIndex: response?.data?.dayIndex,
+            beanPotList: response?.data.beanPotList,
+            sendBeans: response?.data?.sendBeans,
+            receiveBeans: response?.data?.receiveBeans,
+            clawPoints: response?.data?.clawPoints,
           });
           setFreeGifts({
             ...freeGifts,
@@ -73,13 +82,13 @@ const EventProvider = ({ children }) => {
   };
   const getBilliardsLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&&dayIndex=${info?.dayIndex}&pageNum=1&pageSize=20`
     )
       .then((response) => response.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
-          billiards: response?.data?.list,
+          billiards: response?.data?.list || [],
         }));
       })
       .catch((error) => {
@@ -96,7 +105,7 @@ const EventProvider = ({ children }) => {
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
-          billiards: response?.data?.list,
+          billiardsYest: response?.data?.list,
         }));
       })
       .catch((error) => {
@@ -203,17 +212,17 @@ const EventProvider = ({ children }) => {
         if (type === 1)
           setRecords((prevRec) => ({
             ...prevRec,
-            billiards: response.data.list,
+            billiards: response?.data?.list,
           }));
         else if (type === 2) {
           setRecords((prevRec) => ({
             ...prevRec,
-            foosball: response.data.list,
+            foosball: response?.data?.list,
           }));
         } else {
           setRecords((prevRec) => ({
             ...prevRec,
-            clawCrane: response.data.list,
+            clawCrane: response?.data?.list,
           }));
         }
       })
@@ -276,7 +285,7 @@ const EventProvider = ({ children }) => {
     getRecords(1);
     getRecords(2);
     getRecords(3);
-  }, []);
+  }, [info.dayIndex, user.uid]);
 
   useEffect(() => {
     try {

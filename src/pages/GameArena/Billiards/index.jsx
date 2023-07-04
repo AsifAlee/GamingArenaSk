@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import cue from "../../../assets/images/cue.png";
 import ballPottedIcon from "../../../assets/images/ball-potted-icon.png";
 import beansPotTitle from "../../../assets/images/beanspot-title.png";
-import beansPot from "../../../assets/images/beans-pot.png";
+import beansPotImg from "../../../assets/images/beans-pot.png";
 import rewardsTitle from "../../../assets/images/rewrads-title.png";
 import "../../../styles/billiard.scss";
 import { useState } from "react";
@@ -26,24 +26,26 @@ import billardSvg from "../../../assets/svgs/PoolGame.svga";
 import clawSvg from "../../../assets/svgs/Claw_Crane_Game.svga";
 import cueStick from "../../../assets/svgs/SnookerStick.svga";
 import poolSvg from "../../../assets/svgs/PoolGame.svga";
-
+import unknownUser from "../../../assets/images/unknown-user.png";
 // import billardSvg from "../../../assets/svgs/PoolGame.svga";
 
 import "../../../styles/marquee.scss";
 import SvgPlayer from "../../../components/SvgPlayer";
 
 const Billiards = () => {
-  const { info, marqueeData, getInfo, user, leaderBoardData } =
+  const { info, marqueeData, getInfo, user, leaderBoardData, records } =
     useContext(AppContext);
 
-  const { rechargeCue, totalBillardsScore } = info;
+  const { rechargeCue, totalBillardsScore, beanPotList } = info;
 
   const [queCode, setQueCode] = useState(null);
   const [rechargeMsg, setRechargeMsg] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isQueRecharging, setIsQueRecharging] = useState(false);
   const [detailPopup, setDetailPopup] = useState(false);
   const [recordsPopup, setRecordsPopup] = useState(false);
   const [gamePopUp, setGamePopup] = useState(false);
+  const [beansPot, setBeansPot] = useState(0);
   const [showRechargeQue, setShowRechargeQue] = useState(false);
   const [gameErrCode, setGameErrCode] = useState(null);
   const [rewardData, setRewardData] = useState([]);
@@ -116,7 +118,26 @@ const Billiards = () => {
     }
   };
 
+  const getBeansPot = () => {
+    if (leaderBoardTabs.today) {
+      setBeansPot(
+        info.beanPotList.find((pot) => pot.dayIndex === info.dayIndex)?.potValue
+      );
+    } else {
+      setBeansPot(
+        info.beanPotList.find((pot) => pot.dayIndex === info.dayIndex - 1)
+          ?.potValue
+      );
+    }
+  };
+
+  useEffect(() => {
+    getBeansPot();
+  }, [leaderBoardTabs]);
+
   const doRechargeQue = () => {
+    setIsQueRecharging(true);
+
     fetch(`${baseUrl}/api/activity/gamingArena/rechargeCue`, {
       method: "POST",
       headers: {
@@ -128,6 +149,11 @@ const Billiards = () => {
     })
       .then((response) => response?.json())
       .then((response) => {
+        if (response.data === true) {
+          setTimeout(() => {
+            setIsQueRecharging(false);
+          }, 1500);
+        }
         setRechargeMsg(response.msg);
         setQueCode(response?.errorCode);
         // if (response.errorCode === 0) setIsQueRecharged(true);
@@ -140,7 +166,6 @@ const Billiards = () => {
       });
   };
   const playGame = () => {
-    setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -157,13 +182,15 @@ const Billiards = () => {
     })
       .then((response) => response?.json())
       .then((response) => {
+        setIsPlaying(true);
+        setRewardData(response?.data);
         setTimeout(() => {
           setIsPlaying(false);
           setGamePopup(true);
-          setRewardData(response?.data);
+
           setGameErrCode(response.errorCode);
           getInfo();
-        }, 4000);
+        }, 2000);
       })
       .catch((error) => {
         setIsPlaying(false);
@@ -183,34 +210,43 @@ const Billiards = () => {
         </div>
       </div>
       <Marquee className="marquee">
-        {marqueeData?.billiards?.map((item) => (
-          <div className="marquee-item">
-            <img src={item?.portrait} className="user-img" />
-            <div className="user-details">
-              <span className="name">
-                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
-              </span>
-              <span>
-                has ranked and potted x number_of_balls in billiards game
-              </span>
+        {marqueeData?.billiards?.map((item, index) => {
+          return (
+            <div className="marquee-item" key={index}>
+              <img
+                src={item?.portrait ? item?.portrait : unknownUser}
+                className="user-img"
+              />
+              <div className="user-details">
+                <span className="name">
+                  {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+                </span>
+                <span>
+                  has ranked {`top ${index + 1}`} and potted {item?.userScore}{" "}
+                  number of balls in billiards game
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Marquee>
 
       <div className="billiard-game">
         {/* <img className="table" src={table} /> */}
         {/* <SVGAPlayer src={billardSvg} /> */}
         {/* <SVGAPlayer src={clawSvg} /> */}
-        {isPlaying == false ? (
-          <img className="table" src={table} />
-        ) : (
+        {isPlaying == true && rewardData?.rewardDTOList.length > 0 ? (
           <SvgPlayer src={poolSvg} snookerTable={true} />
+        ) : (
+          <img className="table" src={table} />
         )}
 
         <div className="cue">
-          {/* <img src={cue} /> */}
-          <SvgPlayer src={cueStick} stick={true} />
+          {isQueRecharging === false ? (
+            <img src={cue} />
+          ) : (
+            <SvgPlayer src={cueStick} stick={true} />
+          )}
         </div>
         <button
           className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}
@@ -237,7 +273,7 @@ const Billiards = () => {
             />
           </div>
           <button
-            className="playBtn"
+            className={`playBtn ${isPlaying && "blackNWhite"}`}
             onClick={playGame}
             style={{
               filter:
@@ -258,10 +294,10 @@ const Billiards = () => {
         </div>
         <div className="beans-pot">
           <img src={beansPotTitle} className="title" />
-          <img src={beansPot} className="beans-pot-img" />
+          <img src={beansPotImg} className="beans-pot-img" />
           <div className="beans-potted">
             <img src={ballPottedIcon} />
-            <span>Beans Pot Counter:0</span>
+            <span>Beans Pot Counter:{beansPot}</span>
           </div>
         </div>
         <div className="leaderboard">
@@ -287,9 +323,13 @@ const Billiards = () => {
                 ? leaderBoardData.billiards
                 : leaderBoardData.billiardsYest
             }
+            billiards={true}
+            foosball={false}
+            isToday={leaderBoardTabs.today ? true : false}
           />
         </div>
       </div>
+      <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
 
       {detailPopup && <BilliardsDetail toggleDetailPopUp={toggleDetailPopUp} />}
       {recordsPopup && (

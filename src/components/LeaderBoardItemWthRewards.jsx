@@ -5,10 +5,22 @@ import ballIcon from "../assets/images/ball-potted-icon.png";
 import gemIcon from "../assets/images/gems.png";
 import clawPoint from "../assets/images/claw-crane/claw-point-icon.png";
 import "../styles/leader-board-item.scss";
-import { getLevelImage } from "../functions";
-const LeaderBoardItem = ({ user, index, isClawCrane, isTalent, iconImg }) => {
+import { getLevelImage, getRewardsImage } from "../functions";
+import "../styles/leaderboard-item-with-rewards.scss";
+import LeaderBoardItemReward from "./LeaderBoardItemReward";
+
+const LeaderBoardItemWthRewards = ({
+  user,
+  index,
+  isClawCrane,
+  isTalent,
+  iconImg,
+}) => {
+  let reward = JSON.parse(user.desc);
+  console.log("single reward:", reward);
+
   return (
-    <div className="leader-board-item">
+    <div className="leader-board-item-with-rewards">
       <div className="left-div">
         <div className="index">{index}.</div>
         <div className="user-info">
@@ -31,14 +43,19 @@ const LeaderBoardItem = ({ user, index, isClawCrane, isTalent, iconImg }) => {
             <img src={clawPoint} />
           </div>
         )}
-
-        <div className="game-score">
-          <img src={iconImg} />
-          <span>{user?.userScore}</span>
+        <div className="rewards">
+          {reward.map((des) => {
+            return (
+              <LeaderBoardItemReward
+                rewImg={getRewardsImage(des.desc)}
+                days={des.count}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
   );
 };
 
-export default LeaderBoardItem;
+export default LeaderBoardItemWthRewards;

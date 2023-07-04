@@ -11,14 +11,14 @@ import { AppContext } from "../../MyContext";
 import ClawCranePopUp from "../PopUps/ClawCrane";
 import ClawCraneRecords from "../PopUps/ClawCraneRecords";
 import SvgPlayer from "../../components/SvgPlayer";
-import { ReactComponent as Logo } from "../../logo.svg";
 import clawCraneSvg from "../../assets/svgs/Claw_Crane_Game.svga";
 import clawCraneImg from "../../assets/images/claw-crane/game.png";
-// import poolGame from "../../assets/svgs/PoolGame.svga";
-import IconMenu from "../../assets/svgs/Claw_Crane_Game.svga";
+import unknowUser from "../../assets/images/unknown-user.png";
+import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 const ClawCrane = ({}) => {
   const { info, marqueeData, getInfo, user, leaderBoardData } =
     useContext(AppContext);
+
   const toggleRecordsPopup = () => {
     setShowRecords((prevState) => !prevState);
   };
@@ -57,10 +57,11 @@ const ClawCrane = ({}) => {
     })
       .then((response) => response.json())
       .then((response) => {
+        setRewardData(response?.data);
+
         setTimeout(() => {
           setIsPlaying(false);
           setGamePopup(true);
-          setRewardData(response?.data);
           setGameErrCode(response.errorCode);
           getInfo();
           setGameMsg(response?.msg);
@@ -77,27 +78,40 @@ const ClawCrane = ({}) => {
       <div className="record-details-btns">
         <button className="records-btn" onClick={() => toggleRecordsPopup()} />
         <button className="game-points">
-          My Gaming points:{info?.gamePoints}
+          My Gaming points:{info?.clawPoints}
         </button>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <Marquee className="marquee">
-        {marqueeData?.clawCrane?.map((item) => (
-          <div className="marquee-item">
-            <img src={item?.portrait} className="user-img" />
-            <div className="user-details">
-              <span className="name">{`${item?.nickname?.slice(0, 6)}`}</span>
-              <span>has won reward_name from Claw Crane.</span>
+        {marqueeData?.clawCrane?.map((item) => {
+          let rewDescriptions = JSON.parse(item.desc);
+
+          return (
+            <div className="marquee-item">
+              <img
+                src={item?.portrait ? item?.portrait : unknowUser}
+                className="user-img"
+              />
+              <div className="user-details">
+                <span className="name">{`${item?.nickname?.slice(0, 6)}`}</span>
+                <div>
+                  &nbsp; has &nbsp; won &nbsp;
+                  {rewDescriptions.map((rew) => {
+                    return <span>{`${rew.count} ${rew.desc},`}</span>;
+                  })}
+                  from Claw Crane.
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Marquee>
       <div className="crane-game">
         <div className="game">
-          {isPlaying === false ? (
-            <img src={clawCraneImg} />
-          ) : (
+          {isPlaying === true && rewardData?.rewardDTOList?.length > 0 ? (
             <SvgPlayer src={clawCraneSvg} crane={true} />
+          ) : (
+            <img src={clawCraneImg} />
           )}
           {/* <img src={clawCraneSvg} alt="Claw crane" /> */}
           {/* <IconMenu /> */}
@@ -116,7 +130,11 @@ const ClawCrane = ({}) => {
         <button className="heading" />
         <div className="winners">
           {crawlCrane.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
-            <LeaderBoardItem user={user} index={index + 1} isClawCrane={true} />
+            <LeaderBoardItemWthRewards
+              user={user}
+              index={index + 1}
+              isClawCrane={true}
+            />
           ))}
         </div>
 

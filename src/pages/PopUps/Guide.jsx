@@ -21,17 +21,17 @@ const Guide = () => {
             <div className="gifts">
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
-                <div className="gift-name">Empower</div>
+                <div className="gift-name">Empower(50,000)</div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
-                <div className="gift-name">Game World</div>
+                <div className="gift-name">Game World(25,000)</div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
-                <div className="gift-name">Chocolate</div>
+                <div className="gift-name">Chocolate(5000)</div>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ const Guide = () => {
             <div className="eng">
               <h3 className="heading">HOW TO PLAY</h3>
               <div className="section-info">
-                <h4>Daily Free Gifts :</h4>
+                {/* <h4>Daily Free Gifts :</h4> */}
               </div>
               <div className="guide-content">
                 <Accordion title="DAILY FREE GIFT" defaultOpen={true}>
@@ -115,22 +115,27 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">4.</span>
                       <p className="text highlighted">
-                        When you tap on the “Play” button, 20K Gaming points
-                        will be deducted, 2 balls will be potted in the table
-                        and the “Play” button will be disabled.
+                        When you tap on the
+                        <span className="highlighted">"Play"</span>
+                        button, 20K Gaming points will be deducted, 2 balls will
+                        be potted in the table and the “Play” button will be
+                        disabled.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">5.</span>
                       <p className="text">
-                        The “Play” button will only enable again when you
-                        recharge the cue stick each time.
+                        The
+                        <span className="highlighted">"Play"</span>
+                        button will only enable again when you recharge the cue
+                        stick each time.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">6.</span>
                       <p className="text">
-                        Below the Cue Stick, there will be a “Recharge Cue”
+                        Below the Cue Stick, there will be a
+                        <span className="highlighted">"Reccharge Que"</span>
                         button. This button will be disabled by default.
                       </p>
                     </div>
@@ -138,14 +143,18 @@ const Guide = () => {
                       <span className="index">7.</span>
                       <p className="text">
                         After playing a shot successfully and receiving rewards,
-                        the “Recharge Cue” button will enable.
+                        the
+                        <span className="highlighted">"Recharge Que"</span>
+                        button will enable.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">8.</span>
                       <p className="text">
-                        Each time when you tap on the “Recharge Cue” button,
-                        Gaming points will be deducted and cue will be charged.
+                        Each time when you tap on the
+                        <span className="highlighted">"Recharge Que"</span>
+                        button, Gaming points will be deducted and cue will be
+                        charged.
                       </p>
                     </div>
                     <div className="list-item">
@@ -158,10 +167,11 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">10.</span>
                       <p className="text">
-                        Each time when you tap on the “Play” button
-                        successfully, you will win rewards and Claw points.
-                        There’s a 50% chance of receiving 1 claw point and a 50%
-                        chance of receiving 0 claw point.
+                        Each time when you tap on the
+                        <span className="highlighted">"Play"</span>
+                        button successfully, you will win rewards and Claw
+                        points. There’s a 50% chance of receiving 1 claw point
+                        and a 50% chance of receiving 0 claw point.
                       </p>
                     </div>
                     <div className="list-item">
@@ -174,8 +184,9 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">12.</span>
                       <p className="text">
-                        Above the “Play” button you will have the option to play
-                        a combo of{" "}
+                        Above the
+                        <span className="highlighted">“Play”</span>
+                        button you will have the option to play a combo of{" "}
                         <span className="highlighted">x1, x10 & x100.</span>
                       </p>
                     </div>
@@ -183,23 +194,26 @@ const Guide = () => {
                       <span className="index">13.</span>
                       <p className="text">
                         You have to select any one of the combos first then tap
-                        on the “Play” button.
+                        on the
+                        <span className="highlighted">“Play”</span>
+                        button.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">14.</span>
                       <p className="text">
-                        When you tap on the “Play” button successfully by
-                        selecting combo, gaming points will be deducted & balls
-                        will be potted accordingly.
+                        When you tap on the
+                        <span className="highlighted">“Play”</span>
+                        button successfully by selecting combo, gaming points
+                        will be deducted & balls will be potted accordingly.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">15.</span>
                       <p className="text">
-                        A “Balls Potted” counter will be displayed on the
-                        webpage and the counter will refresh daily at 00:00:00
-                        GMT.
+                        A<span className="highlighted">“Balls Potted”</span>
+                        counter will be displayed on the webpage and the counter
+                        will refresh daily at 00:00:00 GMT.
                       </p>
                     </div>
                     <div className="list-item">
@@ -237,17 +251,18 @@ const Guide = () => {
                       <span className="index">2.</span>
                       <p className="text">
                         On the second tab of the webpage, a foosball table will
-                        be displayed along with the “Play” button.2. On the
-                        second tab of the webpage, a foosball table will be
-                        displayed along with the “Play” button.
+                        be displayed along with the
+                        <span className="highlighted">“Play”</span>
+                        button.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">3.</span>
                       <p className="text">
-                        When you tap on the “Play” button successfully, 20K
-                        Gaming points will be deducted and you will get either 1
-                        score or 0 score.
+                        When you tap on the
+                        <span className="highlighted">“Play”</span>
+                        button successfully, 20K Gaming points will be deducted
+                        and you will get either 1 score or 0 score.
                       </p>
                     </div>
                     <div className="list-item">
@@ -275,22 +290,27 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">7.</span>
                       <p className="text highlighted">
-                        The default value of this text input box is “1” &
-                        maximum value is “99”.
+                        The default value of this text input box is
+                        <span className="highlighted">“1”</span>& maximum value
+                        is
+                        <span className="highlighted">“99”</span>.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">8.</span>
                       <p className="text">
-                        A “Daily score” counter will be displayed on the
-                        webpage.
+                        A<span className="highlighted">"Daily score"</span>
+                        counter will be displayed on the webpage.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">9.</span>
                       <p className="text">
-                        Each time when you get 1 score, the value “1” will be
-                        added to the “Daily score” counter.
+                        Each time when you get 1 score, the value
+                        <span className="highlighted">“1”</span>
+                        will be added to the
+                        <span className="highlighted">"Daily score"</span>
+                        counter.
                       </p>
                     </div>
                     <div className="list-item">
@@ -315,23 +335,25 @@ const Guide = () => {
                       <span className="index">1.</span>
                       <p className="text">
                         In this part you will be able to get rewards/items from
-                        the Claw Crane machine. 2. “My Claw Points” counter will
-                        be displayed on the webpage.
+                        the Claw Crane machine. 2.
+                        <span className="highlighted">“My Claw Points”</span>
+                        counter will be displayed on the webpage.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">2.</span>
                       <p className="text">
-                        “My Claw Points” counter will be displayed on the
-                        webpage.
+                        <span className="highlighted">“My Claw Points”</span>
+                        counter will be displayed on the webpage.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">3.</span>
                       <p className="text">
                         Each time you get Claw Points from the first part of the
-                        event, those points will be added in the “My Claw
-                        Points” counter.
+                        event, those points will be added in the
+                        <span className="highlighted">“My Claw Points”</span>
+                        counter.
                       </p>
                     </div>
                     <div className="list-item">
@@ -458,7 +480,7 @@ const Guide = () => {
             <div className="urdu">
               <h3 className="heading">HOW TO PLAY</h3>
               <div className="section-info">
-                <h4>Daily Free Gifts :</h4>
+                {/* <h4>Daily Free Gifts :</h4> */}
               </div>
               <div className="guide-content">
                 <Accordion title="DAILY FREE GIFT" defaultOpen={true}>
@@ -532,43 +554,52 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">3.</span>
                       <p className="text">
-                        Billiards table ke neeche, "Play" button hoga.
+                        Billiards table ke neeche,{" "}
+                        <span className="highlighted">"Play"</span> button hoga.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">4.</span>
                       <p className="text highlighted">
-                        Jab aap "Play" button par tap karenge, tou 20K Gaming
-                        points deduct honge, 2 balls table mein pot hongi aur
-                        "Play" button disable ho jayega.
+                        Jab aap <span className="highlighted">"Play"</span>{" "}
+                        button par tap karenge, tou 20K Gaming points deduct
+                        honge, 2 balls table mein pot hongi aur
+                        <span className="highlighted">"Play"</span> button
+                        disable ho jayega.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">5.</span>
                       <p className="text">
-                        "Play" button tab hi enable hoga jab aap har baar Cue
-                        Stick recharge karenge.
+                        <span className="highlighted">"Play"</span> button tab
+                        hi enable hoga jab aap har baar Cue Stick recharge
+                        karenge.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">6.</span>
                       <p className="text">
-                        Cue Stick ke neeche, "Recharge Cue" button hoga. Ye
-                        button default mein disabled hoga.
+                        Cue Stick ke neeche,{" "}
+                        <span className="highlighted">"Recharge Cue"</span>{" "}
+                        button hoga. Ye button default mein disabled hoga.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">7.</span>
                       <p className="text">
                         Ek shot successfully khelne ke baad aur rewards hasil
-                        karne ke baad, "Recharge Cue" button enable hoga.
+                        karne ke baad,{" "}
+                        <span className="highlighted">"Recharge Cue"</span>{" "}
+                        button enable hoga.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">8.</span>
                       <p className="text">
-                        Har baar jab aap "Recharge Cue" button par tap karenge,
-                        to Gaming points deduct honge aur cue stick charge hogi.
+                        Har baar jab aap{" "}
+                        <span className="highlighted">"Recharge Cue"</span>{" "}
+                        button par tap karenge, to Gaming points deduct honge
+                        aur cue stick charge hogi.
                       </p>
                     </div>
                     <div className="list-item">
@@ -581,10 +612,12 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">10.</span>
                       <p className="text">
-                        Har baar jab aap "Play" button par successfully tap
-                        karte hain, tab aap rewards aur Claw points jeetein gay.
-                        50% chances hai ki aapko 1 claw point milega aur 50%
-                        chances hai ki aapko 0 claw point milega.
+                        Har baar jab aap{" "}
+                        <span className="highlighted">"Play"</span> button par
+                        successfully tap karte hain, tab aap rewards aur Claw
+                        points jeetein gay. 50% chances hai ki aapko 1 claw
+                        point milega aur 50% chances hai ki aapko 0 claw point
+                        milega.
                       </p>
                     </div>
                     <div className="list-item">
@@ -607,22 +640,26 @@ const Guide = () => {
                       <span className="index">13.</span>
                       <p className="text">
                         Aapko pehle kisi ek combo ko select karna hoga phir
-                        "Play" button par tap karna hoga.
+                        <span className="highlighted">"Play"</span> button par
+                        tap karna hoga.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">14.</span>
                       <p className="text">
-                        Jab aap combo select karke successfully "Play" button
-                        par tap karenge, to gaming points deduct honge aur balls
+                        Jab aap combo select karke successfully{" "}
+                        <span className="highlighted">"Play"</span> button par
+                        tap karenge, to gaming points deduct honge aur balls
                         uske hisab se pot hongi.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index highlighted">15.</span>
                       <p className="text">
-                        Webpage par "Balls Potted" counter dikhaya jayega aur
-                        yeh counter roz 00:00:00 GMT par refresh hoga.
+                        Webpage par{" "}
+                        <span className="highlighted">"Balls Potted"</span>{" "}
+                        counter dikhaya jayega aur yeh counter roz 00:00:00 GMT
+                        par refresh hoga.
                       </p>
                     </div>
                     <div className="list-item">
@@ -661,24 +698,28 @@ const Guide = () => {
                       <span className="index">2.</span>
                       <p className="text">
                         Dusre tab main webpage par ek foosball table dikhaya
-                        jayega jiske saath "Play" button hoga.
+                        jayega jiske saath{" "}
+                        <span className="highlighted">"Play"</span> button hoga.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">3.</span>
                       <p className="text">
-                        Jab aap "Play" button par tap karte hain, toh 20K Gaming
-                        points deduct ho jayenge aur aapko ya toh 1 score milega
-                        ya fir 0 score milega.
+                        Jab aap <span className="highlighted">"Play"</span>{" "}
+                        button par tap karte hain, toh 20K Gaming points deduct
+                        ho jayenge aur aapko ya toh 1 score milega ya fir 0
+                        score milega.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">4.</span>
                       <p className="text highlighted">
-                        Har baar jab aap "Play" button par successfully tap
-                        karte hain, tab aap rewards aur Claw points jeetein gay.
-                        50% chances hai ki aapko 1 claw point milega aur 50%
-                        chances hai ki aapko 0 claw point milega.
+                        Har baar jab aap{" "}
+                        <span className="highlighted">"Play"</span> button par
+                        successfully tap karte hain, tab aap rewards aur Claw
+                        points jeetein gay. 50% chances hai ki aapko 1 claw
+                        point milega aur 50% chances hai ki aapko 0 claw point
+                        milega.
                       </p>
                     </div>
                     <div className="list-item">
@@ -691,27 +732,35 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">6.</span>
                       <p className="text">
-                        Webpage par ek " Text input box " dikhaya jayega.
+                        Webpage par ek{" "}
+                        <span className="highlighted">" Text input box "</span>{" "}
+                        dikhaya jayega.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index highlighted">7.</span>
                       <p className="text">
-                        Is text input box ka default value "1" hoga aur maximum
-                        value "99" hogi.
+                        Is text input box ka default value{" "}
+                        <span className="highlighted">"1"</span> hoga aur
+                        maximum value<span className="highlighted">"99"</span>{" "}
+                        hogi.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">8.</span>
                       <p className="text">
-                        Webpage par ek "Daily score" counter dikhaya jayega.
+                        Webpage par ek{" "}
+                        <span className="highlighted">"Daily score "</span>{" "}
+                        counter dikhaya jayega.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">9.</span>
                       <p className="text">
-                        Har baar jab aap 1 score jeete hain, tab "Daily score"
-                        counter mein "1" ka value add ho jayega.
+                        Har baar jab aap 1 score jeete hain, tab{" "}
+                        <span className="highlighted">""Daily score"</span>
+                        counter mein <span className="highlighted">"1"</span> ka
+                        value add ho jayega.
                       </p>
                     </div>
                     <div className="list-item">
@@ -742,15 +791,18 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">2.</span>
                       <p className="text">
-                        Webpage par "My Claw Points" counter dikhaya jayega.
+                        Webpage par
+                        <span className="highlighted">"My Claw Points"</span>
+                        counter dikhaya jayega.
                       </p>
                     </div>
                     <div className="list-item">
                       <span className="index">3.</span>
                       <p className="text">
                         Har bar jab aap pehle hisse se Claw Points jeetain gay,
-                        tab woh points "My Claw Points" counter mein add kar
-                        diye jayenge.
+                        tab woh points
+                        <span className="highlighted">"My Claw Points"</span>
+                        counter mein add kar diye jayenge.
                       </p>
                     </div>
                     <div className="list-item">

@@ -146,15 +146,15 @@ const Foosball = () => {
       .then((response) => response.json())
       .then((response) => {
         setIsPlaying(true);
+        setRewardData(response?.data);
 
         setGameMsg(response?.msg);
         setTimeout(() => {
           setIsPlaying(false);
           setGameErrCode(response.errorCode);
           setGamePopUp(true);
-          setRewardData(response?.data);
           getInfo();
-        }, 4000);
+        }, 2000);
       })
       .catch((error) => {
         console.error("Api error:", error.message);
@@ -189,23 +189,28 @@ const Foosball = () => {
         </div>
       </div>
       <Marquee className="marquee">
-        {marqueeData?.foosball?.map((item) => (
-          <div className="marquee-item">
-            <img src={item?.portrait} className="user-img" />
-            <div className="user-details">
-              <span className="name">
-                {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
-              </span>
-              <span>has ranked and scored x in foosball game</span>
+        {marqueeData?.foosball?.map((item, index) => {
+          return (
+            <div className="marquee-item" key={index}>
+              <img src={item?.portrait} className="user-img" />
+              <div className="user-details">
+                <span className="name">
+                  {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
+                </span>
+                <span>
+                  has ranked {`top ${index + 1}`} and scored {item?.userScore}{" "}
+                  in foosball game
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Marquee>
       <div className="foosball-game">
-        {isPlaying === false ? (
-          <img src={game} className="play-ground" />
-        ) : (
+        {isPlaying === true && rewardData?.rewardDTOList?.length > 0 ? (
           <SvgPlayer src={foosballSvg} foosball={true} />
+        ) : (
+          <img src={game} className="play-ground" />
         )}
         <div className="play-section">
           <div className="xPlay">
