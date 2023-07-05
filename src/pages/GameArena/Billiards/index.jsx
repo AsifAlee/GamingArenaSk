@@ -49,6 +49,7 @@ const Billiards = () => {
   const [showRechargeQue, setShowRechargeQue] = useState(false);
   const [gameErrCode, setGameErrCode] = useState(null);
   const [rewardData, setRewardData] = useState([]);
+  const [gameMsg, setGameMsg] = useState("");
   const rewards = [
     {
       rank: "Top 1st",
@@ -152,7 +153,7 @@ const Billiards = () => {
         if (response.data === true) {
           setTimeout(() => {
             setIsQueRecharging(false);
-          }, 1500);
+          }, 2000);
         }
         setRechargeMsg(response.msg);
         setQueCode(response?.errorCode);
@@ -182,12 +183,12 @@ const Billiards = () => {
     })
       .then((response) => response?.json())
       .then((response) => {
+        setGameMsg(response.msg);
         setIsPlaying(true);
         setRewardData(response?.data);
         setTimeout(() => {
           setIsPlaying(false);
           setGamePopup(true);
-
           setGameErrCode(response.errorCode);
           getInfo();
         }, 2000);
@@ -251,7 +252,7 @@ const Billiards = () => {
         <button
           className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}
           onClick={() => doRechargeQue()}
-          disabled={rechargeCue === true}
+          disabled={rechargeCue === true || isQueRecharging === true}
         />
 
         <div className="play-section">
@@ -340,6 +341,7 @@ const Billiards = () => {
           toggleGamePopUp={toggleGamePopUp}
           data={rewardData}
           gameErrCode={gameErrCode}
+          gameMsg={gameMsg}
         />
       )}
       {showRechargeQue && (

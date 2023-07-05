@@ -21,6 +21,7 @@ import "../../../styles/marquee.scss";
 import FoosBallGame from "../../PopUps/FoosballGame";
 import SvgPlayer from "../../../components/SvgPlayer";
 import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
+import unknownUser from "../../../assets/images/unknown-user.png";
 
 const Foosball = () => {
   const { info, marqueeData, getInfo, user, leaderBoardData } =
@@ -192,7 +193,10 @@ const Foosball = () => {
         {marqueeData?.foosball?.map((item, index) => {
           return (
             <div className="marquee-item" key={index}>
-              <img src={item?.portrait} className="user-img" />
+              <img
+                src={item?.portrait ? item?.portrait : unknownUser}
+                className="user-img"
+              />
               <div className="user-details">
                 <span className="name">
                   {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
@@ -270,6 +274,7 @@ const Foosball = () => {
                 ? leaderBoardData.foosball
                 : leaderBoardData.foosballYest
             }
+            foosball={true}
           />
         </div>
       </div>

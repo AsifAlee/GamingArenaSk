@@ -97,9 +97,9 @@ const ClawCrane = ({}) => {
                 <div>
                   &nbsp; has &nbsp; won &nbsp;
                   {rewDescriptions.map((rew) => {
-                    return <span>{`${rew.count} ${rew.desc},`}</span>;
+                    return <span>{`${rew.count} ${rew.desc}`}</span>;
                   })}
-                  from Claw Crane.
+                  &nbsp; from Claw Crane.
                 </div>
               </div>
             </div>
@@ -113,15 +113,13 @@ const ClawCrane = ({}) => {
           ) : (
             <img src={clawCraneImg} />
           )}
-          {/* <img src={clawCraneSvg} alt="Claw crane" /> */}
-          {/* <IconMenu /> */}
-          {/* <svg src={clawCraneSvg} /> */}
 
           <button
             className={`get-btn ${isPlaying === true && "blackNWhite"}`}
             onClick={() => {
               playCrawlCrane();
             }}
+            disabled={isPlaying}
           />
         </div>
       </div>

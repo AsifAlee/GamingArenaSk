@@ -38,7 +38,8 @@ const EventProvider = ({ children }) => {
 
     eventGifter: [],
     eventRecvr: [],
-    talentWheel: [],
+    luckyTalentWheel: [],
+    vipLuckyWheel: [],
     crawlCrane: [],
   });
   const [marqueeData, setMarqueeData] = useState({
@@ -114,7 +115,7 @@ const EventProvider = ({ children }) => {
   };
   const getFoosballLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -130,7 +131,7 @@ const EventProvider = ({ children }) => {
 
   const getFoosballLeaderBoardDataYest = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -160,7 +161,7 @@ const EventProvider = ({ children }) => {
   };
   const getEventSendLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=13&pageNum=1&pageSize=20&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=13&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -175,7 +176,7 @@ const EventProvider = ({ children }) => {
   };
   const getEventRecvLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=14&pageNum=1&pageSize=20&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=14&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -188,15 +189,15 @@ const EventProvider = ({ children }) => {
         console.error("api error:", error);
       });
   };
-  const getWheelLeaderBoardData = () => {
+  const getVipWheelLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=4&pageNum=1&pageSize=20&dayIndex=1`
+      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=4&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
-          talentWheel: response?.data?.list,
+          vipLuckyWheel: response?.data?.list,
         }));
       })
       .catch((error) => {
@@ -264,6 +265,22 @@ const EventProvider = ({ children }) => {
         console.error("api error", error.message);
       });
   };
+
+  const getLuckyWheelLeaderbrdData = () => {
+    fetch(
+      `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=6&pageNum=1&pageSize=20`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setLeaderBoardData((prevState) => ({
+          ...prevState,
+          luckyTalentWheel: response?.data?.list,
+        }));
+      })
+      .catch((error) => {
+        console.error("api error:", error);
+      });
+  };
   const changeLanguage = (index) => {
     setSelectedLng(index);
   };
@@ -277,7 +294,8 @@ const EventProvider = ({ children }) => {
     getCrawlLeaderBoardData();
     getEventSendLeaderBoardData();
     getEventRecvLeaderBoardData();
-    getWheelLeaderBoardData();
+    getVipWheelLeaderBoardData();
+    getLuckyWheelLeaderbrdData();
     getMarqueeData(1);
     getMarqueeData(2);
     getMarqueeData(3);

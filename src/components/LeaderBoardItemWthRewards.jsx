@@ -15,6 +15,7 @@ const LeaderBoardItemWthRewards = ({
   isClawCrane,
   isTalent,
   iconImg,
+  isWheel,
 }) => {
   let reward = JSON.parse(user.desc);
   console.log("single reward:", reward);
@@ -43,7 +44,10 @@ const LeaderBoardItemWthRewards = ({
             <img src={clawPoint} />
           </div>
         )}
-        <div className="rewards">
+        <div
+          className="rewards"
+          style={{ width: isWheel && "37vw", marginRight: isWheel && "3vw" }}
+        >
           {reward.map((des) => {
             return (
               <LeaderBoardItemReward

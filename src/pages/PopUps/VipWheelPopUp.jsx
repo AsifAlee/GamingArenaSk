@@ -21,7 +21,10 @@ const VipWheelPopup = ({ toggleVipPopup, data, gameErrCode, respMsg }) => {
 
           <div className="content">
             {gameErrCode === 0 ? (
-              <div className="game-sucess">
+              <div
+                className="game-sucess"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 {rewardDTOList?.length <= 0 ? (
                   <div>
                     Better luck again, You didn't win any reward this time.
@@ -33,7 +36,11 @@ const VipWheelPopup = ({ toggleVipPopup, data, gameErrCode, respMsg }) => {
                       {rewardDTOList?.map((item) => (
                         <div className="reward-item">
                           <img src={getRewardsImage(item?.desc)} />
-                          <span>{`${item?.count} days`}</span>
+                          <span>{`${
+                            item?.count > 1
+                              ? `${item?.count} days`
+                              : `${item?.count} days`
+                          }`}</span>
                         </div>
                       ))}
                     </div>
@@ -41,7 +48,10 @@ const VipWheelPopup = ({ toggleVipPopup, data, gameErrCode, respMsg }) => {
                 )}
               </div>
             ) : gameErrCode === 10000004 ? (
-              <div className="game-failed">
+              <div
+                className="game-failed"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 Insufficient Points to Spin the wheel, receive more event gifts,
                 and Spin again!
               </div>

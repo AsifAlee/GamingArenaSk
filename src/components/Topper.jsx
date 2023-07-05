@@ -60,7 +60,8 @@ const Topper = ({
                         (item) => item.dayIndex === info.dayIndex - 1
                       ),
                   index === 0 ? 50 : index === 1 ? 30 : 20
-                )}
+                )}{" "}
+                Est Rew
               </span>
             </div>
           )}

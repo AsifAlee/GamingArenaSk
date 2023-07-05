@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import wheel from "../../assets/images/wheel/lucky-wheel-inner-bg.png";
 import vipWheel from "../../assets/images/wheel/vip-wheel-inner.png";
 import bottom from "../../assets/images/wheel/wheel-bottom.png";
@@ -22,7 +22,7 @@ import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthReward
 const TalentWheel = () => {
   const { info, marqueeData, getInfo, user, leaderBoardData } =
     useContext(AppContext);
-  let { talentWheel } = leaderBoardData;
+  let { luckyTalentWheel, vipLuckyWheel } = leaderBoardData;
 
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [tabs, setTabs] = useState({
@@ -41,7 +41,15 @@ const TalentWheel = () => {
   const [luckyPopUp, setLuckyPopUp] = useState(false);
   const [vipPopup, setVipPopup] = useState(false);
   const [respMsg, setRespMsg] = useState("");
+  const [selectedData, setSelectedDate] = useState([]);
 
+  useEffect(() => {
+    if (tabs.wheel) {
+      setSelectedDate(luckyTalentWheel);
+    } else {
+      setSelectedDate(vipLuckyWheel);
+    }
+  }, [tabs.wheel]);
   const toggleLuckyPopup = () => {
     setLuckyPopUp((prevState) => !prevState);
   };
@@ -81,9 +89,6 @@ const TalentWheel = () => {
         break;
     }
   };
-  const toggleRecordsPopup = () => {};
-
-  const toggleDetailPopUp = () => {};
 
   const findLuckyAngle = (rewards) => {
     if (rewards?.length === 0) {
@@ -232,12 +237,10 @@ const TalentWheel = () => {
   return (
     <div className="talent-wheel">
       <div className="record-details-btns">
-        <button className="records-btn" onClick={() => toggleRecordsPopup()} />
         <div className="game-points">
           <img src={gamePointIcon} />
-          <span>My Gaming points:{info.gamePoints}</span>
+          <span>My Gaming points:{info?.receiveBeans}</span>
         </div>
-        <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
       <Marquee className="marquee">
         {marqueeData?.vipWheel?.map((item) => {
@@ -251,10 +254,10 @@ const TalentWheel = () => {
                   {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
                 </span>
                 <div>
-                  &nbsp; has &nbsp; won &nbsp;
+                  &nbsp;has &nbsp;won&nbsp;
                   {rewDescriptions.map((rew) => {
                     return (
-                      <span>{` ${rew.desc}, ${
+                      <span>{` ${rew.desc} ${
                         rew.count > 1 ? `${rew.count} days` : `${rew.count} day`
                       }  `}</span>
                     );
@@ -345,23 +348,19 @@ const TalentWheel = () => {
           <button
             className={`spin ${isPlaying && "blackNWhite"}`}
             onClick={tabs.wheel === true ? playLuckyGame : playVipGame}
+            disabled={isPlaying}
           />
         </div>
       </div>
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {talentWheel.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
-            // <LeaderBoardItem
-            //   user={user}
-            //   index={index + 1}
-            //   isClawCrane={false}
-            //   isTalent={true}
-            // />
+          {selectedData?.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
             <LeaderBoardItemWthRewards
               user={user}
               index={index + 1}
               isClawCrane={false}
+              isWheel={true}
             />
           ))}
         </div>

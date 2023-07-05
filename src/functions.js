@@ -44,7 +44,7 @@ export function getRewardsImage(rewDesc) {
   } else if (rewDesc?.includes("Sea Wolf frame")) {
     rewImg = baseUrl + "/streamkar/rewards/seawolfFrame.png";
   } else if (rewDesc?.includes("Desert Knight room skin")) {
-    rewImg = baseUrl + "/streamkar/rewards/desertnightFrame.png";
+    rewImg = baseUrl + "/streamkar/rewards/desertNight.png";
   } else if (rewDesc?.includes("Desert Knight frame")) {
     rewImg = baseUrl + "/streamkar/rewards/desertnightFrame.png";
   } else if (rewDesc?.includes("Blazing Frame")) {

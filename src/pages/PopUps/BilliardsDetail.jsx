@@ -31,6 +31,7 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "0.5vw",
+                      paddingLeft: "1vw",
                     }}
                   >
                     <div className="reward-item">

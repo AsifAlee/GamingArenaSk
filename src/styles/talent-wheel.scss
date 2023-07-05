@@ -3,7 +3,8 @@
   color: white;
   .record-details-btns {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20vw;
     .records-btn {
       background-image: url("../assets/images//records.png");
       width: 17vw;
@@ -277,7 +278,7 @@
 
   .leader-board {
     background-image: url("../assets/images/claw-crane/lb-bg.png");
-    width: 90%;
+    width: 100%;
     height: 80vw;
     background-size: 100% 100%;
     margin: 15vw auto 0 auto;
@@ -298,7 +299,7 @@
     }
 
     .winners {
-      width: 81%;
+      width: 85%;
       height: 52vw;
       position: absolute;
       top: 15vw;

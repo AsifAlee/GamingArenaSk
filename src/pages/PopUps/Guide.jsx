@@ -602,7 +602,7 @@ const Guide = () => {
                         aur cue stick charge hogi.
                       </p>
                     </div>
-                    <div className="list-item">
+                    <div className="list-item highlighted">
                       <span className="index highlighted">9.</span>
                       <p className="text">
                         Agar apne Cue Stick charge nahi ki hai, to aap shot nahi
@@ -631,9 +631,8 @@ const Guide = () => {
                       <span className="index">12.</span>
                       <p className="text">
                         "Play" button ke upar aapko{" "}
-                        <span className="highlighted">
-                          x1, x10 aur x100 ke combo khelne ka option hoga.
-                        </span>
+                        <span className="highlighted">x1, x10 aur x100</span>
+                        ke combo khelne ka option hoga.
                       </p>
                     </div>
                     <div className="list-item">
@@ -653,7 +652,7 @@ const Guide = () => {
                         uske hisab se pot hongi.
                       </p>
                     </div>
-                    <div className="list-item">
+                    <div className="list-item highlighted">
                       <span className="index highlighted">15.</span>
                       <p className="text">
                         Webpage par{" "}
@@ -662,7 +661,7 @@ const Guide = () => {
                         par refresh hoga.
                       </p>
                     </div>
-                    <div className="list-item">
+                    <div className="list-item highlighted">
                       <span className="index highlighted">16.</span>
                       <p className="text">
                         Sabse zyada balls pott karne wale user ko 00:00:00 GMT
@@ -737,7 +736,7 @@ const Guide = () => {
                         dikhaya jayega.
                       </p>
                     </div>
-                    <div className="list-item">
+                    <div className="list-item highlighted">
                       <span className="index highlighted">7.</span>
                       <p className="text">
                         Is text input box ka default value{" "}
@@ -819,7 +818,7 @@ const Guide = () => {
                         dikhaya jayega.
                       </p>
                     </div>
-                    <div className="list-item">
+                    <div className="list-item highlighted">
                       <span className="index highlighted">6.</span>
                       <p className="text">
                         10 claw points = 1 item (1 reward).

@@ -46,6 +46,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "gems.png",
         },
       ],
+      target: "80m",
     },
     {
       rank: "Top 2nd",
@@ -64,6 +65,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "gems.png",
         },
       ],
+      target: "70m",
     },
     {
       rank: "Top 3rd",
@@ -82,6 +84,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "gems.png",
         },
       ],
+      target: "50m",
     },
   ];
   const gifterRewards = [
@@ -201,17 +204,26 @@ const EventGifting = ({ toggleEventGifting }) => {
             <div className="gifts">
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
-                <div className="gift-name">Empower(50,000)</div>
+                <div className="gift-name">
+                  <p>Empower</p>
+                  <p>50,000</p>
+                </div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
-                <div className="gift-name">Game World (25,000)</div>
+                <div className="gift-name">
+                  <p>Game World</p>
+                  <p>25,000</p>
+                </div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
-                <div className="gift-name">Chocolate (5000)</div>
+                <div className="gift-name">
+                  <p>Chocolate</p>
+                  <p>5,000</p>
+                </div>
               </div>
             </div>
           </div>

@@ -18,7 +18,10 @@ const ClawCranePopUp = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
 
           <div className="content">
             {gameErrCode === 0 && (
-              <div className="game-sucess">
+              <div
+                className="game-sucess"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 You've successfully grabbed a
                 <div className="rewards">
                   {rewardDTOList?.map((item) => (
@@ -33,7 +36,10 @@ const ClawCranePopUp = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
             )}
 
             {gameErrCode === 10000004 && (
-              <div className="game-failed">
+              <div
+                className="game-failed"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 You don’t have enough Claw points
                 <img src={clawCarneIcon} /> to get item right now, Play more
                 games in gaming Arena to get more claw point & come back again.

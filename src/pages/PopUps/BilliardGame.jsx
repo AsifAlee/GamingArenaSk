@@ -13,7 +13,7 @@ import gamePoinIcon from "../../assets/images/gaming-point-icon.png";
 import "../../styles/popup.scss";
 import { getRewardsImage } from "../../functions";
 
-const BilliardGame = ({ toggleGamePopUp, data, gameErrCode }) => {
+const BilliardGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
   const { rewardDTOList, balls, clawPoints, scores } = data || {};
   return (
     <PopUp popUpHandler={toggleGamePopUp} bg={bg} isGame={true}>
@@ -22,11 +22,14 @@ const BilliardGame = ({ toggleGamePopUp, data, gameErrCode }) => {
           <img src={gameErrCode === 0 ? whatAshot : oops} className="title" />
 
           <div className="content">
-            {gameErrCode === 0 && (
-              <div className="game-sucess">
-                Congratulations You have potted
+            {gameErrCode === 0 ? (
+              <div
+                className="game-sucess"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
+                Congratulations! You have potted
                 <div className="claw-points">
-                  <span>{balls} points</span>
+                  <span>{balls} balls</span>
                   <img src={ballIcon} />
                 </div>
                 in billiards game & won
@@ -42,14 +45,16 @@ const BilliardGame = ({ toggleGamePopUp, data, gameErrCode }) => {
                   <div>
                     <span>& Got</span>
                     <div className="claw-points">{clawPoints} claw points</div>
-                    <div>Play again to win more amazing rewards</div>
+                    {/* <div>Play again to win more amazing rewards</div> */}
                   </div>
                 )}
+                <div>Play again to win more amazing rewards</div>
               </div>
-            )}
-
-            {gameErrCode === 10000004 && (
-              <div className="game-failed">
+            ) : gameErrCode === 10000004 ? (
+              <div
+                className="game-failed"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 You don't have enough Gaming Points
                 <span>
                   <img src={gamePoinIcon} />
@@ -57,6 +62,8 @@ const BilliardGame = ({ toggleGamePopUp, data, gameErrCode }) => {
                 to play this shot right now, send more event gifts to gain
                 gaming points. Come back again to play.
               </div>
+            ) : (
+              <div>{gameMsg}</div>
             )}
           </div>
         </div>

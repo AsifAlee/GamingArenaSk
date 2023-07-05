@@ -32,13 +32,17 @@ const BillardsRecords = ({ toggleRecordsPopup }) => {
 
                     <td>
                       <div
-                        style={{
-                          height: "37vw",
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "2.5vw",
-                          overflowY: "auto",
-                        }}
+                        // style={{
+                        //   display: "flex",
+                        //   flexWrap: "wrap",
+                        //   gap: "2.5vw",
+                        //   overflowY: "auto",
+                        //   paddingLeft: "1vw",
+                        //   maxHeight: "37vw",
+                        //   justifyContent: "center",
+                        //   alignItems: "center",
+                        // }}
+                        className="list"
                       >
                         {rec.rewardDTOList?.map((item) => (
                           <div className="reward-item">

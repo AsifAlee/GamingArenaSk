@@ -50,15 +50,20 @@ const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
         <div>
           <p style={{ textAlign: "center" }}>{rewards[currentIndex].rank}</p>
           <div className="foosball-reward-item">
-            {rewards[currentIndex].reward.map((rew) => (
-              <div className="single-item">
-                <img src={baseUrl + "/streamkar/rewards/" + rew.img} />
-                <div className="text">
-                  <span>{rew.name}</span>
+            {rewards[currentIndex].reward.map((rew) => {
+              return (
+                <div className="single-item">
+                  <img src={baseUrl + "/streamkar/rewards/" + rew.img} />
+                  <div className="text">
+                    <span>{rew.name}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
+          <p
+            style={{ textAlign: "center" }}
+          >{`Target: ${rewards[currentIndex].target} `}</p>
         </div>
       ) : (
         ""

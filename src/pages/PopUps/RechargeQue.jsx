@@ -4,7 +4,7 @@ import PopUp from "../../components/PopUp";
 import bg from "../../assets/images/popup/foosball-detail-bg.png";
 import queRecharged from "../../assets/images/popup/cue-recharged.png";
 import oops from "../../assets/images/popup/oops.png";
-import queIcon from "../../assets/images/ball-potted-icon.png";
+import queIcon from "../../assets/images/popup/recharge_cue_icon.png";
 import gamePoinIcon from "../../assets/images/gaming-point-icon.png";
 
 const RechargeQue = ({ queCode, toggleQuePopUp, msg }) => {
@@ -13,7 +13,14 @@ const RechargeQue = ({ queCode, toggleQuePopUp, msg }) => {
       <div className="billiards">
         <div className="recharge-que">
           <img src={queCode === 0 ? queRecharged : oops} className="title" />
-          <div>
+          <div
+            style={{
+              height: "35vw",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             {queCode === 0 ? (
               <span>
                 You have successfully recharged{" "}

@@ -75,7 +75,10 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                 )}
               </div>
             ) : gameErrCode === 0 && scores === 0 ? (
-              <div className="game-sucess">
+              <div
+                className="game-sucess"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 Oops! It looks like you missed the goal you have scored 0 & have
                 won
                 <div className="rewards">
@@ -90,12 +93,16 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                   <div>
                     <span>& Got</span>
                     <div className="claw-points">{clawPoints} claw points</div>
-                    <div>Play again to win more amazing rewards</div>
+                    {/* <div>Play again to win more amazing rewards</div> */}
                   </div>
                 )}
+                <div>Play again to win more amazing rewards</div>
               </div>
             ) : gameErrCode === 10000004 ? (
-              <div className="game-failed">
+              <div
+                className="game-failed"
+                style={{ position: "relative", bottom: "10vw" }}
+              >
                 You don't have enough Gaming Points
                 <span>
                   <img src={gamePoinIcon} />
