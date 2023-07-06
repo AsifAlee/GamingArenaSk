@@ -5,7 +5,7 @@ import rightArrow from "../assets/images/right-arrow.png";
 import { getRewardsImage } from "../functions";
 import { baseUrl } from "../service/api";
 
-const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
+const Slider = ({ rewards, foosball, billiards, eventGifting, isTalent }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   let intervalId = null;
   const nextSlide = () => {
@@ -61,9 +61,11 @@ const Slider = ({ rewards, foosball, billiards, eventGifting }) => {
               );
             })}
           </div>
-          <p
-            style={{ textAlign: "center" }}
-          >{`Target: ${rewards[currentIndex].target} `}</p>
+          {isTalent && (
+            <p
+              style={{ textAlign: "center" }}
+            >{`Target: ${rewards[currentIndex].target} `}</p>
+          )}
         </div>
       ) : (
         ""

@@ -154,7 +154,12 @@ const Billiards = () => {
           setTimeout(() => {
             setIsQueRecharging(false);
           }, 2000);
+        } else {
+          setTimeout(() => {
+            setIsQueRecharging(false);
+          }, 2000);
         }
+
         setRechargeMsg(response.msg);
         setQueCode(response?.errorCode);
         // if (response.errorCode === 0) setIsQueRecharged(true);
@@ -164,6 +169,8 @@ const Billiards = () => {
       })
       .catch((error) => {
         console.error("api error", error.messsage);
+        setShowRechargeQue(false);
+        setIsQueRecharging(false);
       });
   };
   const playGame = () => {
@@ -254,6 +261,7 @@ const Billiards = () => {
           onClick={() => doRechargeQue()}
           disabled={rechargeCue === true || isQueRecharging === true}
         />
+        <span className="points-req">5k points req</span>
 
         <div className="play-section">
           <div className="xPlay">
@@ -327,6 +335,7 @@ const Billiards = () => {
             billiards={true}
             foosball={false}
             isToday={leaderBoardTabs.today ? true : false}
+            isTalent={false}
           />
         </div>
       </div>

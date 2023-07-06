@@ -19,6 +19,7 @@
       top: 3vw;
       left: 4vw;
       width: 74%;
+      border-radius: 100%;
     }
   }
   .topper-content {
@@ -77,6 +78,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         img {
           width: 3vw;
         }

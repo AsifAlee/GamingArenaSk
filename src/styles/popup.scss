@@ -187,9 +187,14 @@
 
               img {
                 width: 15vw;
+                // margin-left: 5vw;
               }
               span {
-                font-size: 3vw;
+                // font-size: 3vw;
+                font-size: 2vw;
+                display: block;
+                width: 12vw;
+                // border: 1px solid;
               }
             }
           }
@@ -294,8 +299,9 @@
                   width: 9vw;
                 }
                 .text {
-                  font-size: 2vw;
+                  font-size: 1.5vw;
                   font-family: "Acme-Regular";
+                  width: 9vw;
                 }
               }
             }

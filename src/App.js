@@ -84,11 +84,11 @@ function App() {
       ) : (
         <TalentWheel />
       )}
-      {freeGifts.isClaimed === true && showGiftPopup ? (
-        <FreeGift closeGiftPopup={closeGiftPopup} />
-      ) : (
-        ""
-      )}
+      {freeGifts.isClaimed === false &&
+        showGiftPopup &&
+        freeGifts.isApiCalled === true && (
+          <FreeGift closeGiftPopup={closeGiftPopup} />
+        )}
     </div>
   );
 }

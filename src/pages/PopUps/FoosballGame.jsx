@@ -38,7 +38,18 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                   {rewardDTOList?.map((item) => (
                     <div className="reward-item">
                       <img src={getRewardsImage(item?.desc)} />
-                      <span>{`${item?.count} days`}</span>
+                      {/* <span>{`${item?.count} days`}</span>  */}
+                      {item.desc === "Beans" ? (
+                        <span className="text">{`${item.count} Beans`}</span>
+                      ) : item.desc === "Gems" ? (
+                        <span className="text">{`${item.count} Gems`}</span>
+                      ) : (
+                        <span className="text">{`${item.desc}  x${
+                          item.count > 1
+                            ? `${item.count} days`
+                            : `${item.count} day`
+                        }`}</span>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -82,7 +82,7 @@ const Foosball = () => {
         },
 
         {
-          name: "3000 beans ",
+          name: "1000 beans ",
           img: "beanbag.png",
         },
       ],
@@ -275,6 +275,7 @@ const Foosball = () => {
                 : leaderBoardData.foosballYest
             }
             foosball={true}
+            isTalent={false}
           />
         </div>
       </div>

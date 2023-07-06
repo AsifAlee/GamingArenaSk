@@ -20,6 +20,7 @@ const Topper = ({
   iconImg,
   estRewards,
   isToday,
+  isTalent,
 }) => {
   const { info } = useContext(AppContext);
 
@@ -27,42 +28,47 @@ const Topper = ({
     return index === 0 ? firstFrame : index === 2 ? secFrame : thirdFrame;
   };
   const calculateEstRewards = (beansPot, percent) => {
-    console.log("beansPot:", beansPot);
-    console.log("percent:", percent);
-
-    return (percent / 100) * beansPot.potValue;
+    return Math.floor((percent / 100) * beansPot.potValue);
   };
 
   return (
     <div className="topper">
       <div className="images">
         <img className="frame" src={getFrame()} />
-        <img className="avatar" src={user?.avatar ? user?.avatar : unknow} />
+        <img
+          className="avatar"
+          src={user?.portrait ? user?.portrait : unknow}
+        />
       </div>
       <div className={`topper-content`}>
         <div className="info" style={{ top: !estRewards && "8vw" }}>
           <span className="name">{user?.nickname}</span>
-          <img className="lvl-img" src={getLevelImage(user.userLevel)} />
+          <img
+            className="lvl-img"
+            src={getLevelImage(user.userLevel, isTalent)}
+          />
           <div className="score">
             <img src={iconImg} />
             <span>{user.userScore}</span>
           </div>
           {estRewards && (
             <div className="est-rew">
-              <img src={bean} />
-              <span>
-                {calculateEstRewards(
-                  isToday
-                    ? info.beanPotList.find(
-                        (item) => item.dayIndex === info.dayIndex
-                      )
-                    : info.beanPotList.find(
-                        (item) => item.dayIndex === info.dayIndex - 1
-                      ),
-                  index === 0 ? 50 : index === 1 ? 30 : 20
-                )}{" "}
-                Est Rew
-              </span>
+              <span>{isToday ? "Est rew" : "Beans Won"}</span>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img src={bean} />
+                <span>
+                  {calculateEstRewards(
+                    isToday
+                      ? info.beanPotList.find(
+                          (item) => item.dayIndex === info.dayIndex
+                        )
+                      : info.beanPotList.find(
+                          (item) => item.dayIndex === info.dayIndex - 1
+                        ),
+                    index === 0 ? 50 : index === 1 ? 30 : 20
+                  )}{" "}
+                </span>
+              </div>
             </div>
           )}
         </div>

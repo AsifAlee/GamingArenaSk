@@ -32,42 +32,55 @@ const ClawCraneDetail = ({ toggleDetailPopUp }) => {
                       flexWrap: "wrap",
                       gap: "0.5vw",
                       paddingLeft: "1vw",
+                      overflowY: "auto",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
+                    <div className="reward-item">
+                      <img
+                        src={
+                          baseUrl + "/streamkar/rewards/victoriousRoomSkin.png"
+                        }
+                        className="giftImg"
+                      />
+                      <span className="text">Victorious Room skin x1 day</span>
+                    </div>
+
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/spaceship.png"}
                         className="giftImg"
                       />
-                      <span className="text">2 days</span>
+                      <span className="text">Spaceship entrance x2 days</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/victorySlide.png"}
                         className="giftImg"
                       />
-                      <span className="text">2 day</span>
+                      <span className="text">Victory slide x2 days</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/phantom.png"}
                         className="giftImg"
                       />
-                      <span className="text">2 days</span>
+                      <span className="text">Phantom entrance x2 days</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/phoenix.png"}
                         className="giftImg"
                       />
-                      <span className="text">2 days</span>
+                      <span className="text">Phoenix entrance x2 day</span>
                     </div>
                     <div className="reward-item">
                       <img
-                        src={baseUrl + "/streamkar/rewards/beanbag.png"}
+                        src={baseUrl + "/streamkar/rewards/victoriousFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Victorious frame x1 day</span>
                     </div>
                   </div>
                 </td>

@@ -12,7 +12,10 @@ const LeaderBoardItem = ({ user, index, isClawCrane, isTalent, iconImg }) => {
       <div className="left-div">
         <div className="index">{index}.</div>
         <div className="user-info">
-          <img src={user.avatar ? user.avatar : unknown} className="avatar" />
+          <img
+            src={user.portrait ? user.portrait : unknown}
+            className="avatar"
+          />
           <div className="nameNLevel">
             <span className="name">{user.nickname}</span>
             <img

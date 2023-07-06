@@ -42,12 +42,28 @@ const FoosballRecords = ({ toggleRecordsPopup }) => {
                         className="list"
                       >
                         {rec.rewardDTOList?.map((item) => (
+                          // <div className="reward-item">
+                          //   <img
+                          //     src={getRewardsImage(item?.desc)}
+                          //     className="giftImg"
+                          //   />
+                          //   <span className="text">{item.desc}</span>
+                          // </div>
+
                           <div className="reward-item">
                             <img
                               src={getRewardsImage(item?.desc)}
                               className="giftImg"
                             />
-                            <span className="text">{item.desc}</span>
+                            {item.desc === "Beans" ? (
+                              <span className="text">{`${item.count} Beans`}</span>
+                            ) : (
+                              <span className="text">{`${item.desc}  x${
+                                item.count > 1
+                                  ? `${item.count} days`
+                                  : `${item.count} day`
+                              }`}</span>
+                            )}
                           </div>
                         ))}
                       </div>

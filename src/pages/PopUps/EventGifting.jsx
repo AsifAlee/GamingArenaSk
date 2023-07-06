@@ -15,6 +15,7 @@ import { useContext } from "react";
 import { AppContext } from "../../MyContext";
 import gemIcon from "../../assets/images/gems.png";
 import beansIcon from "../../assets/images/bean.png";
+
 const EventGifting = ({ toggleEventGifting }) => {
   const { leaderBoardData } = useContext(AppContext);
   // let { eventGifter, eventRecvr } = leaderBoardData;
@@ -150,13 +151,7 @@ const EventGifting = ({ toggleEventGifting }) => {
       document.body.style.overflow = "auto";
     };
   }, []);
-  // useEffect(() => {
-  //   if (rewardTabs.talent) {
-  //     setSelectedData(eventRecvr);
-  //   } else {
-  //     setSelectedData(eventGifter);
-  //   }
-  // }, [rewardTabs]);
+
   const [isSeeMore, setIsMore] = useState(false);
   const switchTabs = (event) => {
     switch (event.target.name) {
@@ -206,7 +201,10 @@ const EventGifting = ({ toggleEventGifting }) => {
                 <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
                 <div className="gift-name">
                   <p>Empower</p>
-                  <p>50,000</p>
+                  <div className="price">
+                    50,000
+                    <img src={beansIcon} className="beans-icon" />
+                  </div>
                 </div>
               </div>
 
@@ -214,7 +212,10 @@ const EventGifting = ({ toggleEventGifting }) => {
                 <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
                 <div className="gift-name">
                   <p>Game World</p>
-                  <p>25,000</p>
+                  <div className="price">
+                    25,000
+                    <img src={beansIcon} className="beans-icon" />
+                  </div>
                 </div>
               </div>
 
@@ -222,7 +223,10 @@ const EventGifting = ({ toggleEventGifting }) => {
                 <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
                 <div className="gift-name">
                   <p>Chocolate</p>
-                  <p>5,000</p>
+                  <div className="price">
+                    5,000
+                    <img src={beansIcon} className="beans-icon" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -247,6 +251,7 @@ const EventGifting = ({ toggleEventGifting }) => {
                 eventGifting={true}
                 rewards={rewardTabs.talent ? talentRewards : gifterRewards}
                 foosball={false}
+                isTalent={rewardTabs.talent ? true : false}
               />
             </div>
           </div>
@@ -273,6 +278,7 @@ const EventGifting = ({ toggleEventGifting }) => {
                   user={selectedData[0]}
                   iconImg={tabs.talent ? gemIcon : beansIcon}
                   estRewards={false}
+                  isTalent={tabs.talent ? true : false}
                 />
               </div>
               <div className="top2">
@@ -282,6 +288,7 @@ const EventGifting = ({ toggleEventGifting }) => {
                   user={selectedData[1]}
                   iconImg={tabs.talent ? gemIcon : beansIcon}
                   estRewards={false}
+                  isTalent={tabs.talent ? true : false}
                 />
               </div>
               <div className="top3">
@@ -291,6 +298,7 @@ const EventGifting = ({ toggleEventGifting }) => {
                   user={selectedData[2]}
                   iconImg={tabs.talent ? gemIcon : beansIcon}
                   estRewards={false}
+                  isTalent={tabs.talent ? true : false}
                 />
               </div>
             </div>

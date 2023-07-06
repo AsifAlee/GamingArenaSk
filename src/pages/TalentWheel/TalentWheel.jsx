@@ -239,7 +239,7 @@ const TalentWheel = () => {
       <div className="record-details-btns">
         <div className="game-points">
           <img src={gamePointIcon} />
-          <span>My Gaming points:{info?.receiveBeans}</span>
+          <span>My Talent points:{info?.receiveBeans}</span>
         </div>
       </div>
       <Marquee className="marquee">
@@ -361,6 +361,7 @@ const TalentWheel = () => {
               index={index + 1}
               isClawCrane={false}
               isWheel={true}
+              isTalent={true}
             />
           ))}
         </div>

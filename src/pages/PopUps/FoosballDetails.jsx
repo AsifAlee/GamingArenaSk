@@ -26,11 +26,14 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
                 <td>
                   <div
                     style={{
-                      height: "37vw",
+                      height: "46vw",
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "0.5vw",
                       paddingLeft: "1vw",
+                      // overflowY: "auto",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
                     <div className="reward-item">
@@ -38,7 +41,7 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
                         src={baseUrl + "/streamkar/rewards/blazingFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Blazing Frame x1 day </span>
                     </div>
                     <div className="reward-item">
                       <img
@@ -47,70 +50,72 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
                         }
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Desert Knight frame x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/moonKnightSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Moon Knight room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/beanbag.png"}
                         className="giftImg"
                       />
-                      <span className="text">1000 day</span>
+                      <span className="text">1000 Beans</span>
                     </div>
                     <div className="reward-item">
                       <img
-                        src={baseUrl + "/streamkar/rewards/beanbag.png"}
+                        src={
+                          baseUrl + "/streamkar/rewards/victoriousRoomSkin.png"
+                        }
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Victorious Room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/battleSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Battle room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/seawolfFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Sea Wolf frame x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/pirateRoomSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Pirate room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/sailorRoomSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Sailor room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/mavenFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Maven frame x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/combatSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Combat room skin x1 day</span>
                     </div>
                   </div>
                 </td>

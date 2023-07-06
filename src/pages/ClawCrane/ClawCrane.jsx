@@ -78,7 +78,8 @@ const ClawCrane = ({}) => {
       <div className="record-details-btns">
         <button className="records-btn" onClick={() => toggleRecordsPopup()} />
         <button className="game-points">
-          My Gaming points:{info?.clawPoints}
+          {" "}
+          My Claw points:{info?.clawPoints}
         </button>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
       </div>
@@ -136,10 +137,12 @@ const ClawCrane = ({}) => {
           ))}
         </div>
 
-        <button
-          className={isSeeMore ? "see-more" : "see-less"}
-          onClick={() => setIsSeeMore((prevState) => !prevState)}
-        />
+        {crawlCrane.length > 10 && (
+          <button
+            className={isSeeMore ? "see-more" : "see-less"}
+            onClick={() => setIsSeeMore((prevState) => !prevState)}
+          />
+        )}
       </div>
       {showDetails && <ClawCraneDetail toggleDetailPopUp={toggleDetailPopUp} />}
       {gamePopUp && (

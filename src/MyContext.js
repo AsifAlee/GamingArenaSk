@@ -18,7 +18,7 @@ const EventProvider = ({ children }) => {
   });
   const [user, setUser] = useState({
     uid: 0,
-    token: undefined,
+    token: "",
   });
   const [records, setRecords] = useState({
     billiards: [],
@@ -28,6 +28,7 @@ const EventProvider = ({ children }) => {
 
   const [freeGifts, setFreeGifts] = useState({
     isClaimed: false,
+    isApiCalled: false,
   });
   const [leaderBoardData, setLeaderBoardData] = useState({
     billiards: [],
@@ -76,6 +77,7 @@ const EventProvider = ({ children }) => {
           setFreeGifts({
             ...freeGifts,
             isClaimed: response.data.claimDailyFreeGifts,
+            isApiCalled: response.errorCode === 0 ? true : false,
           });
         })
         .catch((error) => console.error("api error:", error.message))
@@ -83,7 +85,7 @@ const EventProvider = ({ children }) => {
   };
   const getBilliardsLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&&dayIndex=${info?.dayIndex}&pageNum=1&pageSize=20`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&&dayIndex=${info.dayIndex}&pageNum=1&pageSize=20`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -131,7 +133,9 @@ const EventProvider = ({ children }) => {
 
   const getFoosballLeaderBoardDataYest = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${info?.dayIndex}`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${
+        info?.dayIndex - 1
+      }`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -286,7 +290,17 @@ const EventProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // if (user.uid > 0) {
+    //   getInfo();
+    // }
     getInfo();
+    getRecords(1);
+    getRecords(2);
+    getRecords(3);
+  }, [user.uid]);
+
+  useEffect(() => {
+    // if (info.dayIndex > 0) {
     getBilliardsLeaderBoardData();
     getBilliardsLeaderBoardDataYest();
     getFoosballLeaderBoardData();
@@ -296,13 +310,11 @@ const EventProvider = ({ children }) => {
     getEventRecvLeaderBoardData();
     getVipWheelLeaderBoardData();
     getLuckyWheelLeaderbrdData();
+    // }
     getMarqueeData(1);
     getMarqueeData(2);
     getMarqueeData(3);
     getMarqueeData(4);
-    getRecords(1);
-    getRecords(2);
-    getRecords(3);
   }, [info.dayIndex, user.uid]);
 
   useEffect(() => {

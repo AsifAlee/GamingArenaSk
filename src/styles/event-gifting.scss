@@ -73,6 +73,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          gap: 1vw;
 
           .single-gift {
             flex: 1;
@@ -83,13 +84,24 @@
               background-image: url("../assets//images/text-bg.png");
               background-size: 100% 100%;
               background-repeat: no-repeat;
-              width: 16vw;
-              height: 8vw;
+              width: 18vw;
+              height: 10vw;
               display: flex;
               justify-content: center;
               align-items: center;
-              font-size: 2vw;
+              font-size: 2.5vw;
               text-align: center;
+              flex-direction: column;
+            }
+
+            .price {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              img {
+                width: 5vw;
+              }
             }
           }
         }

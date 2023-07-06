@@ -9,7 +9,7 @@ import { testData } from "../../../testData";
 import billiardsIcon from "../../../assets/images/ball-potted-icon.png";
 import foosballIcon from "../../../assets/images/foosball/score-icon.png";
 
-const LeaderBoard = ({ data, billiards, foosball, isToday }) => {
+const LeaderBoard = ({ data, billiards, foosball, isToday, isTalent }) => {
   // data = testData;
 
   const [isSeeMore, setIsMore] = useState(false);
@@ -27,6 +27,7 @@ const LeaderBoard = ({ data, billiards, foosball, isToday }) => {
                   iconImg={foosball ? foosballIcon : billiardsIcon}
                   estRewards={billiards ? true : false}
                   isToday={isToday}
+                  isTalent={isTalent}
                 />
               )}
             </div>
@@ -40,6 +41,7 @@ const LeaderBoard = ({ data, billiards, foosball, isToday }) => {
                   iconImg={foosball ? foosballIcon : billiardsIcon}
                   estRewards={billiards ? true : false}
                   isToday={isToday}
+                  isTalent={isTalent}
                 />
               )}
             </div>
@@ -53,6 +55,7 @@ const LeaderBoard = ({ data, billiards, foosball, isToday }) => {
                   iconImg={foosball ? foosballIcon : billiardsIcon}
                   estRewards={billiards ? true : false}
                   isToday={isToday}
+                  isTalent={isTalent}
                 />
               )}
             </div>
@@ -63,10 +66,11 @@ const LeaderBoard = ({ data, billiards, foosball, isToday }) => {
                 index={index + 4}
                 user={user}
                 iconImg={foosball ? foosballIcon : billiardsIcon}
+                isTalent={isTalent}
               />
             ))}
           </div>
-          {data.slice(3).length && (
+          {data.length > 10 && (
             <button
               className={isSeeMore ? "see-more" : "see-less"}
               onClick={() => setIsMore((prevState) => !prevState)}

@@ -17,21 +17,30 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
               <tr className="head">
                 <th>Button Name</th>
                 <th>Game Points Required </th>
+                <th>Score</th>
 
                 <th style={{ width: "41vw" }}>Rewards</th>
               </tr>
               <tr className="reward-row">
                 <td>Play</td>
                 <td>20,000</td>
-
+                <td>
+                  <span style={{ width: "8vw", display: "block" }}>
+                    {" "}
+                    1 0r 0
+                  </span>
+                </td>
                 <td>
                   <div
                     style={{
-                      height: "37vw",
+                      height: "61vw",
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "0.5vw",
                       paddingLeft: "1vw",
+                      // overflowY: "auto",
+                      justifyContent: "center",
+                      alignContent: "center",
                     }}
                   >
                     <div className="reward-item">
@@ -39,49 +48,32 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                         src={baseUrl + "/streamkar/rewards/skSamuraiFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Samurai Frame x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/nightShadow.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">
+                        Night Shadow room skin x1 day
+                      </span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/moonKnightFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Moon Knight Frame x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/desertNight.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
-                    </div>
-                    <div className="reward-item">
-                      <img
-                        src={baseUrl + "/streamkar/rewards/pirateFrame.png"}
-                        className="giftImg"
-                      />
-                      <span className="text">1 day</span>
-                    </div>
-                    <div className="reward-item">
-                      <img
-                        src={baseUrl + "/streamkar/rewards/sailorFrame.png"}
-                        className="giftImg"
-                      />
-                      <span className="text">1 day</span>
-                    </div>
-                    <div className="reward-item">
-                      <img
-                        src={baseUrl + "/streamkar/rewards/seaWolfRoomSkin.png"}
-                        className="giftImg"
-                      />
-                      <span className="text">1 day</span>
+                      <span className="text">
+                        Desert Knight room skin x1 day
+                      </span>
                     </div>
                     <div className="reward-item">
                       <img
@@ -92,25 +84,56 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                     </div>
                     <div className="reward-item">
                       <img
+                        src={
+                          baseUrl + "/streamkar/rewards/victoriousRoomSkin.png"
+                        }
+                        className="giftImg"
+                      />
+                      <span className="text">Victorious Frame x1 day</span>
+                    </div>
+                    <div className="reward-item">
+                      <img
+                        src={baseUrl + "/streamkar/rewards/pirateFrame.png"}
+                        className="giftImg"
+                      />
+                      <span className="text">Pirate Frame x1 day</span>
+                    </div>
+                    <div className="reward-item">
+                      <img
+                        src={baseUrl + "/streamkar/rewards/sailorFrame.png"}
+                        className="giftImg"
+                      />
+                      <span className="text">Sailor Frame x1 day</span>
+                    </div>
+                    <div className="reward-item">
+                      <img
+                        src={baseUrl + "/streamkar/rewards/seaWolfRoomSkin.png"}
+                        className="giftImg"
+                      />
+                      <span className="text">Sea Wolf room skin x1 day</span>
+                    </div>
+
+                    <div className="reward-item">
+                      <img
                         src={baseUrl + "/streamkar/rewards/neonRoomSkin.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Neon lights room skin x1 day</span>
                     </div>
                     <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/mysterioFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
+                      <span className="text">Mysterio Frame x1 day</span>
                     </div>
-                    <div className="reward-item">
+                    {/* <div className="reward-item">
                       <img
                         src={baseUrl + "/streamkar/rewards/40001313.png"}
                         className="giftImg"
                       />
-                      <span className="text">1 day</span>
-                    </div>
+                      <span className="text">1 day </span>
+                    </div> */}
                   </div>
                 </td>
               </tr>
@@ -142,7 +165,7 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                 <th>Game Points Required</th>
               </tr>
               <tr>
-                <td>Recharge Que</td>
+                <td>Recharge Cue</td>
                 <td>5000</td>
               </tr>
             </table>

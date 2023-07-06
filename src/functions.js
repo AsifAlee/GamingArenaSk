@@ -5,9 +5,9 @@ export function getRewardsImage(rewDesc) {
 
   if (rewDesc?.includes("Raging Bull Profile Frame")) {
     rewImg = baseUrl + "/streamkar/rewards/valentineFrameUser.png";
-  } else if (rewDesc?.includes("Spaceship Entrance")) {
+  } else if (rewDesc?.includes("Spaceship entrance")) {
     rewImg = baseUrl + "/streamkar/rewards/spaceship.png";
-  } else if (rewDesc?.includes("Brave Heart Profile Frame")) {
+  } else if (rewDesc?.includes("Brave Heart frame")) {
     rewImg = baseUrl + "/streamkar/rewards/braveHeart.png";
   } else if (rewDesc?.includes("HERO")) {
     rewImg = baseUrl + "/streamkar/rewards/heroEntrance.png";
@@ -29,8 +29,10 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/sailorFrame.png";
   } else if (rewDesc?.includes("Sailor room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/sailorRoomSkin.png";
-  } else if (rewDesc?.includes("Victorious Room skin")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+  } else if (rewDesc?.includes("Victorious room skin (NEW)")) {
+    rewImg = baseUrl + "/streamkar/rewards/victoriousRoomSkin.png";
+  } else if (rewDesc?.includes("Victorious room skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/victoriousRoomSkin.png";
   } else if (rewDesc?.includes("Battle Room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/battleSkin.png";
   } else if (rewDesc?.includes("Pirate Frame")) {
@@ -52,7 +54,7 @@ export function getRewardsImage(rewDesc) {
   } else if (rewDesc?.includes("Maven Frame")) {
     rewImg = baseUrl + "/streamkar/rewards/mavenFrame.png";
   } else if (rewDesc?.includes("Samurai Frame")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+    rewImg = baseUrl + "/streamkar/rewards/skSamuraiFrame.png";
   } else if (rewDesc?.includes("Night Shadow room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/nightShadow.png";
   } else if (rewDesc?.includes("Neon lights room skin")) {
@@ -60,9 +62,11 @@ export function getRewardsImage(rewDesc) {
   } else if (rewDesc?.includes("Mysterio Frame")) {
     rewImg = baseUrl + "/streamkar/rewards/mysterioFrame.png";
   } else if (rewDesc?.includes("Victorious frame")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+    rewImg = baseUrl + "/streamkar/rewards/victoriousFrame.png";
+  } else if (rewDesc?.includes("Victorious frame (NEW)")) {
+    rewImg = baseUrl + "/streamkar/rewards/victoriousFrame.png";
   } else if (rewDesc?.includes("Victorious Room skin")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+    rewImg = baseUrl + "/streamkar/rewards/victoriousRoomSkin.png";
   } else if (rewDesc?.includes("Combat room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/combatSkin.png";
   } else if (rewDesc?.includes("Victory slide")) {
@@ -79,12 +83,12 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/svip.png";
   } else if (rewDesc?.includes("SVIP")) {
     rewImg = baseUrl + "/streamkar/rewards/svip.png";
-  } else if (rewDesc?.includes("Bumblebee entrance ")) {
+  } else if (rewDesc?.includes("Bumblebee entrance")) {
     rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
   } else if (rewDesc?.includes("Game Master room skin")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+    rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
   } else if (rewDesc?.includes("Game Master frame")) {
-    rewImg = baseUrl + "/streamkar/rewards/beanbag.png";
+    rewImg = baseUrl + "/streamkar/rewards/gameMasterFarme.png";
   } else if (rewDesc?.includes("VIP")) {
     rewImg = baseUrl + "/streamkar/rewards/vip.png";
   } else if (rewDesc?.includes("Kingpin entrance")) {
@@ -93,6 +97,8 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
   } else if (rewDesc?.includes("10 XP")) {
     rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
+  } else if (rewDesc?.includes("Enlightening Room Skin")) {
+    rewImg = baseUrl + "/streamkar/rewards/enlighteningRoom.png";
   } else {
     rewImg = baseUrl + "/streamkar/rewards/noRew.png";
   }

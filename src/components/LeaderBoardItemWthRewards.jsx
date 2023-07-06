@@ -25,7 +25,10 @@ const LeaderBoardItemWthRewards = ({
       <div className="left-div">
         <div className="index">{index}.</div>
         <div className="user-info">
-          <img src={user.avatar ? user.avatar : unknown} className="avatar" />
+          <img
+            src={user.portrait ? user.portrait : unknown}
+            className="avatar"
+          />
           <div className="nameNLevel">
             <span className="name">{user.nickname}</span>
             <img
@@ -53,6 +56,7 @@ const LeaderBoardItemWthRewards = ({
               <LeaderBoardItemReward
                 rewImg={getRewardsImage(des.desc)}
                 days={des.count}
+                desc={des.desc}
               />
             );
           })}

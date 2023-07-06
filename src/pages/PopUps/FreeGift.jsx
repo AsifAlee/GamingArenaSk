@@ -15,6 +15,8 @@ const FreeGift = ({ closeGiftPopup }) => {
   const { freeGifts, user } = useContext(AppContext);
   const [isGiftOpened, setIsGiftOpened] = useState(false);
   const [rewards, setRewards] = useState([]);
+  const [errCode, setErrCode] = useState(null);
+  const [errMessga, setErrorMessage] = useState("");
 
   const claimGift = () => {
     fetch(`${baseUrl}/api/activity/gamingArena/claimFreeGifts`, {
@@ -30,6 +32,9 @@ const FreeGift = ({ closeGiftPopup }) => {
       .then((response) => {
         setIsGiftOpened(true);
         setRewards(response?.data?.rewardDTOList);
+        setErrCode(response.errorCode);
+        setErrorMessage(response.msg);
+        // alert(JSON.stringify(response));
         // setRewards(testRewards);
       })
       .catch((error) => {
@@ -75,11 +80,13 @@ const FreeGift = ({ closeGiftPopup }) => {
 
                 <h4 className="heading">as a free gift from StreamKar</h4>
               </div>
-            ) : (
+            ) : rewards?.length === 0 ? (
               <div className="text">
                 No rewards today, please come back tomorrow again & get a chance
                 to win a free amazing reward.
               </div>
+            ) : (
+              <div className="text">{errMessga}</div>
             )}
           </div>
         ) : (
@@ -98,3 +105,6 @@ const FreeGift = ({ closeGiftPopup }) => {
 };
 
 export default FreeGift;
+// : errCode === 10000007 ? (
+//   <div className="text">{errMessga}</div>
+// )
