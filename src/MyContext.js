@@ -27,7 +27,7 @@ const EventProvider = ({ children }) => {
   });
 
   const [freeGifts, setFreeGifts] = useState({
-    isClaimed: false,
+    isClaimed: true,
     isApiCalled: false,
   });
   const [leaderBoardData, setLeaderBoardData] = useState({
@@ -77,7 +77,9 @@ const EventProvider = ({ children }) => {
           setFreeGifts({
             ...freeGifts,
             isClaimed: response.data.claimDailyFreeGifts,
-            isApiCalled: response.errorCode === 0 ? true : false,
+            // isClaimed: false,
+
+            // isApiCalled: response.errorCode === 0 ? true : false,
           });
         })
         .catch((error) => console.error("api error:", error.message))
@@ -100,7 +102,7 @@ const EventProvider = ({ children }) => {
   };
   const getBilliardsLeaderBoardDataYest = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&pageNum=1&pageSize=10&dayIndex=${
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&pageNum=1&pageSize=20&dayIndex=${
         info?.dayIndex - 1
       }`
     )
@@ -117,7 +119,7 @@ const EventProvider = ({ children }) => {
   };
   const getFoosballLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${info?.dayIndex}`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -133,7 +135,7 @@ const EventProvider = ({ children }) => {
 
   const getFoosballLeaderBoardDataYest = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=10&dayIndex=${
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=20&dayIndex=${
         info?.dayIndex - 1
       }`
     )
@@ -290,9 +292,6 @@ const EventProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // if (user.uid > 0) {
-    //   getInfo();
-    // }
     getInfo();
     getRecords(1);
     getRecords(2);
@@ -300,22 +299,25 @@ const EventProvider = ({ children }) => {
   }, [user.uid]);
 
   useEffect(() => {
-    // if (info.dayIndex > 0) {
-    getBilliardsLeaderBoardData();
-    getBilliardsLeaderBoardDataYest();
-    getFoosballLeaderBoardData();
-    getFoosballLeaderBoardDataYest();
-    getCrawlLeaderBoardData();
-    getEventSendLeaderBoardData();
-    getEventRecvLeaderBoardData();
-    getVipWheelLeaderBoardData();
-    getLuckyWheelLeaderbrdData();
-    // }
+    if (info.dayIndex > 0) {
+      getBilliardsLeaderBoardData();
+      getBilliardsLeaderBoardDataYest();
+      getFoosballLeaderBoardData();
+      getFoosballLeaderBoardDataYest();
+      getCrawlLeaderBoardData();
+      getEventSendLeaderBoardData();
+      getEventRecvLeaderBoardData();
+      getVipWheelLeaderBoardData();
+      getLuckyWheelLeaderbrdData();
+    }
+  }, [info.dayIndex]);
+
+  useEffect(() => {
     getMarqueeData(1);
     getMarqueeData(2);
     getMarqueeData(3);
     getMarqueeData(4);
-  }, [info.dayIndex, user.uid]);
+  }, []);
 
   useEffect(() => {
     try {
@@ -344,6 +346,11 @@ const EventProvider = ({ children }) => {
         getInfo: getInfo,
         user: user,
         records: records,
+        getBilliardsLeaderBoardData,
+        getFoosballLeaderBoardData,
+        getCrawlLeaderBoardData,
+        getLuckyWheelLeaderbrdData,
+        getVipWheelLeaderBoardData,
       }}
     >
       {children}

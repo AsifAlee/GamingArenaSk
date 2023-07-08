@@ -5,7 +5,7 @@ import ballIcon from "../assets/images/ball-potted-icon.png";
 import gemIcon from "../assets/images/gems.png";
 import clawPoint from "../assets/images/claw-crane/claw-point-icon.png";
 import "../styles/leader-board-item.scss";
-import { getLevelImage, getRewardsImage } from "../functions";
+import { getLevelImage, getRewardsImage, gotoProfile } from "../functions";
 import "../styles/leaderboard-item-with-rewards.scss";
 import LeaderBoardItemReward from "./LeaderBoardItemReward";
 
@@ -28,6 +28,7 @@ const LeaderBoardItemWthRewards = ({
           <img
             src={user.portrait ? user.portrait : unknown}
             className="avatar"
+            onClick={() => gotoProfile(user.userId)}
           />
           <div className="nameNLevel">
             <span className="name">{user.nickname}</span>

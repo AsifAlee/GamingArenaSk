@@ -39,11 +39,11 @@
     align-items: center;
     letter-spacing: 0.1vw;
     padding: 3.5vw;
-    img{
+    img {
       width: 3vw;
       margin-left: 1vw;
     }
-    span{
+    span {
       margin-left: 1vw;
     }
     padding: 2vw;
@@ -62,7 +62,7 @@
     .table {
       width: 45vw;
       height: 82vw;
-     
+
       position: absolute;
       border: 1px solid;
       right: 16vw;
@@ -194,12 +194,12 @@
         border: none;
       }
     }
-    .points-req{
+    .points-req {
       position: absolute;
-    bottom: 32vw;
-    left: 17vw;
-    font-family: 'Acme-Regular';
-    font-size: 2.5vw;
+      bottom: 32vw;
+      left: 17vw;
+      font-family: "Acme-Regular";
+      font-size: 2.5vw;
     }
 
     .balls-potted {
@@ -231,11 +231,21 @@
   .rest-section {
     width: 98%;
     // min-height: 310vw;
-    background-image: url("../assets/images/billiards-rest-bg.png");
+    // background-image: url("../assets/images/billiards-rest-bg.png");
+    background-image: url("../assets/images/foosball/foosball-bg.png");
+
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0 auto;
-    
+    position: relative;
+    margin-top: 8vw;
+
+    .mascot {
+      position: absolute;
+      width: 23vw;
+      left: 40vw;
+      top: -6vw;
+    }
 
     .rewards {
       background-image: url("../assets/images/rewards-bg.png");
@@ -278,8 +288,7 @@
         margin-top: 17vw;
         margin-left: 19vw;
         width: 29vw;
-    }
-      
+      }
 
       .beans-potted {
         width: 40vw;
@@ -302,21 +311,19 @@
           font-size: 2.5vw;
           font-family: "Acme-Regular";
           position: relative;
-          
+
           left: 1vw;
-          color:white;
+          color: white;
         }
       }
     }
 
     .leaderboard {
-      
       min-height: 234vw;
       .title {
         margin: 0 auto;
         display: inherit;
         width: 58vw;
-
       }
 
       .tabs {
@@ -366,51 +373,41 @@
           margin: 0 auto;
           position: relative;
           overflow-y: auto;
-         
-
-        
         }
-        .see-more{
-        
+        .see-more {
           width: 15vw;
           height: 7vw;
           margin: 0 auto;
-          background-image: url('../assets//images/see-more.png');
+          background-image: url("../assets//images/see-more.png");
           background-size: 100% 100%;
           background-repeat: no-repeat;
           border: none;
           background-color: transparent;
           display: block;
           position: relative;
-    top: 2vw;
-         
-      
-
+          top: 2vw;
         }
-        .see-less{
+        .see-less {
           display: block;
           width: 15vw;
           height: 7vw;
           margin: 0 auto;
-          background-image: url('../assets//images/see-less.png');
+          background-image: url("../assets//images/see-less.png");
           background-size: 100% 100%;
           background-repeat: no-repeat;
           border: none;
           background-color: transparent;
           position: relative;
-    top: 2vw;
-      
-      
-
+          top: 2vw;
         }
       }
 
-      .noData{
+      .noData {
         display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Acme-Regular';
-    color: white;
+        justify-content: center;
+        align-items: center;
+        font-family: "Acme-Regular";
+        color: white;
       }
     }
   }
@@ -418,21 +415,21 @@
   ::-webkit-scrollbar {
     width: 2vw;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #684163; 
+    background: #684163;
     border-radius: 10px;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: #b30000;
   }
 }

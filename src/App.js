@@ -23,7 +23,7 @@ function App() {
     clawCrane: false,
     luckyWheel: false,
   });
-  const [showGiftPopup, setShowGiftPopup] = useState(true);
+  const [showGiftPopup, setShowGiftPopup] = useState(false);
   const closeGiftPopup = () => {
     setShowGiftPopup(false);
   };
@@ -84,11 +84,9 @@ function App() {
       ) : (
         <TalentWheel />
       )}
-      {freeGifts.isClaimed === false &&
-        showGiftPopup &&
-        freeGifts.isApiCalled === true && (
-          <FreeGift closeGiftPopup={closeGiftPopup} />
-        )}
+      {freeGifts.isClaimed === false && showGiftPopup === true && (
+        <FreeGift closeGiftPopup={closeGiftPopup} />
+      )}
     </div>
   );
 }

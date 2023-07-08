@@ -20,7 +20,7 @@ const FoosballRecords = ({ toggleRecordsPopup }) => {
               <table>
                 <tr className="head">
                   <th>Time</th>
-                  <th>Item Win </th>
+                  <th>Score</th>
 
                   <th style={{ width: "41vw" }}>Rewards</th>
                 </tr>

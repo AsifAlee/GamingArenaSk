@@ -80,7 +80,8 @@
       gap: 19vw;
       left: 12vw;
       display: flex;
-      align-items: center;
+      // align-items: center;
+      justify-content: space-around;
       .playBtn {
         width: 20vw;
         height: 14vw;
@@ -129,6 +130,7 @@
           font-family: "Acme-Regular";
           border: none;
           padding: 2vw;
+          font-size: 3vw;
         }
         span {
           font-family: "Acme-Regular";
@@ -255,7 +257,7 @@
         }
         .restWinners {
           margin-top: 2vw;
-          height: 70vw;
+          height: 106vw;
           width: 82%;
           margin: 0 auto;
           position: relative;
@@ -319,5 +321,13 @@
     margin-top: 3vw;
     font-size: 3.5vw;
 
+  }
+
+  .noData{
+    display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Acme-Regular';
+color: white;
   }
 }

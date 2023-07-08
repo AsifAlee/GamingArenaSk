@@ -90,7 +90,7 @@ const EventGifting = ({ toggleEventGifting }) => {
   ];
   const gifterRewards = [
     {
-      rank: "1st",
+      rank: "Top 1st",
       reward: [
         {
           name: "Solar Flare entrance x 5 Days",
@@ -116,7 +116,7 @@ const EventGifting = ({ toggleEventGifting }) => {
 
         {
           name: "Victorious frame x3 Days",
-          img: "beanbag.png",
+          img: "victoriousFrame.png",
         },
         {
           name: "2,000,000 Beans",

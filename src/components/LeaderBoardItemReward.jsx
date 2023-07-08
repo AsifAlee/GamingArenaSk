@@ -10,9 +10,9 @@ const LeaderBoardItemReward = ({ days, rewImg, desc }) => {
       </div>
       <span className="days">
         {desc === "Beans"
-          ? `${days} Beans`
+          ? `${days}`
           : desc === "gems"
-          ? `${days} gems`
+          ? `${days}`
           : `${days > 1 ? `${days} days` : `${days} day`}`}
       </span>
     </div>

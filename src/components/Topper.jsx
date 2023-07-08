@@ -10,7 +10,7 @@ import level from "../assets/images/level.PNG";
 import base from "../assets/images/base.png";
 
 import "../styles/topper.scss";
-import { getLevelImage } from "../functions";
+import { getLevelImage, gotoProfile } from "../functions";
 import { AppContext } from "../MyContext";
 
 const Topper = ({
@@ -33,7 +33,7 @@ const Topper = ({
 
   return (
     <div className="topper">
-      <div className="images">
+      <div className="images" onClick={() => gotoProfile(user.userId)}>
         <img className="frame" src={getFrame()} />
         <img
           className="avatar"
@@ -45,7 +45,10 @@ const Topper = ({
           <span className="name">{user?.nickname}</span>
           <img
             className="lvl-img"
-            src={getLevelImage(user.userLevel, isTalent)}
+            src={getLevelImage(
+              isTalent ? user?.actorLevel : user?.userLevel,
+              isTalent
+            )}
           />
           <div className="score">
             <img src={iconImg} />

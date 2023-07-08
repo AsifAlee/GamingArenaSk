@@ -5,7 +5,7 @@ import ballIcon from "../assets/images/ball-potted-icon.png";
 import gemIcon from "../assets/images/gems.png";
 import clawPoint from "../assets/images/claw-crane/claw-point-icon.png";
 import "../styles/leader-board-item.scss";
-import { getLevelImage } from "../functions";
+import { getLevelImage, gotoProfile } from "../functions";
 const LeaderBoardItem = ({ user, index, isClawCrane, isTalent, iconImg }) => {
   return (
     <div className="leader-board-item">
@@ -15,13 +15,14 @@ const LeaderBoardItem = ({ user, index, isClawCrane, isTalent, iconImg }) => {
           <img
             src={user.portrait ? user.portrait : unknown}
             className="avatar"
+            onClick={() => gotoProfile(user.userId)}
           />
           <div className="nameNLevel">
             <span className="name">{user.nickname}</span>
             <img
               className="level-img"
               src={getLevelImage(
-                isTalent ? user.actorLevel : user.userLevel,
+                isTalent ? user?.actorLevel : user?.userLevel,
                 isTalent
               )}
             />

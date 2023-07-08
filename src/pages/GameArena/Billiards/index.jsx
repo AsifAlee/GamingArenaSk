@@ -27,14 +27,23 @@ import clawSvg from "../../../assets/svgs/Claw_Crane_Game.svga";
 import cueStick from "../../../assets/svgs/SnookerStick.svga";
 import poolSvg from "../../../assets/svgs/PoolGame.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
+import beansIcon from "../../../assets/images/bean.png";
 // import billardSvg from "../../../assets/svgs/PoolGame.svga";
+import mascot from "../../../assets/images/mascot.png";
 
 import "../../../styles/marquee.scss";
 import SvgPlayer from "../../../components/SvgPlayer";
 
 const Billiards = () => {
-  const { info, marqueeData, getInfo, user, leaderBoardData, records } =
-    useContext(AppContext);
+  const {
+    info,
+    marqueeData,
+    getInfo,
+    user,
+    leaderBoardData,
+    records,
+    getBilliardsLeaderBoardData,
+  } = useContext(AppContext);
 
   const { rechargeCue, totalBillardsScore, beanPotList } = info;
 
@@ -135,6 +144,9 @@ const Billiards = () => {
   useEffect(() => {
     getBeansPot();
   }, [leaderBoardTabs]);
+  useEffect(() => {
+    getBeansPot();
+  }, [info.beanPotList]);
 
   const doRechargeQue = () => {
     setIsQueRecharging(true);
@@ -174,6 +186,7 @@ const Billiards = () => {
       });
   };
   const playGame = () => {
+    setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -198,6 +211,7 @@ const Billiards = () => {
           setGamePopup(true);
           setGameErrCode(response.errorCode);
           getInfo();
+          getBilliardsLeaderBoardData();
         }, 2000);
       })
       .catch((error) => {
@@ -218,7 +232,7 @@ const Billiards = () => {
         </div>
       </div>
       <Marquee className="marquee">
-        {marqueeData?.billiards?.map((item, index) => {
+        {leaderBoardData?.billiards?.slice(0, 3).map((item, index) => {
           return (
             <div className="marquee-item" key={index}>
               <img
@@ -243,7 +257,7 @@ const Billiards = () => {
         {/* <img className="table" src={table} /> */}
         {/* <SVGAPlayer src={billardSvg} /> */}
         {/* <SVGAPlayer src={clawSvg} /> */}
-        {isPlaying == true && rewardData?.rewardDTOList.length > 0 ? (
+        {isPlaying == true && rewardData?.rewardDTOList?.length > 0 ? (
           <SvgPlayer src={poolSvg} snookerTable={true} />
         ) : (
           <img className="table" src={table} />
@@ -297,6 +311,7 @@ const Billiards = () => {
         </div>
       </div>
       <div className="rest-section">
+        <img src={mascot} className="mascot" />
         <div className="rewards">
           <img src={rewardsTitle} className="title" />
           <Slider rewards={rewards} billiards={true} />
@@ -305,7 +320,7 @@ const Billiards = () => {
           <img src={beansPotTitle} className="title" />
           <img src={beansPotImg} className="beans-pot-img" />
           <div className="beans-potted">
-            <img src={ballPottedIcon} />
+            <img src={beansIcon} />
             <span>Beans Pot Counter:{beansPot}</span>
           </div>
         </div>

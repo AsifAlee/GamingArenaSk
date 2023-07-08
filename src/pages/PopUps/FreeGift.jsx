@@ -12,6 +12,13 @@ import { testRewards } from "../../testData";
 import { getRewardsImage } from "../../functions";
 
 const FreeGift = ({ closeGiftPopup }) => {
+  let data = [
+    {
+      type: 6,
+      count: 1,
+      desc: "Same response",
+    },
+  ];
   const { freeGifts, user } = useContext(AppContext);
   const [isGiftOpened, setIsGiftOpened] = useState(false);
   const [rewards, setRewards] = useState([]);
@@ -31,7 +38,7 @@ const FreeGift = ({ closeGiftPopup }) => {
       .then((response) => response.json())
       .then((response) => {
         setIsGiftOpened(true);
-        setRewards(response?.data?.rewardDTOList);
+        setRewards(response?.data);
         setErrCode(response.errorCode);
         setErrorMessage(response.msg);
         // alert(JSON.stringify(response));
@@ -40,6 +47,8 @@ const FreeGift = ({ closeGiftPopup }) => {
       .catch((error) => {
         console.error("api error:", error);
       });
+    // setRewards(data);
+    // setIsGiftOpened(true);
   };
   return (
     <PopUp
@@ -65,17 +74,24 @@ const FreeGift = ({ closeGiftPopup }) => {
               <div>
                 <h4 className="heading">Congratulations! You Have Received </h4>
                 <div className="rewards">
-                  {rewards?.map((rowItem) => {
-                    return (
-                      <div className="reward-item">
-                        <img
-                          src={getRewardsImage(rowItem.desc)}
-                          className="giftImg"
-                        />
-                        <span className="text">{`${rowItem.count} days`}</span>
-                      </div>
-                    );
-                  })}
+                  {
+                    <div className="reward-item">
+                      <img
+                        src={getRewardsImage(rewards[0]?.desc)}
+                        className="giftImg"
+                      />
+                      <span className="text">
+                        {/* { `${rewards[0]?.desc === 'Beans' ? `${rewards[0].count} Beans` : `${rewards[0]?.desc === `gems`}  `} */}
+                        {rewards[0]?.desc === "Beans"
+                          ? `${rewards[0].count} Beans`
+                          : rewards[0]?.desc === `gems`
+                          ? `${rewards[0].count} Gems`
+                          : rewards[0]?.count > 1
+                          ? `${rewards[0].desc} ${rewards[0].count} days`
+                          : `${rewards[0].desc} ${rewards[0].count} day`}
+                      </span>
+                    </div>
+                  }
                 </div>
 
                 <h4 className="heading">as a free gift from StreamKar</h4>

@@ -11,7 +11,7 @@ import foosballIcon from "../../../assets/images/foosball/score-icon.png";
 
 const LeaderBoard = ({ data, billiards, foosball, isToday, isTalent }) => {
   // data = testData;
-
+  // data = [];
   const [isSeeMore, setIsMore] = useState(false);
   return (
     <div className="leader-board-main-sec">

@@ -42,7 +42,7 @@ const ClawCranePopUp = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                     </div>
                   ))}
                 </div>
-                with the claw.Well done.
+                with the claw.Well done!
               </div>
             )}
 

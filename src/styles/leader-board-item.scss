@@ -64,7 +64,7 @@
     }
     .game-score{
       background-image: url("../assets//images/rank-point-bar.png");
-      width: 14vw;
+      width: 17vw;
       height: 7vw;
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -73,11 +73,11 @@
       justify-content: center;
       margin-right: 3vw;
       img {
-        width: 4vw;
+        width: 3vw;
       }
       span {
-        font-size: 2vw;
-        margin-left: 1vw;
+        font-size: 1.7vw;
+        margin-left: 0.5vw;
       }
     }
   }

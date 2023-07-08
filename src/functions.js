@@ -63,7 +63,9 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/mysterioFrame.png";
   } else if (rewDesc?.includes("Victorious frame")) {
     rewImg = baseUrl + "/streamkar/rewards/victoriousFrame.png";
-  } else if (rewDesc?.includes("Victorious frame (NEW)")) {
+  } else if (rewDesc?.includes("Victorious frame(NEW)")) {
+    rewImg = baseUrl + "/streamkar/rewards/victoriousFrame.png";
+  } else if (rewDesc?.includes("Victorious Frame(New)")) {
     rewImg = baseUrl + "/streamkar/rewards/victoriousFrame.png";
   } else if (rewDesc?.includes("Victorious Room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/victoriousRoomSkin.png";
@@ -86,7 +88,7 @@ export function getRewardsImage(rewDesc) {
   } else if (rewDesc?.includes("Bumblebee entrance")) {
     rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
   } else if (rewDesc?.includes("Game Master room skin")) {
-    rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
+    rewImg = baseUrl + "/streamkar/rewards/gameMasterRoomSkin.png";
   } else if (rewDesc?.includes("Game Master frame")) {
     rewImg = baseUrl + "/streamkar/rewards/gameMasterFarme.png";
   } else if (rewDesc?.includes("VIP")) {
@@ -138,3 +140,8 @@ export const beansPot = [
     percent: 5,
   },
 ];
+export const gotoProfile = (id) => {
+  debugger;
+  console.log("go to profile called");
+  window.location.href = `http://www.kktv1.com/m/?roomid=${id}`;
+};

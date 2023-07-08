@@ -17,11 +17,19 @@ import VipWheel from "../../components/VipWheel";
 import LuckyWheel from "../../components/LuckyWheel";
 import LuckyWheelPopUp from "../PopUps/LuckyWheelPopUp";
 import VipWheelPopup from "../PopUps/VipWheelPopUp";
+import unknownUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 
 const TalentWheel = () => {
-  const { info, marqueeData, getInfo, user, leaderBoardData } =
-    useContext(AppContext);
+  const {
+    info,
+    marqueeData,
+    getInfo,
+    user,
+    leaderBoardData,
+    getLuckyWheelLeaderbrdData,
+    getVipWheelLeaderBoardData,
+  } = useContext(AppContext);
   let { luckyTalentWheel, vipLuckyWheel } = leaderBoardData;
 
   const [isSeeMore, setIsSeeMore] = useState(false);
@@ -188,6 +196,7 @@ const TalentWheel = () => {
           setGameErrCode(response.errorCode);
           setRewardData(response?.data);
           getInfo();
+          getLuckyWheelLeaderbrdData();
         }, 4000);
       })
       .catch((error) => {
@@ -228,6 +237,7 @@ const TalentWheel = () => {
           getInfo();
           setRotateDegVip(0);
           setIsPlaying(false);
+          getVipWheelLeaderBoardData();
         }, 4000);
       })
       .catch((error) => {
@@ -248,18 +258,34 @@ const TalentWheel = () => {
 
           return (
             <div className="marquee-item">
-              <img src={item?.portrait} className="user-img" />
+              <img
+                src={item?.portrait ? item?.portrait : unknownUser}
+                className="user-img"
+              />
               <div className="user-details">
                 <span className="name">
                   {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
                 </span>
                 <div>
                   &nbsp;has &nbsp;won&nbsp;
-                  {rewDescriptions.map((rew) => {
+                  {rewDescriptions.map((item) => {
                     return (
-                      <span>{` ${rew.desc} ${
-                        rew.count > 1 ? `${rew.count} days` : `${rew.count} day`
-                      }  `}</span>
+                      // <span>{` ${rew.desc} ${
+                      //   rew.count > 1 ? `${rew.count} days` : `${rew.count} day`
+                      // }  `}</span>
+                      <span>
+                        {item.desc === "Beans" ? (
+                          <span className="text">{`${item.count} Beans`}</span>
+                        ) : item.desc === "gems" ? (
+                          <span className="text">{`${item.count} Gems`}</span>
+                        ) : (
+                          <span className="text">{`${item.desc}  x${
+                            item.count > 1
+                              ? `${item.count} days`
+                              : `${item.count} day`
+                          }`}</span>
+                        )}
+                      </span>
                     );
                   })}
                   .Congratulations!
@@ -366,10 +392,12 @@ const TalentWheel = () => {
           ))}
         </div>
 
-        <button
-          className={isSeeMore ? "see-more" : "see-less"}
-          onClick={() => setIsSeeMore((prevState) => !prevState)}
-        />
+        {selectedData.length > 10 && (
+          <button
+            className={isSeeMore ? "see-more" : "see-less"}
+            onClick={() => setIsSeeMore((prevState) => !prevState)}
+          />
+        )}
       </div>
       <p className="rights">ALL RIGHTS RESERVED BY STREAMKAR</p>
       {luckyPopUp && (

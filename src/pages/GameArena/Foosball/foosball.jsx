@@ -24,8 +24,14 @@ import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
 
 const Foosball = () => {
-  const { info, marqueeData, getInfo, user, leaderBoardData } =
-    useContext(AppContext);
+  const {
+    info,
+    marqueeData,
+    getInfo,
+    user,
+    leaderBoardData,
+    getFoosballLeaderBoardData,
+  } = useContext(AppContext);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [playXbutton, setPlayXButton] = useState(false);
@@ -47,14 +53,14 @@ const Foosball = () => {
       reward: [
         {
           name: "Game Master frame x3 days",
-          img: "beanbag.png",
+          img: "gameMasterFarme.png",
         },
         {
-          name: "Game Master room skin x3 days ",
-          img: "beanbag.png",
+          name: "Game Master room skin x3 days",
+          img: "gameMasterRoomSkin.png",
         },
         {
-          name: "3000 beans ",
+          name: "3000 beans",
           img: "beanbag.png",
         },
       ],
@@ -63,8 +69,8 @@ const Foosball = () => {
       rank: "Top 2nd",
       reward: [
         {
-          name: "Game Master frame x2 day",
-          img: "beanbag.png",
+          name: "Game Master frame x2 days",
+          img: "gameMasterFarme.png",
         },
 
         {
@@ -77,8 +83,8 @@ const Foosball = () => {
       rank: "Top 3rd",
       reward: [
         {
-          name: "Game Master room skin x1 days",
-          img: "beanbag.png",
+          name: "Game Master room skin x1 day",
+          img: "gameMasterRoomSkin.png",
         },
 
         {
@@ -130,6 +136,7 @@ const Foosball = () => {
     }
   };
   const playGame = () => {
+    setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -146,7 +153,6 @@ const Foosball = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setIsPlaying(true);
         setRewardData(response?.data);
 
         setGameMsg(response?.msg);
@@ -155,6 +161,7 @@ const Foosball = () => {
           setGameErrCode(response.errorCode);
           setGamePopUp(true);
           getInfo();
+          getFoosballLeaderBoardData();
         }, 2000);
       })
       .catch((error) => {
@@ -190,7 +197,7 @@ const Foosball = () => {
         </div>
       </div>
       <Marquee className="marquee">
-        {marqueeData?.foosball?.map((item, index) => {
+        {leaderBoardData?.foosball?.slice(0, 3).map((item, index) => {
           return (
             <div className="marquee-item" key={index}>
               <img
@@ -218,11 +225,11 @@ const Foosball = () => {
         )}
         <div className="play-section">
           <div className="xPlay">
-            <button
+            {/* <button
               className={playXbutton ? "x1" : "x1-off"}
               name="x1"
               onClick={() => setPlayXButton((prevState) => !prevState)}
-            />
+            /> */}
             <div>
               <input
                 className="enter-value"

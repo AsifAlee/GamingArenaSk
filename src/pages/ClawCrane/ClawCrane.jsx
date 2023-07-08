@@ -15,9 +15,16 @@ import clawCraneSvg from "../../assets/svgs/Claw_Crane_Game.svga";
 import clawCraneImg from "../../assets/images/claw-crane/game.png";
 import unknowUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
+import clawCraneIcon from "../../assets/images/claw-crane/claw-point-icon.png";
 const ClawCrane = ({}) => {
-  const { info, marqueeData, getInfo, user, leaderBoardData } =
-    useContext(AppContext);
+  const {
+    info,
+    marqueeData,
+    getInfo,
+    user,
+    leaderBoardData,
+    getCrawlLeaderBoardData,
+  } = useContext(AppContext);
 
   const toggleRecordsPopup = () => {
     setShowRecords((prevState) => !prevState);
@@ -65,6 +72,7 @@ const ClawCrane = ({}) => {
           setGameErrCode(response.errorCode);
           getInfo();
           setGameMsg(response?.msg);
+          getCrawlLeaderBoardData();
         }, 4000);
       })
       .catch((error) => {
@@ -78,7 +86,7 @@ const ClawCrane = ({}) => {
       <div className="record-details-btns">
         <button className="records-btn" onClick={() => toggleRecordsPopup()} />
         <button className="game-points">
-          {" "}
+          <img src={clawCraneIcon} />
           My Claw points:{info?.clawPoints}
         </button>
         <button className="details-btn" onClick={() => toggleDetailPopUp()} />
@@ -98,7 +106,13 @@ const ClawCrane = ({}) => {
                 <div>
                   &nbsp; has &nbsp; won &nbsp;
                   {rewDescriptions.map((rew) => {
-                    return <span>{`${rew.count} ${rew.desc}`}</span>;
+                    return (
+                      <span>{`${rew.desc} ${
+                        rew.count > 1
+                          ? `x${rew.count} days`
+                          : `x${rew.count} day`
+                      } `}</span>
+                    );
                   })}
                   &nbsp; from Claw Crane.
                 </div>

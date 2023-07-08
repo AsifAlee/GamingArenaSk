@@ -220,7 +220,7 @@ const Guide = () => {
                       <span className="index">16.</span>
                       <p className="text highlighted">
                         The user with the highest number of balls potted will
-                        win beans pot rewards at 00:00:00 GMT..
+                        win beans pot rewards at 00:00:00 GMT.
                       </p>
                     </div>
                     <div className="list-item">
@@ -335,9 +335,7 @@ const Guide = () => {
                       <span className="index">1.</span>
                       <p className="text">
                         In this part you will be able to get rewards/items from
-                        the Claw Crane machine. 2.
-                        <span className="highlighted">“My Claw Points”</span>
-                        counter will be displayed on the webpage.
+                        the Claw Crane machine.
                       </p>
                     </div>
                     <div className="list-item">
@@ -888,7 +886,7 @@ const Guide = () => {
                     <div className="list-item">
                       <span className="index">1.</span>
                       <p className="text">
-                        Total ranking mein, ,
+                        Total ranking mein,
                         <span className="highlighted">
                           top 3 users ko rewards milein gay
                         </span>
