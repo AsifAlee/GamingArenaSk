@@ -5,22 +5,30 @@ import poolSvg from "../assets/svgs/PoolGame.svga";
 import "../styles/svgs.scss";
 
 import SVGA from "svgaplayerweb";
-const SvgPlayer = ({ src, snookerTable, stick, crane, foosball }) => {
+const SvgPlayer = ({ src, snookerTable, stick, crane, foosball, start }) => {
   const demoCanvasRef = useRef(null);
 
   useEffect(() => {
     const player = new SVGA.Player(demoCanvasRef.current);
     const parser = new SVGA.Parser(demoCanvasRef.current);
 
+    // const player = new SVGA.Player("bbq-svga");
+    // const parser = new SVGA.Parser("bbq-svga");
+
     parser.load(src, (videoItem) => {
       player.setVideoItem(videoItem);
-      player.setContentMode("AspectFit");
-      player.startAnimation();
+      // player.setContentMode("AspectFit");
+      if (start) {
+        player.startAnimation();
+      } else {
+        player.stopAnimation();
+      }
     });
     return () => {
       demoCanvasRef.current = null;
+      player.clear();
     };
-  }, []);
+  }, [start]);
 
   return (
     <div
@@ -31,7 +39,8 @@ const SvgPlayer = ({ src, snookerTable, stick, crane, foosball }) => {
         (crane && "crane") ||
         (foosball && "foosball-svg")
       }
-    ></div>
+      // id="bbq-svga"
+    />
   );
 };
 

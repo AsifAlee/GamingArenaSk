@@ -22,6 +22,7 @@ import FoosBallGame from "../../PopUps/FoosballGame";
 import SvgPlayer from "../../../components/SvgPlayer";
 import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
+import TravelSvga from "../../../components/Svga2";
 
 const Foosball = () => {
   const {
@@ -52,7 +53,7 @@ const Foosball = () => {
       rank: "Top 1st",
       reward: [
         {
-          name: "Game Master frame x3 days",
+          name: "Game Battle frame x3 days",
           img: "gameMasterFarme.png",
         },
         {
@@ -69,7 +70,7 @@ const Foosball = () => {
       rank: "Top 2nd",
       reward: [
         {
-          name: "Game Master frame x2 days",
+          name: "Game Battle frame x2 days",
           img: "gameMasterFarme.png",
         },
 
@@ -218,18 +219,15 @@ const Foosball = () => {
         })}
       </Marquee>
       <div className="foosball-game">
-        {isPlaying === true && rewardData?.rewardDTOList?.length > 0 ? (
+        {/* {isPlaying === true && rewardData?.rewardDTOList?.length > 0 ? (
           <SvgPlayer src={foosballSvg} foosball={true} />
         ) : (
           <img src={game} className="play-ground" />
-        )}
+        )} */}
+        <TravelSvga foosball={true} start={isPlaying} src={foosballSvg} />
+
         <div className="play-section">
           <div className="xPlay">
-            {/* <button
-              className={playXbutton ? "x1" : "x1-off"}
-              name="x1"
-              onClick={() => setPlayXButton((prevState) => !prevState)}
-            /> */}
             <div>
               <input
                 className="enter-value"

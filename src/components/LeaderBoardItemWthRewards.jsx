@@ -18,7 +18,6 @@ const LeaderBoardItemWthRewards = ({
   isWheel,
 }) => {
   let reward = JSON.parse(user.desc);
-  console.log("single reward:", reward);
 
   return (
     <div className="leader-board-item-with-rewards">

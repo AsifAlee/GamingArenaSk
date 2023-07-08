@@ -30,9 +30,11 @@ import unknownUser from "../../../assets/images/unknown-user.png";
 import beansIcon from "../../../assets/images/bean.png";
 // import billardSvg from "../../../assets/svgs/PoolGame.svga";
 import mascot from "../../../assets/images/mascot.png";
+import cueChargin from "../../../assets/images/stick-charging.gif";
 
 import "../../../styles/marquee.scss";
 import SvgPlayer from "../../../components/SvgPlayer";
+import TravelSvga from "../../../components/Svga2";
 
 const Billiards = () => {
   const {
@@ -165,19 +167,27 @@ const Billiards = () => {
         if (response.data === true) {
           setTimeout(() => {
             setIsQueRecharging(false);
-          }, 2000);
+            getInfo();
+            setShowRechargeQue(true);
+            setRechargeMsg(response.msg);
+            setQueCode(response?.errorCode);
+          }, 4000);
         } else {
           setTimeout(() => {
             setIsQueRecharging(false);
-          }, 2000);
+            getInfo();
+            setShowRechargeQue(true);
+            setRechargeMsg(response.msg);
+            setQueCode(response?.errorCode);
+          }, 4000);
         }
 
-        setRechargeMsg(response.msg);
-        setQueCode(response?.errorCode);
+        // setRechargeMsg(response.msg);
+        // setQueCode(response?.errorCode);
         // if (response.errorCode === 0) setIsQueRecharged(true);
         // if (response.errorCode === 10000008) setIsQueRecharged(true);
-        getInfo();
-        setShowRechargeQue(true);
+        // getInfo();
+        // setShowRechargeQue(true);
       })
       .catch((error) => {
         console.error("api error", error.messsage);
@@ -212,7 +222,7 @@ const Billiards = () => {
           setGameErrCode(response.errorCode);
           getInfo();
           getBilliardsLeaderBoardData();
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         setIsPlaying(false);
@@ -254,21 +264,17 @@ const Billiards = () => {
       </Marquee>
 
       <div className="billiard-game">
-        {/* <img className="table" src={table} /> */}
-        {/* <SVGAPlayer src={billardSvg} /> */}
-        {/* <SVGAPlayer src={clawSvg} /> */}
-        {isPlaying == true && rewardData?.rewardDTOList?.length > 0 ? (
-          <SvgPlayer src={poolSvg} snookerTable={true} />
-        ) : (
-          <img className="table" src={table} />
-        )}
+        {/* <SvgPlayer src={poolSvg} snookerTable={true} /> */}
+        <TravelSvga src={poolSvg} snookerTable={true} start={isPlaying} />
 
         <div className="cue">
           {isQueRecharging === false ? (
             <img src={cue} />
           ) : (
-            <SvgPlayer src={cueStick} stick={true} />
+            // <SvgPlayer src={cueStick} stick={true} />
+            <img src={cueChargin} />
           )}
+          {/* <TravelSvga src={cueStick} stick={true} start={isQueRecharging} /> */}
         </div>
         <button
           className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}

@@ -9,7 +9,6 @@ const Slider = ({ rewards, foosball, billiards, eventGifting, isTalent }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   let intervalId = null;
   const nextSlide = () => {
-    console.log(currentIndex);
     setCurrentIndex((prevState) =>
       prevState === rewards.length - 1 ? 0 : prevState + 1
     );

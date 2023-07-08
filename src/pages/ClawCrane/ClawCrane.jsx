@@ -16,6 +16,7 @@ import clawCraneImg from "../../assets/images/claw-crane/game.png";
 import unknowUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 import clawCraneIcon from "../../assets/images/claw-crane/claw-point-icon.png";
+import TravelSvga from "../../components/Svga2";
 const ClawCrane = ({}) => {
   const {
     info,
@@ -47,9 +48,10 @@ const ClawCrane = ({}) => {
   const [isSeeMore, setIsSeeMore] = useState(false);
   const [showRecords, setShowRecords] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const playCrawlCrane = () => {
-    setIsPlaying(true);
+    setIsDisabled(true);
 
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
@@ -65,14 +67,16 @@ const ClawCrane = ({}) => {
       .then((response) => response.json())
       .then((response) => {
         setRewardData(response?.data);
-
+        setIsPlaying(true);
         setTimeout(() => {
           setIsPlaying(false);
+
           setGamePopup(true);
           setGameErrCode(response.errorCode);
           getInfo();
           setGameMsg(response?.msg);
           getCrawlLeaderBoardData();
+          setIsDisabled(false);
         }, 4000);
       })
       .catch((error) => {
@@ -123,18 +127,23 @@ const ClawCrane = ({}) => {
       </Marquee>
       <div className="crane-game">
         <div className="game">
-          {isPlaying === true && rewardData?.rewardDTOList?.length > 0 ? (
+          {/* {isPlaying === true ? (
+
             <SvgPlayer src={clawCraneSvg} crane={true} />
           ) : (
             <img src={clawCraneImg} />
-          )}
+          )} */}
 
+          {/* <SvgPlayer src={clawCraneSvg} crane={true} start={isPlaying} /> */}
+          <TravelSvga src={clawCraneSvg} start={isPlaying} crane={true} />
           <button
-            className={`get-btn ${isPlaying === true && "blackNWhite"}`}
+            className={`get-btn ${
+              isPlaying === true || (isDisabled === true && "blackNWhite")
+            }`}
             onClick={() => {
               playCrawlCrane();
             }}
-            disabled={isPlaying}
+            disabled={isDisabled || isPlaying}
           />
         </div>
       </div>

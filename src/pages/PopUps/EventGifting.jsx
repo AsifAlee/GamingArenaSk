@@ -39,7 +39,7 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "rustyRanger.png",
         },
         {
-          name: "Game Master frame  x5 Days ",
+          name: "Game Battle frame  x5 Days ",
           img: "gameMasterProfileFrame.png",
         },
         {
@@ -77,7 +77,7 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Game Master frame  x1 Day",
+          name: "Game Battle frame  x1 Day",
           img: "gameMasterProfileFrame.png",
         },
         {

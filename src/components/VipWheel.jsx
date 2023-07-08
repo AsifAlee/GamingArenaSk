@@ -17,7 +17,7 @@ const VipWheel = ({ isRotatingVip, vipStep, rotateDegVip }) => {
         <img src={vipTop} className="top" />
         <img
           src={vipWheel}
-          className={`vip-wheel-img ${isRotatingVip === false && "rotate-0"}`}
+          className={`vip-wheel-img ${isRotatingVip === true && "move"}`}
           style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
         />
       </div>

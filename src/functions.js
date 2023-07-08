@@ -141,7 +141,5 @@ export const beansPot = [
   },
 ];
 export const gotoProfile = (id) => {
-  debugger;
-  console.log("go to profile called");
   window.location.href = `http://www.kktv1.com/m/?roomid=${id}`;
 };

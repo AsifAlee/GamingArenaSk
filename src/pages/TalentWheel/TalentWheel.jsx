@@ -21,6 +21,8 @@ import unknownUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 
 const TalentWheel = () => {
+  const [angleOfRotation, setAngleOfRotation] = useState(0);
+
   const {
     info,
     marqueeData,
@@ -140,25 +142,28 @@ const TalentWheel = () => {
         case "Enlightening Room Skin":
           setRotateDegVip(2);
           break;
-        case "SVIP":
+        case "gems":
           setRotateDegVip(3);
           break;
-        case "gems":
+        case "SVIP":
           setRotateDegVip(4);
           break;
+
         case "Victorious frame (NEW)":
-          setRotateDegVip(5);
+          setRotateDegVip(7);
           break;
 
         case "Victorious room skin (NEW)":
           setRotateDegVip(6);
           break;
-        case "Game Master frame":
-          setRotateDegVip(7);
+        case "Game Master frame (New)":
+          setRotateDegVip(5);
           break;
+
         case "Game Master room skin":
           setRotateDegVip(8);
           break;
+
         default:
           setRotateDegVip(0);
           break;
@@ -167,15 +172,16 @@ const TalentWheel = () => {
   };
 
   const playLuckyGame = () => {
+    setAngleOfRotation(12000);
     setIsRotatingLucky(true);
     setIsPlaying(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        // userId: testUserId,
-        // token: testToken,
-        userId: user?.uid,
-        token: user?.token,
+        userId: testUserId,
+        token: testToken,
+        // userId: user?.uid,
+        // token: user?.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -197,24 +203,24 @@ const TalentWheel = () => {
           setRewardData(response?.data);
           getInfo();
           getLuckyWheelLeaderbrdData();
-        }, 4000);
+          setRotateDegLucky(0);
+        }, 5000);
       })
       .catch((error) => {
         console.error("Api error:", error.message);
       });
   };
   const playVipGame = () => {
-    console.log("vip game called");
     setIsPlaying(true);
     setIsRotatingvip(true);
 
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        // userId: testUserId,
-        // token: testToken,
-        userId: user?.uid,
-        token: user?.token,
+        userId: testUserId,
+        token: testToken,
+        // userId: user?.uid,
+        // token: user?.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -406,6 +412,7 @@ const TalentWheel = () => {
           gameErrCode={gameErrCode}
           data={rewardData}
           respMsg={respMsg}
+          angleOfRotation={angleOfRotation}
         />
       )}
       {vipPopup && (
