@@ -39,8 +39,8 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "rustyRanger.png",
         },
         {
-          name: "Game Battle frame  x5 Days ",
-          img: "gameMasterProfileFrame.png",
+          name: "Game Battle frame (New) x5 Days ",
+          img: "gameMasterFarme.png",
         },
         {
           name: "3,000,000 gems",
@@ -58,8 +58,8 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Game Master frame  x3 Days",
-          img: "gameMasterProfileFrame.png",
+          name: "Game Battle frame (New) x3 Days",
+          img: "gameMasterFarme.png",
         },
         {
           name: "2,000,000 gems",
@@ -77,8 +77,8 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Game Battle frame  x1 Day",
-          img: "gameMasterProfileFrame.png",
+          name: "Game Battle frame (New) x1 Day",
+          img: "gameMasterFarme.png",
         },
         {
           name: "1,000,000 gems",
@@ -97,8 +97,8 @@ const EventGifting = ({ toggleEventGifting }) => {
           img: "solar.png",
         },
         {
-          name: "Victorious frame x5 Days ",
-          img: "beanbag.png",
+          name: "Victorious frame (New) x5 Days ",
+          img: "victoriousFrame.png",
         },
         {
           name: "3,000,000 Beans",
@@ -115,7 +115,7 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Victorious frame x3 Days",
+          name: "Victorious frame (New) x3 Days",
           img: "victoriousFrame.png",
         },
         {
@@ -133,8 +133,8 @@ const EventGifting = ({ toggleEventGifting }) => {
         },
 
         {
-          name: "Victorious frame  x1 Day ",
-          img: "beanbag.png",
+          name: "Victorious frame (New)  x1 Day ",
+          img: "victoriousFrame.png",
         },
         {
           name: "1,000,000 Beans",

@@ -5,10 +5,8 @@ import vipBottom from "../assets/images/wheel/vip-bottom.png";
 import vipTop from "../assets/images/wheel/vip-top.png";
 import "../styles/talent-wheel.scss";
 import "../styles/talent-wheel.scss";
-const VipWheel = ({ isRotatingVip, vipStep, rotateDegVip }) => {
-  console.log("is rotating lucky:", isRotatingVip);
-  console.log("lucky step:", vipStep);
-  console.log("rotate deg lucky:", rotateDegVip);
+const VipWheel = ({ isRotatingVip, rotateDegVip, angleOfRotation }) => {
+  console.log("rotate deg vip:", rotateDegVip);
 
   return (
     <div className="vip-game">
@@ -17,8 +15,10 @@ const VipWheel = ({ isRotatingVip, vipStep, rotateDegVip }) => {
         <img src={vipTop} className="top" />
         <img
           src={vipWheel}
-          className={`vip-wheel-img ${isRotatingVip === true && "move"}`}
-          style={{ transform: `rotate(${vipStep * rotateDegVip}deg)` }}
+          className={`vip-wheel-img  ${isRotatingVip && "spinning"}`}
+          style={{
+            transform: `rotate(${angleOfRotation}deg)`,
+          }}
         />
       </div>
       <img src={vipBottom} className="vip-bottom" />

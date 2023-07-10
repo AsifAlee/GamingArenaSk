@@ -12,11 +12,11 @@ import ClawCranePopUp from "../PopUps/ClawCrane";
 import ClawCraneRecords from "../PopUps/ClawCraneRecords";
 import SvgPlayer from "../../components/SvgPlayer";
 import clawCraneSvg from "../../assets/svgs/Claw_Crane_Game.svga";
-import clawCraneImg from "../../assets/images/claw-crane/game.png";
 import unknowUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 import clawCraneIcon from "../../assets/images/claw-crane/claw-point-icon.png";
 import TravelSvga from "../../components/Svga2";
+import clawCraneSvgaNew from "../../assets/svgs/Claw-Crane-Game-new.svga";
 const ClawCrane = ({}) => {
   const {
     info,
@@ -25,6 +25,7 @@ const ClawCrane = ({}) => {
     user,
     leaderBoardData,
     getCrawlLeaderBoardData,
+    getRecords,
   } = useContext(AppContext);
 
   const toggleRecordsPopup = () => {
@@ -66,18 +67,23 @@ const ClawCrane = ({}) => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setRewardData(response?.data);
-        setIsPlaying(true);
-        setTimeout(() => {
-          setIsPlaying(false);
-
+        if (response.errorCode === 10000004) {
           setGamePopup(true);
           setGameErrCode(response.errorCode);
-          getInfo();
-          setGameMsg(response?.msg);
-          getCrawlLeaderBoardData();
           setIsDisabled(false);
-        }, 4000);
+        } else {
+          setRewardData(response?.data);
+          setTimeout(() => {
+            setIsPlaying(false);
+            setGamePopup(true);
+            setGameErrCode(response.errorCode);
+            getInfo();
+            setGameMsg(response?.msg);
+            getCrawlLeaderBoardData();
+            getRecords(3);
+            setIsDisabled(false);
+          }, 3000);
+        }
       })
       .catch((error) => {
         setIsPlaying(false);

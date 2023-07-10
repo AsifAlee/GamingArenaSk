@@ -89,7 +89,9 @@ export function getRewardsImage(rewDesc) {
     rewImg = baseUrl + "/streamkar/rewards/bumblebee.png";
   } else if (rewDesc?.includes("Game Master room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/gameMasterRoomSkin.png";
-  } else if (rewDesc?.includes("Game Master frame")) {
+  } else if (rewDesc?.includes("Game Battle frame (New)")) {
+    rewImg = baseUrl + "/streamkar/rewards/gameMasterFarme.png";
+  } else if (rewDesc?.includes("Game Master frame (New)")) {
     rewImg = baseUrl + "/streamkar/rewards/gameMasterFarme.png";
   } else if (rewDesc?.includes("VIP")) {
     rewImg = baseUrl + "/streamkar/rewards/vip.png";

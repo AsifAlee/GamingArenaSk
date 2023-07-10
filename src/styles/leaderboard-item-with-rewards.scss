@@ -90,13 +90,12 @@
       flex-wrap: wrap;
       //  width: 46vw;
       //  margin-right: 3vw;
-      img {
-        width:4vw;
-      }
     }
 
-    .days {
-      font-size: 1.4vw;
+    .is-talent-wheel {
+      width: 37vw;
+      height: 14vw;
+      overflow-y: auto;
     }
   }
 }
@@ -115,5 +114,31 @@
     align-items: center;
     border-radius: 2vw;
     border: 2px solid white;
+    img {
+      width: 4vw;
+    }
+  }
+
+  .claw-crane-bg-image {
+    width: 7vw;
+    height: 7vw;
+    background-color: #00ccff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    border: 2px solid white;
+
+    img {
+      width: 6vw;
+    }
+  }
+
+  .days {
+    font-size: 1.4vw;
+  }
+
+  .claw-days {
+    font-size: 2.4vw;
   }
 }

@@ -11,7 +11,7 @@ const EventProvider = ({ children }) => {
     totalBillardsScore: 0,
     dayIndex: 0,
     beanPotList: [],
-    sendBeans: 0,
+    talentPoints: 0,
     clawPoints: 0,
     totalFoosballScore: 0,
     receiveBeans: 0,
@@ -28,7 +28,6 @@ const EventProvider = ({ children }) => {
 
   const [freeGifts, setFreeGifts] = useState({
     isClaimed: true,
-    isApiCalled: false,
   });
   const [leaderBoardData, setLeaderBoardData] = useState({
     billiards: [],
@@ -57,7 +56,7 @@ const EventProvider = ({ children }) => {
 
   const getInfo = () => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${user.uid}`
+      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${testUserId}`
     ).then((response) =>
       response
         .json()
@@ -70,16 +69,13 @@ const EventProvider = ({ children }) => {
             totalFoosballScore: response.data.foosballScores,
             dayIndex: response?.data?.dayIndex,
             beanPotList: response?.data.beanPotList,
-            sendBeans: response?.data?.sendBeans,
+            talentPoints: response?.data?.talentPoints,
             receiveBeans: response?.data?.receiveBeans,
             clawPoints: response?.data?.clawPoints,
           });
           setFreeGifts({
             ...freeGifts,
             isClaimed: response.data.claimDailyFreeGifts,
-            // isClaimed: false,
-
-            // isApiCalled: response.errorCode === 0 ? true : false,
           });
         })
         .catch((error) => console.error("api error:", error.message))
@@ -351,6 +347,8 @@ const EventProvider = ({ children }) => {
         getCrawlLeaderBoardData,
         getLuckyWheelLeaderbrdData,
         getVipWheelLeaderBoardData,
+        // setFreeGifts,
+        getRecords,
       }}
     >
       {children}

@@ -239,6 +239,7 @@
           color: white;
           font-size: 4vw;
           letter-spacing: 0.7vw;
+          
         }
 
         .inner-content {
@@ -289,7 +290,7 @@
             }
 
             .reward-row {
-              height: 41vw;
+              // height: 41vw;
 
               .reward-item {
                 display: flex;
@@ -386,7 +387,7 @@
             }
 
             .reward-row {
-              height: 41vw;
+              // height: 41vw;
 
               .reward-item {
                 display: flex;
@@ -430,6 +431,7 @@
         color: white;
         font-size: 4vw;
         width: 74vw;
+        margin: 0 auto;
       }
       .gift-box {
         height: 65vw;
@@ -488,5 +490,26 @@
 
       
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 2vw;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #684163; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
   }
 }

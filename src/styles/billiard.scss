@@ -412,6 +412,16 @@
     }
   }
 
+
+  #extraContent {
+    height: 0px;
+    width: 0px;
+    position: absolute;
+    z-index: -2147483648;
+    content: url("../assets//images/stick-charging.gif");
+    visibility: hidden;
+    top: 0px;
+  }
   ::-webkit-scrollbar {
     width: 2vw;
   }

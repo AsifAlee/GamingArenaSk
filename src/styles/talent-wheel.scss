@@ -118,6 +118,7 @@
         z-index: 1;
       }
     }
+    
     .lucky-game {
       width: 79vw;
       height: 107vw;
@@ -149,15 +150,41 @@
         left: 15vw;
         z-index: 1;
 
+ 
+      }
+
         .lucky-wheel-img {
           width: 44vw;
           position: relative;
           top: 3vw;
           left: 3vw;
-          transition: transform 5s ease-in-out;
+       
+
+          
+        }
+
+        .spinning{
+         animation: spin 3s infinite linear;;
+        }
+        .finish{
+          transition: transform 4s ease-in-out;
+         }
+
+    
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+            animation-timing-function:linear; /* Start fast */
+          }
+      
+          100% {
+            transform: rotate( 8000deg);
+            animation-timing-function: ease-out; /* Stop smoothly */
+          }
         }
         .move{
-          transition: transform 5s ease-in-out;
+          transition: transform 6s ease-in-out;
 
         }
         .top{
@@ -226,6 +253,27 @@
           top: -3vw;
         }
       }
+
+      .spinning{
+        animation: spin 3s infinite linear;;
+       }
+       .finish{
+         transition: transform 4s ease-in-out;
+        }
+
+   
+
+       @keyframes spin {
+         0% {
+           transform: rotate(0deg);
+           animation-timing-function:linear; /* Start fast */
+         }
+     
+         100% {
+           transform: rotate( 6000deg);
+           animation-timing-function: ease-out; /* Stop smoothly */
+         }
+       }
       .vip-bottom {
         position: absolute;
         bottom: 37vw;
@@ -355,4 +403,6 @@
     margin-top: 3vw;
     font-size: 3.5vw;
   }
-}
+
+
+

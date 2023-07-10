@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import unknown from "../assets/images/unknown-user.png";
 import level from "../assets/images/level.PNG";
 import ballIcon from "../assets/images/ball-potted-icon.png";
@@ -8,6 +8,7 @@ import "../styles/leader-board-item.scss";
 import { getLevelImage, getRewardsImage, gotoProfile } from "../functions";
 import "../styles/leaderboard-item-with-rewards.scss";
 import LeaderBoardItemReward from "./LeaderBoardItemReward";
+import LeaderBoardSlider from "./LeaderBoardSlider";
 
 const LeaderBoardItemWthRewards = ({
   user,
@@ -17,7 +18,24 @@ const LeaderBoardItemWthRewards = ({
   iconImg,
   isWheel,
 }) => {
-  let reward = JSON.parse(user.desc);
+  // const [rewards, setCurrentReward] = useState(JSON.parse(user.desc));
+  // const [formatedReward, setFormatedReward] = useState([]);
+
+  const formatData = (originalArray) => {
+    const newArray = [];
+    for (let i = 0; i < originalArray?.length; i += 3) {
+      newArray.push(originalArray.slice(i, i + 3));
+    }
+    return newArray;
+  };
+  let currentReward = formatData(JSON.parse(user.desc));
+  // let reward = JSON.parse(user.desc);
+  // formatData(reward);
+  // useEffect(() => {
+  //   setFormatedReward(formatData(JSON.parse(user.desc)));
+  // }, []);
+
+  console.log("formated data:", currentReward);
 
   return (
     <div className="leader-board-item-with-rewards">
@@ -47,19 +65,20 @@ const LeaderBoardItemWthRewards = ({
             <img src={clawPoint} />
           </div>
         )}
-        <div
-          className="rewards"
-          style={{ width: isWheel && "37vw", marginRight: isWheel && "3vw" }}
-        >
-          {reward.map((des) => {
+        <div className={`rewards ${isWheel && "is-talent-wheel"}`}>
+          {
+            /* {reward.map((des) => {
             return (
               <LeaderBoardItemReward
                 rewImg={getRewardsImage(des.desc)}
                 days={des.count}
                 desc={des.desc}
+                isClawCrane={isClawCrane}
               />
             );
-          })}
+          })} */
+            <LeaderBoardSlider rewards={currentReward} />
+          }
         </div>
       </div>
     </div>

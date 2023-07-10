@@ -11,7 +11,7 @@ const ClawCraneDetail = ({ toggleDetailPopUp }) => {
       <div className="billiards">
         <div className="details">
           <img src={title} className="title" />
-          <h3 className="heading">FOOSBALL DETAILS</h3>
+          <h3 className="heading">CLAW CRANE DETAILS</h3>
           <div className="inner-content">
             <table>
               <tr className="head">
@@ -27,7 +27,7 @@ const ClawCraneDetail = ({ toggleDetailPopUp }) => {
                 <td>
                   <div
                     style={{
-                      height: "37vw",
+                      // height: "37vw",
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "0.5vw",
@@ -44,7 +44,9 @@ const ClawCraneDetail = ({ toggleDetailPopUp }) => {
                         }
                         className="giftImg"
                       />
-                      <span className="text">Victorious Room skin x1 day</span>
+                      <span className="text">
+                        Victorious Room skin (New) x1 day
+                      </span>
                     </div>
 
                     <div className="reward-item">
@@ -80,7 +82,9 @@ const ClawCraneDetail = ({ toggleDetailPopUp }) => {
                         src={baseUrl + "/streamkar/rewards/victoriousFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">Victorious frame x1 day</span>
+                      <span className="text">
+                        Victorious frame (New) x1 day
+                      </span>
                     </div>
                   </div>
                 </td>

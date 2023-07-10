@@ -45,6 +45,7 @@ const Billiards = () => {
     leaderBoardData,
     records,
     getBilliardsLeaderBoardData,
+    getRecords,
   } = useContext(AppContext);
 
   const { rechargeCue, totalBillardsScore, beanPotList } = info;
@@ -133,11 +134,12 @@ const Billiards = () => {
   const getBeansPot = () => {
     if (leaderBoardTabs.today) {
       setBeansPot(
-        info.beanPotList.find((pot) => pot.dayIndex === info.dayIndex)?.potValue
+        info?.beanPotList?.find((pot) => pot.dayIndex === info.dayIndex)
+          ?.potValue
       );
     } else {
       setBeansPot(
-        info.beanPotList.find((pot) => pot.dayIndex === info.dayIndex - 1)
+        info?.beanPotList?.find((pot) => pot.dayIndex === info.dayIndex - 1)
           ?.potValue
       );
     }
@@ -222,6 +224,7 @@ const Billiards = () => {
           setGameErrCode(response.errorCode);
           getInfo();
           getBilliardsLeaderBoardData();
+          getRecords(1);
         }, 1000);
       })
       .catch((error) => {
@@ -264,20 +267,20 @@ const Billiards = () => {
       </Marquee>
 
       <div className="billiard-game">
-        {/* <SvgPlayer src={poolSvg} snookerTable={true} /> */}
         <TravelSvga src={poolSvg} snookerTable={true} start={isPlaying} />
 
         <div className="cue">
           {isQueRecharging === false ? (
             <img src={cue} />
           ) : (
-            // <SvgPlayer src={cueStick} stick={true} />
             <img src={cueChargin} />
           )}
-          {/* <TravelSvga src={cueStick} stick={true} start={isQueRecharging} /> */}
+          <div id="extraContent"></div>
         </div>
         <button
-          className={rechargeCue ? "recharge-cue-off" : "recharge-cue"}
+          className={
+            rechargeCue || isQueRecharging ? "recharge-cue-off" : "recharge-cue"
+          }
           onClick={() => doRechargeQue()}
           disabled={rechargeCue === true || isQueRecharging === true}
         />

@@ -62,7 +62,7 @@ const Slider = ({ rewards, foosball, billiards, eventGifting, isTalent }) => {
           </div>
           {isTalent && (
             <p
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", fontSize: "3vw" }}
             >{`Target: ${rewards[currentIndex].target} `}</p>
           )}
         </div>

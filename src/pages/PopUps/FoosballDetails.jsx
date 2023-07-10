@@ -16,17 +16,19 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
               <tr className="head">
                 <th>Button Name</th>
                 <th>Game Points Required </th>
+                <th>Score</th>
 
                 <th style={{ width: "41vw" }}>Rewards</th>
               </tr>
               <tr className="reward-row">
                 <td>Play</td>
                 <td>20,000</td>
+                <th>0 or 1</th>
 
                 <td>
                   <div
                     style={{
-                      height: "46vw",
+                      // height: "46vw",
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "0.5vw",
@@ -122,26 +124,27 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
               </tr>
             </table>
 
-            <table className="claw-points">
+            {/* <table className="claw-points">
               <tr className="head">
                 <th>Button Name</th>
                 <th>Game Points Required </th>
+                <th>Score detail</th>
                 <th>Claw Points</th>
                 <th>Possibility</th>
               </tr>
               <tr>
-                <td>Play</td>
-                <td>20,000</td>
+                <td rowSpan={2}>Play</td>
+                <td rowSpan={2}>20,000</td>
+                <td>1 or 0</td>
                 <td>1</td>
                 <td>50%</td>
               </tr>
               <tr>
-                <td></td>
-                <td></td>
+              
                 <td style={{ borderTop: "1px solid" }}>0</td>
                 <td style={{ borderTop: "1px solid" }}>50%</td>
               </tr>
-            </table>
+            </table> */}
           </div>
         </div>
       </div>

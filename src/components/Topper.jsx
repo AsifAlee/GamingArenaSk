@@ -28,7 +28,7 @@ const Topper = ({
     return index === 0 ? firstFrame : index === 2 ? secFrame : thirdFrame;
   };
   const calculateEstRewards = (beansPot, percent) => {
-    return Math.floor((percent / 100) * beansPot.potValue);
+    return Math.floor((percent / 100) * beansPot?.potValue);
   };
 
   return (
@@ -62,10 +62,10 @@ const Topper = ({
                 <span>
                   {calculateEstRewards(
                     isToday
-                      ? info.beanPotList.find(
+                      ? info?.beanPotList?.find(
                           (item) => item.dayIndex === info.dayIndex
                         )
-                      : info.beanPotList.find(
+                      : info?.beanPotList?.find(
                           (item) => item.dayIndex === info.dayIndex - 1
                         ),
                     index === 0 ? 50 : index === 1 ? 30 : 20

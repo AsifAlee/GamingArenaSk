@@ -23,7 +23,7 @@
     }
   }
 
-  .blackNWhite{
+  .blackNWhite {
     filter: grayscale(1);
   }
 
@@ -45,11 +45,11 @@
     justify-content: center;
     align-items: center;
     letter-spacing: 0.1vw;
-    img{
+    img {
       width: 3vw;
       margin-left: 1vw;
     }
-    span{
+    span {
       margin-left: 1vw;
     }
     padding: 3.5vw;
@@ -176,16 +176,14 @@
     background-image: url("../assets/images/foosball/foosball-bg.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin:18vw auto 0;
+    margin: 18vw auto 0;
     position: relative;
 
     .leaderbrd-title {
-     
-
       width: 80vw;
-    position: absolute;
-    left: 8vw;
-    top: -18vw;
+      position: absolute;
+      left: 8vw;
+      top: -18vw;
     }
 
     .rewards {
@@ -196,7 +194,7 @@
       width: 100%;
       height: 83vw;
       margin-top: 23vw;
-    
+
       display: inline-block;
       position: relative;
       background-position: center;
@@ -209,11 +207,8 @@
       }
     }
 
-  
-
     .leaderboard {
       // min-height: 234vw;
- 
 
       .tabs {
         display: flex;
@@ -295,39 +290,38 @@
     ::-webkit-scrollbar {
       width: 2vw;
     }
-    
+
     /* Track */
     ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey; 
+      box-shadow: inset 0 0 5px grey;
       border-radius: 10px;
     }
-     
+
     /* Handle */
     ::-webkit-scrollbar-thumb {
-      background: #684163; 
+      background: #684163;
       border-radius: 10px;
     }
-    
+
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-      background: #b30000; 
+      background: #b30000;
     }
   }
 
-  .rights{
-    font-family: 'Acme-Regular';
+  .rights {
+    font-family: "Acme-Regular";
     text-align: center;
     color: white;
     margin-top: 3vw;
     font-size: 3.5vw;
-
   }
 
-  .noData{
+  .noData {
     display: flex;
-justify-content: center;
-align-items: center;
-font-family: 'Acme-Regular';
-color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: "Acme-Regular";
+    color: white;
   }
 }

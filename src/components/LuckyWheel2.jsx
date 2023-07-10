@@ -3,19 +3,15 @@ import wheel from "../assets/images/wheel/lucky-wheel-inner-bg.png";
 import bottom from "../assets/images/wheel/wheel-bottom.png";
 import wheelTop from "../assets/images/wheel/wheel-top.png";
 import "../styles/talent-wheel.scss";
-import { useState } from "react";
 
-const LuckyWheel = ({
-  isRotatingLucky,
-  luckyStep,
-  rotateDegLucky,
-  angleOfRotation,
-  isRotatingFinished,
-}) => {
-  const [angle, setAngle] = useState(0);
+const LuckyWheel2 = ({ isRotatingLucky, rotateDegLucky, angleOfRotation }) => {
   console.log("is rotating lucky:", isRotatingLucky);
-  console.log("lucky step:", luckyStep);
+  console.log("angle of rotation:", angleOfRotation);
   console.log("rotate deg lucky:", rotateDegLucky);
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <div className="lucky-game">
@@ -24,13 +20,9 @@ const LuckyWheel = ({
         <img src={wheelTop} className="top" />
         <img
           src={wheel}
-          // className={`lucky-wheel-img ${
-          //   isRotatingLucky === false && "rotate-0"
-          // }`}
-
-          className={`lucky-wheel-img ${isRotatingLucky === true && "move"}`}
+          className={`lucky-wheel-img  ${isRotatingLucky && "spinning"}`}
           style={{
-            transform: `rotate(${angle}deg)`,
+            transform: `rotate(${angleOfRotation}deg)`,
           }}
         />
       </div>
@@ -39,4 +31,4 @@ const LuckyWheel = ({
   );
 };
 
-export default LuckyWheel;
+export default LuckyWheel2;

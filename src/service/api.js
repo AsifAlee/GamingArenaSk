@@ -1,3 +1,3 @@
 export const baseUrl = "http://test.streamkar.tv";
-export const testUserId = 502184262;
-export const testToken = "A105164695960742F19328F121C56B5A86";
+export const testUserId = 502184259;
+export const testToken = "A1B7EB6CFC04CD440480F845B05C08CAD2";

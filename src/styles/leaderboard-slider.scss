@@ -1,0 +1,23 @@
+.leaderboard-slider{
+    width: 35vw;
+    height: 12vw;
+    // border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .left-arrow{
+     width: 3vw;
+    }
+    .right-arrow{
+     width: 3vw;
+    }
+    .rew-section{
+     width: 28vw;
+     height: 100%;
+    //  border: 1px solid red;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+}

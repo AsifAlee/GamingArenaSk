@@ -19,14 +19,13 @@ const ClawCraneRecords = ({ toggleRecordsPopup }) => {
               <table>
                 <tr className="head">
                   <th>Time</th>
-                  <th>Item Win </th>
 
                   <th style={{ width: "41vw" }}>Rewards</th>
                 </tr>
                 {records.clawCrane.map((rec) => (
                   <tr className="reward-row">
                     <td>{rec?.time.split("T")[0]}</td>
-                    <td>{rec?.score}</td>
+                    {/* <td>{rec?.score}</td> */}
 
                     <td>
                       <div

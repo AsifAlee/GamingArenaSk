@@ -16,16 +16,18 @@ function App() {
     freeGifts,
     selectedLng,
     changeLanguage,
+    // setFreeGifts,
   } = useContext(AppContext);
   const [eventGifting, setEventGifting] = useState(false);
+  const [showGiftPopup, setShowGiftPopup] = useState(false);
   const [mainTabs, setMainTabs] = useState({
     gamingZone: true,
     clawCrane: false,
     luckyWheel: false,
   });
-  const [showGiftPopup, setShowGiftPopup] = useState(false);
   const closeGiftPopup = () => {
     setShowGiftPopup(false);
+    // setFreeGifts({ ...freeGifts, isClaimed: true });
   };
 
   const toggleEventGifting = () => {
@@ -59,17 +61,17 @@ function App() {
       </div>
       <div className="main-tabs">
         <button
-          className={mainTabs.gamingZone ? "gaming-zone" : "gaming-zone-off"}
+          className={`gaming-zone ${!mainTabs.gamingZone && "blackNwhite"}`}
           name="gaming-zone"
           onClick={switchMainTab}
         />
         <button
-          className={mainTabs.clawCrane ? "claw-crane" : "claw-crane-off"}
+          className={`claw-crane ${!mainTabs.clawCrane && "blackNwhite"}`}
           name="claw-crane"
           onClick={switchMainTab}
         />
         <button
-          className={mainTabs.luckyWheel ? "lucky-wheel" : "lucky-wheel-off"}
+          className={`lucky-wheel ${!mainTabs.luckyWheel && "blackNwhite"}`}
           name="lucky-wheel"
           onClick={switchMainTab}
         />
@@ -84,9 +86,11 @@ function App() {
       ) : (
         <TalentWheel />
       )}
-      {freeGifts.isClaimed === false && showGiftPopup === true && (
+      {/* {freeGifts.isClaimed === false ? (
         <FreeGift closeGiftPopup={closeGiftPopup} />
-      )}
+      ) : (
+        ""
+      )} */}
     </div>
   );
 }

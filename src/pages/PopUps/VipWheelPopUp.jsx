@@ -8,10 +8,21 @@ import bg from "../../assets/images/popup/foosball-detail-bg.png";
 import "../../styles/popup.scss";
 import { getRewardsImage } from "../../functions";
 
-const VipWheelPopup = ({ toggleVipPopup, data, gameErrCode, respMsg }) => {
+const VipWheelPopup = ({
+  toggleVipPopup,
+  data,
+  gameErrCode,
+  respMsg,
+  resetAngle,
+}) => {
   const { rewardDTOList } = data || {};
   return (
-    <PopUp popUpHandler={toggleVipPopup} bg={bg} isGame={true}>
+    <PopUp
+      popUpHandler={toggleVipPopup}
+      bg={bg}
+      isGame={true}
+      resetAngle={resetAngle}
+    >
       <div className="billiards">
         <div className="game">
           <img

@@ -6,10 +6,22 @@ import bg from "../../assets/images/popup/foosball-detail-bg.png";
 import "../../styles/popup.scss";
 import { getRewardsImage } from "../../functions";
 
-const LuckyWheelPopUp = ({ toggleLuckyPopup, data, gameErrCode, respMsg }) => {
+const LuckyWheelPopUp = ({
+  toggleLuckyPopup,
+  data,
+  gameErrCode,
+  respMsg,
+  resetAngle,
+}) => {
   const { rewardDTOList } = data || {};
+  console.log("fdddddddddddddd");
   return (
-    <PopUp popUpHandler={toggleLuckyPopup} bg={bg} isGame={true}>
+    <PopUp
+      popUpHandler={toggleLuckyPopup}
+      bg={bg}
+      isGame={true}
+      resetAngle={resetAngle}
+    >
       <div className="billiards">
         <div className="game">
           <img

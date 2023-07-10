@@ -23,6 +23,7 @@ import SvgPlayer from "../../../components/SvgPlayer";
 import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
 import TravelSvga from "../../../components/Svga2";
+import foosballGameSvgaNew from "../../../assets/svgs/FoosBall-Game-new.svga";
 
 const Foosball = () => {
   const {
@@ -32,6 +33,7 @@ const Foosball = () => {
     user,
     leaderBoardData,
     getFoosballLeaderBoardData,
+    getRecords,
   } = useContext(AppContext);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -75,7 +77,7 @@ const Foosball = () => {
         },
 
         {
-          name: "3000 beans ",
+          name: "2000 beans ",
           img: "beanbag.png",
         },
       ],
@@ -141,10 +143,10 @@ const Foosball = () => {
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        // userId: testUserId,
-        // token: testToken,
-        userId: user.uid,
-        token: user.token,
+        userId: testUserId,
+        token: testToken,
+        // userId: user.uid,
+        // token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -163,6 +165,7 @@ const Foosball = () => {
           setGamePopUp(true);
           getInfo();
           getFoosballLeaderBoardData();
+          getRecords(2);
         }, 2000);
       })
       .catch((error) => {

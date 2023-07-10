@@ -59,7 +59,7 @@ button{
     .gaming-zone{
       width: 20vw;
       height: 11vw;
-      background-image: url('./assets/images/gaming-zone.png');
+      background-image: url('./assets/images/gaming-arena.png');
       background-repeat: no-repeat;
       background-size: contain;
       background-color: transparent;
@@ -67,16 +67,7 @@ button{
 
     }
 
-    .gaming-zone-off{
-      width: 20vw;
-      height: 11vw;
-      background-image: url('./assets/images/gaming-zone-off.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-color: transparent;
-      border: none;
 
-    }
 
     .claw-crane{
       width: 20vw;
@@ -87,15 +78,7 @@ button{
       background-color: transparent;
       border: none;
     }
-    .claw-crane-off{
-      width: 20vw;
-      height: 11vw;
-      background-image: url('./assets/images/claw-crane-off.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-color: transparent;
-      border: none;
-    }
+
 
     .lucky-wheel{
       width: 20vw;
@@ -106,16 +89,11 @@ button{
       background-color: transparent;
       border: none;
     }
-
-    .lucky-wheel-off{
-      width: 20vw;
-      height: 11vw;
-      background-image: url('./assets/images/talent-wheel-off.png');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-color: transparent;
-      border: none;
+    .blackNwhite{
+      filter: grayscale(1);
     }
+
+
   }
 
 

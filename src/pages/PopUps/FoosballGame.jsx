@@ -29,7 +29,7 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
           <div className="content">
             {gameErrCode === 0 && scores > 0 ? (
               <div className="game-sucess">
-                Congratulations You have scored
+                Congratulations! You have scored
                 <div>
                   <span>{scores} </span>
                 </div>
@@ -73,14 +73,28 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                   {rewardDTOList?.map((item) => (
                     <div className="reward-item">
                       <img src={getRewardsImage(item?.desc)} />
-                      <span>{`${item?.count} days`}</span>
+
+                      {item.desc === "Beans" ? (
+                        <span className="text">{`${item.count} Beans`}</span>
+                      ) : item.desc === "Gems" ? (
+                        <span className="text">{`${item.count} Gems`}</span>
+                      ) : (
+                        <span className="text">{`${item.desc}  x${
+                          item.count > 1
+                            ? `${item.count} days`
+                            : `${item.count} day`
+                        }`}</span>
+                      )}
                     </div>
                   ))}
+                  <div>Play again to win more amazing rewards</div>
                 </div>
                 {clawPoints > 0 && (
                   <div>
                     <span>& Got</span>
-                    <div className="claw-points">{clawPoints} claw points</div>
+                    <div className="claw-points">{`${clawPoints} ${
+                      clawPoints > 1 ? "claw points" : "claw point"
+                    } `}</div>
                     <div>Play again to win more amazing rewards</div>
                   </div>
                 )}
@@ -99,6 +113,7 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                       <span>{`${item?.count} days`}</span>
                     </div>
                   ))}
+                  <div>Play again to win more amazing rewards</div>
                 </div>
                 {clawPoints > 0 && (
                   <div>

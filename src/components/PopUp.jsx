@@ -15,6 +15,8 @@ const PopUp = (props) => {
     isFreeGift,
   } = props;
 
+  let { resetAngle } = props;
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -45,7 +47,15 @@ const PopUp = (props) => {
         // }}
       >
         <div className="closeBtn">
-          <img onClick={popUpHandler} src={closeBtn} />
+          <img
+            onClick={() => {
+              popUpHandler();
+              if (resetAngle) {
+                resetAngle();
+              }
+            }}
+            src={closeBtn}
+          />
         </div>
         <div
           className="inner-div"

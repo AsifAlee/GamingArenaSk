@@ -76,14 +76,14 @@ const Guide = () => {
                   </div>
                 </Accordion>
               </div>
-              <div className="section-info">
+              {/* <div className="section-info">
                 <h4>Gaming Arena :</h4>
                 <p>There are two parts in the Gaming Arena :</p>
                 <ul>
                   <li>Billiards</li>
                   <li>Foosball</li>
                 </ul>
-              </div>
+              </div> */}
               <div className="guide-content">
                 {/* billiards */}
                 <Accordion title="BILLIARDS">
@@ -519,14 +519,14 @@ const Guide = () => {
                 </Accordion>
               </div>
 
-              <div className="section-info">
+              {/* <div className="section-info">
                 <h4>Gaming Arena :</h4>
                 <p>Gaming Arena ke 2 parts hain:</p>
                 <ul>
                   <li>Billiards</li>
                   <li>Foosball</li>
                 </ul>
-              </div>
+              </div> */}
               <div className="guide-content">
                 {/* billiards */}
                 <Accordion title="BILLIARDS">
