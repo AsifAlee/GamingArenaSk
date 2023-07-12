@@ -33,7 +33,7 @@ const Topper = ({
 
   return (
     <div className="topper">
-      <div className="images" onClick={() => gotoProfile(user.userId)}>
+      <div className="images" onClick={() => gotoProfile(user?.userId)}>
         <img className="frame" src={getFrame()} />
         <img
           className="avatar"
@@ -52,7 +52,7 @@ const Topper = ({
           />
           <div className="score">
             <img src={iconImg} />
-            <span>{user.userScore}</span>
+            <span>{user?.userScore}</span>
           </div>
           {estRewards && (
             <div className="est-rew">

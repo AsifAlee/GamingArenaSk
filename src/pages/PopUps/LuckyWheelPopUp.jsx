@@ -14,7 +14,6 @@ const LuckyWheelPopUp = ({
   resetAngle,
 }) => {
   const { rewardDTOList } = data || {};
-  console.log("fdddddddddddddd");
   return (
     <PopUp
       popUpHandler={toggleLuckyPopup}
@@ -67,7 +66,11 @@ const LuckyWheelPopUp = ({
             ) : gameErrCode === 10000004 ? (
               <div
                 className="game-failed"
-                style={{ position: "relative", bottom: "10vw" }}
+                style={{
+                  position: "relative",
+
+                  // bottom: "10vw"
+                }}
               >
                 Insufficient Points to Spin the wheel, receive more event gifts,
                 and Spin again!

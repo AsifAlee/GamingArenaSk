@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../MyContext";
-import gamePointIcon from "../../assets/images/gaming-point-icon.png";
+import gamePointIcon from "../../assets/images/talent-point-icon.png";
 import { baseUrl, testToken, testUserId } from "../../service/api";
 import Marquee from "react-fast-marquee";
 import "../../styles/talent-wheel.scss";
@@ -26,8 +26,9 @@ const TalentWheel = () => {
     user,
   } = useContext(AppContext);
   let { luckyTalentWheel, vipLuckyWheel } = leaderBoardData;
+  // luckyTalentWheel = [];
 
-  const [isSeeMore, setIsSeeMore] = useState(false);
+  const [isSeeMore, setIsSeeMore] = useState(true);
   const [tabs, setTabs] = useState({
     wheel: true,
     vipWheel: false,
@@ -44,16 +45,16 @@ const TalentWheel = () => {
   const [luckyPopUp, setLuckyPopUp] = useState(false);
   const [vipPopup, setVipPopup] = useState(false);
   const [respMsg, setRespMsg] = useState("");
-  const [selectedData, setSelectedDate] = useState([]);
+  // const [selectedData, setSelectedDate] = useState(luckyTalentWheel);
   const [isRotatingFinished, setIsRotatingFinished] = useState(false);
-
-  useEffect(() => {
-    if (tabs.wheel) {
-      setSelectedDate(luckyTalentWheel);
-    } else {
-      setSelectedDate(vipLuckyWheel);
-    }
-  }, [tabs.wheel]);
+  const [isDisabled, setIsDisabled] = useState(false);
+  // useEffect(() => {
+  //   if (tabs.wheel) {
+  //     setSelectedDate(luckyTalentWheel);
+  //   } else {
+  //     setSelectedDate(vipLuckyWheel);
+  //   }
+  // }, [tabs.wheel]);
   const toggleLuckyPopup = () => {
     setLuckyPopUp((prevState) => !prevState);
   };
@@ -146,10 +147,10 @@ const TalentWheel = () => {
     } else {
       switch (rewards[0].desc) {
         case "Bumblebee entrance":
-          setAngleOfRotation(1 * vipStep);
+          setAngleOfRotation(1 * vipStep - 20);
           break;
         case "Enlightening Room Skin":
-          setAngleOfRotation(2 * vipStep);
+          setAngleOfRotation(2 * vipStep - 20);
           break;
         case "gems":
           setAngleOfRotation(3 * vipStep);
@@ -157,20 +158,18 @@ const TalentWheel = () => {
         case "SVIP":
           setAngleOfRotation(4 * vipStep);
           break;
-
-        case "Victorious frame (NEW)":
-          setAngleOfRotation(7 * vipStep);
+        case "Game Battle frame (New)":
+          setAngleOfRotation(5 * vipStep);
           break;
-
         case "Victorious room skin (NEW)":
           setAngleOfRotation(6 * vipStep);
           break;
-        case "Game Master frame (New)":
-          setAngleOfRotation(5 * vipStep);
+        case "Victorious frame (NEW)":
+          setAngleOfRotation(7 * vipStep + 10);
           break;
 
-        case "Game Master room skin":
-          setAngleOfRotation(8 * vipStep);
+        case "Game Master room skin (New)":
+          setAngleOfRotation(8 * vipStep + 10);
           break;
 
         default:
@@ -180,30 +179,16 @@ const TalentWheel = () => {
     }
   };
 
-  const rotateIndefinitely = (text) => {
-    if (text === "lucky") {
-      setIsRotatingLucky(true);
-      callApiAndFindLuckyAngle();
-    } else {
-      setIsRotatingvip(true);
-      callApiFindVipAngle();
-    }
-    setIsPlaying(true);
-
-    setTimeout(() => {
-      setIsRotatingLucky(false);
-      setIsRotatingvip(false);
-    }, 6000);
-  };
-
   const callApiAndFindLuckyAngle = () => {
+    setIsDisabled(true);
+
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
-        // userId: user?.uid,
-        // token: user?.token,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user?.uid,
+        token: user?.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -213,27 +198,38 @@ const TalentWheel = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.errorCode === 10000004) {
+        if (
+          response.errorCode === 10000004 ||
+          response.errorCode === 30001007
+        ) {
           setGameErrCode(response.errorCode);
           setIsPlaying(false);
           setIsRotatingLucky(false);
           setIsRotatingFinished(true);
           setLuckyPopUp(true);
+          setIsDisabled(false);
+          setRespMsg(response?.msg);
         } else {
+          setIsRotatingLucky(true);
+          setIsPlaying(true);
           findLuckyAngle(response?.data?.rewardDTOList);
           setTimeout(() => {
-            setTimeout(() => {
-              setLuckyPopUp(true);
-            }, 1000);
-
             setIsRotatingLucky(false);
             setIsPlaying(false);
             setIsRotatingFinished(true);
             setRespMsg(response.msg);
             setGameErrCode(response.errorCode);
             setRewardData(response?.data);
-            getInfo();
+
+            getInfo(false);
             getLuckyWheelLeaderbrdData();
+            getVipWheelLeaderBoardData();
+            setTimeout(() => {
+              setLuckyPopUp(true);
+              setTimeout(() => {
+                setIsDisabled(false);
+              }, 2000);
+            }, 1000);
           }, 4000);
         }
       })
@@ -243,13 +239,14 @@ const TalentWheel = () => {
   };
 
   const callApiFindVipAngle = () => {
+    setIsDisabled(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
-        // userId: user?.uid,
-        // token: user?.token,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user?.uid,
+        token: user?.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -259,20 +256,34 @@ const TalentWheel = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        findVipLuckyAngle(response?.data?.rewardDTOList);
-
-        setTimeout(() => {
-          setTimeout(() => {
-            setVipPopup(true);
-          }, 1000);
-          setIsRotatingvip(false);
+        if (response.errorCode === 10000004) {
           setGameErrCode(response.errorCode);
-          setRewardData(response?.data);
-          setRespMsg(response.msg);
-          getInfo();
           setIsPlaying(false);
-          getVipWheelLeaderBoardData();
-        }, 4000);
+          setIsRotatingvip(false);
+          setIsRotatingFinished(true);
+          setVipPopup(true);
+          setIsDisabled(false);
+        } else {
+          findVipLuckyAngle(response?.data?.rewardDTOList);
+          setIsRotatingvip(true);
+          setIsPlaying(true);
+          setTimeout(() => {
+            setIsRotatingvip(false);
+            setGameErrCode(response.errorCode);
+            setRewardData(response?.data);
+            setRespMsg(response.msg);
+            getInfo(false);
+            setIsPlaying(false);
+            getLuckyWheelLeaderbrdData();
+            getVipWheelLeaderBoardData();
+            setTimeout(() => {
+              setVipPopup(true);
+              setTimeout(() => {
+                setIsDisabled(false);
+              }, 2000);
+            }, 1000);
+          }, 4000);
+        }
       })
       .catch((error) => {
         console.error("Api error:", error.message);
@@ -280,11 +291,13 @@ const TalentWheel = () => {
   };
 
   const playLuckyGame = () => {
-    rotateIndefinitely("lucky");
+    // rotateIndefinitely("lucky");
+    callApiAndFindLuckyAngle();
   };
 
   const playVipGame = () => {
-    rotateIndefinitely("vip");
+    // rotateIndefinitely("vip");
+    callApiFindVipAngle();
   };
   return (
     <div className="talent-wheel">
@@ -295,7 +308,7 @@ const TalentWheel = () => {
         </div>
       </div>
       <Marquee className="marquee">
-        {marqueeData?.vipWheel?.map((item) => {
+        {vipLuckyWheel?.map((item) => {
           let rewDescriptions = JSON.parse(item.desc);
 
           return (
@@ -310,7 +323,7 @@ const TalentWheel = () => {
                 </span>
                 <div>
                   &nbsp;has &nbsp;won&nbsp;
-                  {rewDescriptions.map((item) => {
+                  {rewDescriptions?.map((item) => {
                     return (
                       <span>
                         {item.desc === "Beans" ? (
@@ -384,27 +397,46 @@ const TalentWheel = () => {
             />
           </div>
           <button
-            className={`spin ${isPlaying && "blackNWhite"}`}
+            className={`spin ${
+              isPlaying || isDisabled ? "blackNWhite disabled-button" : ""
+            }`}
             onClick={tabs.wheel === true ? playLuckyGame : playVipGame}
-            disabled={isPlaying}
+            // disabled={isDisabled}
           />
         </div>
       </div>
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {selectedData?.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
-            <LeaderBoardItemWthRewards
-              user={user}
-              index={index + 1}
-              isClawCrane={false}
-              isWheel={true}
-              isTalent={true}
-            />
-          ))}
+          {luckyTalentWheel?.length > 0 ? (
+            luckyTalentWheel
+              ?.slice(0, isSeeMore ? 10 : 20)
+              .map((user, index) => (
+                <LeaderBoardItemWthRewards
+                  user={user}
+                  index={index + 1}
+                  isClawCrane={false}
+                  isWheel={true}
+                  isTalent={true}
+                  key={index}
+                />
+              ))
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: "5vw",
+              }}
+            >
+              No Data Found
+            </div>
+          )}
         </div>
 
-        {selectedData.length > 10 && (
+        {luckyTalentWheel?.length > 10 && (
           <button
             className={isSeeMore ? "see-more" : "see-less"}
             onClick={() => setIsSeeMore((prevState) => !prevState)}
@@ -422,7 +454,7 @@ const TalentWheel = () => {
           resetAngle={resetAngle}
         />
       ) : (
-        "Nothing to show "
+        ""
       )}
       {vipPopup && (
         <VipWheelPopup

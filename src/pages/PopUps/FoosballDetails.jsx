@@ -75,7 +75,9 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
                         }
                         className="giftImg"
                       />
-                      <span className="text">Victorious Room skin x1 day</span>
+                      <span className="text">
+                        Victorious Room skin(New) x1 day
+                      </span>
                     </div>
                     <div className="reward-item">
                       <img

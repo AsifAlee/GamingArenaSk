@@ -21,28 +21,34 @@
       border: none;
     }
 
-    .game-points {
-      background-image: url("../assets/images/beans-pot-counter.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-
-      width: 34vw;
-      height: 11vw;
-      border: none;
-      background-color: transparent;
-      color: white;
-      font-family: "Acme-Regular";
-      font-size: 2vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      letter-spacing: 0.1vw;
-      gap: 1vw;
-      img{
-        width: 5vw;
-      }
-    }
   }
+      .game-points {
+        background-image: url("../assets/images/beans-pot-counter.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    
+        // width: 40vw;
+        height: 11vw;
+        border: none;
+        background-color: transparent;
+        color: white;
+        font-family: "Acme-Regular";
+        font-size: 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 0.1vw;
+        padding: 3.5vw;
+        img {
+          width: 3vw;
+          margin-left: 1vw;
+        }
+        span {
+          margin-left: 1vw;
+        }
+        padding: 2vw;
+      }
+  
 
   .crane-game {
     width: 90%;
@@ -85,7 +91,7 @@
 
       }
     }
-  }
+  
   .leader-board {
     background-image: url("../assets/images/claw-crane/lb-bg.png");
     width: 100%;
@@ -158,3 +164,4 @@
     font-size: 3.5vw;
   }
 
+}

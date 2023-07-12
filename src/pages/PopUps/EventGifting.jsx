@@ -20,7 +20,11 @@ const EventGifting = ({ toggleEventGifting }) => {
   const { leaderBoardData } = useContext(AppContext);
   // let { eventGifter, eventRecvr } = leaderBoardData;
 
-  const [selectedData, setSelectedData] = useState(leaderBoardData.eventGifter);
+  const [selectedData, setSelectedData] = useState(leaderBoardData.eventRecvr);
+
+  useEffect(() => {
+    setSelectedData(leaderBoardData.eventRecvr);
+  }, []);
 
   const [tabs, setTabs] = useState({
     talent: true,
@@ -160,14 +164,14 @@ const EventGifting = ({ toggleEventGifting }) => {
           talent: true,
           gifter: false,
         });
-        setSelectedData(leaderBoardData.eventGifter);
+        setSelectedData(leaderBoardData.eventRecvr);
         break;
       case "gifter":
         setTabs({
           talent: false,
           gifter: true,
         });
-        setSelectedData(leaderBoardData.eventRecvr);
+        setSelectedData(leaderBoardData.eventGifter);
     }
   };
   const switchRewardTabs = (event) => {
@@ -271,48 +275,56 @@ const EventGifting = ({ toggleEventGifting }) => {
                 />
               </div>
               <img src={taBar} className="base" />
+              {selectedData && selectedData[0] && (
+                <div className="top1">
+                  <Topper
+                    index={0}
+                    user={selectedData[0]}
+                    iconImg={tabs.talent ? gemIcon : beansIcon}
+                    estRewards={false}
+                    isTalent={tabs.talent ? true : false}
+                  />
+                </div>
+              )}
+              {selectedData && selectedData[1] && (
+                <div className="top2">
+                  <Topper
+                    notFirstRank={true}
+                    index={1}
+                    user={selectedData[1]}
+                    iconImg={tabs.talent ? gemIcon : beansIcon}
+                    estRewards={false}
+                    isTalent={tabs.talent ? true : false}
+                  />
+                </div>
+              )}
 
-              <div className="top1">
-                <Topper
-                  index={0}
-                  user={selectedData[0]}
-                  iconImg={tabs.talent ? gemIcon : beansIcon}
-                  estRewards={false}
-                  isTalent={tabs.talent ? true : false}
-                />
-              </div>
-              <div className="top2">
-                <Topper
-                  notFirstRank={true}
-                  index={1}
-                  user={selectedData[1]}
-                  iconImg={tabs.talent ? gemIcon : beansIcon}
-                  estRewards={false}
-                  isTalent={tabs.talent ? true : false}
-                />
-              </div>
-              <div className="top3">
-                <Topper
-                  notFirstRank={true}
-                  index={2}
-                  user={selectedData[2]}
-                  iconImg={tabs.talent ? gemIcon : beansIcon}
-                  estRewards={false}
-                  isTalent={tabs.talent ? true : false}
-                />
-              </div>
+              {selectedData && selectedData[2] && (
+                <div className="top3">
+                  <Topper
+                    notFirstRank={true}
+                    index={2}
+                    user={selectedData[2]}
+                    iconImg={tabs.talent ? gemIcon : beansIcon}
+                    estRewards={false}
+                    isTalent={tabs.talent ? true : false}
+                  />
+                </div>
+              )}
             </div>
             <div className="restWinners">
-              {selectedData.slice(3, isSeeMore ? 10 : 20).map((user, index) => (
-                <LeaderBoardItem
-                  index={index + 4}
-                  user={user}
-                  isTalent={tabs.talent ? true : false}
-                  iconImg={tabs.talent ? gemIcon : beansIcon}
-                />
-              ))}
+              {selectedData
+                ?.slice(3, isSeeMore ? 10 : 20)
+                .map((user, index) => (
+                  <LeaderBoardItem
+                    index={index + 4}
+                    user={user}
+                    isTalent={tabs.talent ? true : false}
+                    iconImg={tabs.talent ? gemIcon : beansIcon}
+                  />
+                ))}
             </div>
-            {selectedData.length > 10 && (
+            {selectedData?.length > 10 && (
               <button
                 className={isSeeMore ? "see-more" : "see-less"}
                 onClick={() => setIsMore((prevState) => !prevState)}

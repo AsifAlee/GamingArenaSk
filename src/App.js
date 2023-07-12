@@ -16,7 +16,10 @@ function App() {
     freeGifts,
     selectedLng,
     changeLanguage,
-    // setFreeGifts,
+
+    closeFreeGift,
+    isClaimed,
+    user,
   } = useContext(AppContext);
   const [eventGifting, setEventGifting] = useState(false);
   const [showGiftPopup, setShowGiftPopup] = useState(false);
@@ -26,8 +29,9 @@ function App() {
     luckyWheel: false,
   });
   const closeGiftPopup = () => {
-    setShowGiftPopup(false);
+    // setShowGiftPopup(false);
     // setFreeGifts({ ...freeGifts, isClaimed: true });
+    closeFreeGift();
   };
 
   const toggleEventGifting = () => {
@@ -86,11 +90,12 @@ function App() {
       ) : (
         <TalentWheel />
       )}
-      {/* {freeGifts.isClaimed === false ? (
+
+      {user.uid && isClaimed === "no" ? (
         <FreeGift closeGiftPopup={closeGiftPopup} />
       ) : (
         ""
-      )} */}
+      )}
     </div>
   );
 }

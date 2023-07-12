@@ -96,11 +96,13 @@ export function getRewardsImage(rewDesc) {
   } else if (rewDesc?.includes("VIP")) {
     rewImg = baseUrl + "/streamkar/rewards/vip.png";
   } else if (rewDesc?.includes("Kingpin entrance")) {
-    rewImg = baseUrl + "/streamkar/rewards/kingpinFrame.png";
+    rewImg = baseUrl + "/streamkar/rewards/kingspin.png";
   } else if (rewDesc?.includes("FireBrand room skin")) {
     rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
   } else if (rewDesc?.includes("10 XP")) {
-    rewImg = baseUrl + "/streamkar/rewards/fireBrandAudioTheme.png";
+    rewImg = baseUrl + "/streamkar/rewards/xpPoint.png";
+  } else if (rewDesc?.includes("XP")) {
+    rewImg = baseUrl + "/streamkar/rewards/xpPoint.png";
   } else if (rewDesc?.includes("Enlightening Room Skin")) {
     rewImg = baseUrl + "/streamkar/rewards/enlighteningRoom.png";
   } else {

@@ -1,5 +1,8 @@
 import React, { useContext, useState } from "react";
 import title from "../../assets/images/popup/free-gift-title.png";
+import cong from "../../assets/images/popup/cong-title.png";
+import oops from "../../assets/images/popup/oops.png";
+
 import bg from "../../assets/images/popup/claim-gift-bg.png";
 import handIcon from "../../assets/images/popup/pointer.png";
 import "../../styles/popup.scss";
@@ -24,8 +27,11 @@ const FreeGift = ({ closeGiftPopup }) => {
   const [rewards, setRewards] = useState([]);
   const [errCode, setErrCode] = useState(null);
   const [errMessga, setErrorMessage] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [freeGiftTitle, setFreeGiftTitle] = useState("title");
 
   const claimGift = () => {
+    setIsDisabled(true);
     fetch(`${baseUrl}/api/activity/gamingArena/claimFreeGifts`, {
       method: "POST",
       headers: {
@@ -41,14 +47,18 @@ const FreeGift = ({ closeGiftPopup }) => {
         setRewards(response?.data);
         setErrCode(response.errorCode);
         setErrorMessage(response.msg);
-        // alert(JSON.stringify(response));
-        // setRewards(testRewards);
+        if (response.data.length > 0) {
+          setFreeGiftTitle("cong");
+        } else {
+          setFreeGiftTitle("oops");
+        }
+        setTimeout(() => {
+          setIsDisabled(false);
+        }, 2000);
       })
       .catch((error) => {
         console.error("api error:", error);
       });
-    // setRewards(data);
-    // setIsGiftOpened(true);
   };
   return (
     <PopUp
@@ -58,7 +68,16 @@ const FreeGift = ({ closeGiftPopup }) => {
       isFreeGift={true}
     >
       <div className="free-gifts">
-        <img src={title} className="title" />
+        <img
+          src={
+            freeGiftTitle === "title"
+              ? title
+              : freeGiftTitle === "cong"
+              ? cong
+              : oops
+          }
+          className="title"
+        />
         {isGiftOpened === false && (
           <h3 className="heading">
             Click on the gift box to get free Gift from streamkar
@@ -81,14 +100,15 @@ const FreeGift = ({ closeGiftPopup }) => {
                         className="giftImg"
                       />
                       <span className="text">
-                        {/* { `${rewards[0]?.desc === 'Beans' ? `${rewards[0].count} Beans` : `${rewards[0]?.desc === `gems`}  `} */}
                         {rewards[0]?.desc === "Beans"
                           ? `${rewards[0].count} Beans`
                           : rewards[0]?.desc === `gems`
                           ? `${rewards[0].count} Gems`
+                          : rewards[0]?.desc === `XP`
+                          ? `${rewards[0].count} XP`
                           : rewards[0]?.count > 1
-                          ? `${rewards[0].desc} ${rewards[0].count} days`
-                          : `${rewards[0].desc} ${rewards[0].count} day`}
+                          ? `${rewards[0].desc} x${rewards[0].count} days`
+                          : `${rewards[0].desc} x${rewards[0].count} day`}
                       </span>
                     </div>
                   }
@@ -107,11 +127,12 @@ const FreeGift = ({ closeGiftPopup }) => {
           </div>
         ) : (
           <div className="gift-box">
-            <img
+            {/* <img
               src={isGiftOpened ? openedGift : closedGift}
               className="gift-img"
               onClick={claimGift}
-            />
+            /> */}
+            <button onClick={claimGift} disabled={isDisabled} />
             <img src={handIcon} className="hand-icon" />
           </div>
         )}

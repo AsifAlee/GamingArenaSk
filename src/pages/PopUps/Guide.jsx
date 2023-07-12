@@ -3,6 +3,7 @@ import PopUp from "../../components/PopUp";
 import title from "../../assets/images/popup/guide-title.png";
 import eventGiftTitle from "../../assets/images/popup/event-gifts-title.png";
 import bg from "../../assets/images/popup/guide-bg.png";
+import beansIcon from "../../assets/images/bean.png";
 import "../../styles/popup.scss";
 import { AppContext } from "../../MyContext";
 import { useContext } from "react";
@@ -21,17 +22,55 @@ const Guide = () => {
             <div className="gifts">
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001665.png"} />
-                <div className="gift-name">Empower(50,000)</div>
+                <div className="gift-name">
+                  <p>Empower</p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p>50,000 </p>
+                    <img src={beansIcon} style={{ width: "3vw" }} />
+                  </div>
+                </div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001278.png"} />
-                <div className="gift-name">Game World(25,000)</div>
+                <div className="gift-name">
+                  <p>Game World</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p>25,000 </p>
+                    <img src={beansIcon} style={{ width: "3vw" }} />
+                  </div>
+                </div>
               </div>
 
               <div className="single-gift">
                 <img src={baseUrl + "/streamkar/gifts/40001628.png"} />
-                <div className="gift-name">Chocolate(5000)</div>
+                <div className="gift-name">
+                  <p>Chocolate</p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p>5,000 </p>
+                    <img src={beansIcon} style={{ width: "3vw" }} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

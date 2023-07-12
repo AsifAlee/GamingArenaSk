@@ -75,12 +75,10 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
                     </div>
                     <div className="reward-item">
                       <img
-                        src={
-                          baseUrl + "/streamkar/rewards/victoriousRoomSkin.png"
-                        }
+                        src={baseUrl + "/streamkar/rewards/victoriousFrame.png"}
                         className="giftImg"
                       />
-                      <span className="text">Victorious Frame</span>
+                      <span className="text">Victorious Frame(New)</span>
                     </div>
                     <div className="reward-item">
                       <img
@@ -158,7 +156,7 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
             <table className="que">
               <tr className="head">
                 <th>Button Name</th>
-                <th>Game Points Required</th>
+                <th>Gaming Points Required</th>
               </tr>
               <tr>
                 <td>Recharge Cue</td>

@@ -38,7 +38,6 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                   {rewardDTOList?.map((item) => (
                     <div className="reward-item">
                       <img src={getRewardsImage(item?.desc)} />
-                      {/* <span>{`${item?.count} days`}</span>  */}
                       {item.desc === "Beans" ? (
                         <span className="text">{`${item.count} Beans`}</span>
                       ) : item.desc === "Gems" ? (
@@ -56,14 +55,14 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                 {clawPoints > 0 ? (
                   <div>
                     <span>& Got</span>
-                    <div className="claw-points">{clawPoints} claw points</div>
-                    <div>Play again to win more amazing rewards</div>
+                    <div className="claw-points">{`${clawPoints} ${
+                      clawPoints > 1 ? "claw points" : "claw point"
+                    } `}</div>
                   </div>
                 ) : (
-                  <div>
-                    <div>Play again to win more amazing rewards</div>
-                  </div>
+                  <div></div>
                 )}
+                <div>Play again to win more amazing rewards</div>
               </div>
             ) : gameErrCode === 0 && scores === 0 ? (
               <div className="game-sucess">
@@ -87,7 +86,6 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                       )}
                     </div>
                   ))}
-                  <div>Play again to win more amazing rewards</div>
                 </div>
                 {clawPoints > 0 && (
                   <div>
@@ -95,39 +93,17 @@ const FoosBallGame = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                     <div className="claw-points">{`${clawPoints} ${
                       clawPoints > 1 ? "claw points" : "claw point"
                     } `}</div>
-                    <div>Play again to win more amazing rewards</div>
                   </div>
                 )}
-              </div>
-            ) : gameErrCode === 0 && scores === 0 ? (
-              <div
-                className="game-sucess"
-                style={{ position: "relative", bottom: "10vw" }}
-              >
-                Oops! It looks like you missed the goal you have scored 0 & have
-                won
-                <div className="rewards">
-                  {rewardDTOList?.map((item) => (
-                    <div className="reward-item">
-                      <img src={getRewardsImage(item?.desc)} />
-                      <span>{`${item?.count} days`}</span>
-                    </div>
-                  ))}
-                  <div>Play again to win more amazing rewards</div>
-                </div>
-                {clawPoints > 0 && (
-                  <div>
-                    <span>& Got</span>
-                    <div className="claw-points">{clawPoints} claw points</div>
-                    {/* <div>Play again to win more amazing rewards</div> */}
-                  </div>
-                )}
-                <div>Play again to win more amazing rewards</div>
+                <div>Play again to score this time.</div>
               </div>
             ) : gameErrCode === 10000004 ? (
               <div
                 className="game-failed"
-                style={{ position: "relative", bottom: "10vw" }}
+                style={{
+                  position: "relative",
+                  // bottom: "10vw"
+                }}
               >
                 You don't have enough Gaming Points
                 <span>

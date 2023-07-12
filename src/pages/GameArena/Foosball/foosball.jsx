@@ -49,6 +49,7 @@ const Foosball = () => {
   const [gameErrCode, setGameErrCode] = useState(null);
   const [gamePopUp, setGamePopUp] = useState(false);
   const [gameMsg, setGameMsg] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const rewards = [
     {
@@ -139,14 +140,14 @@ const Foosball = () => {
     }
   };
   const playGame = () => {
-    setIsPlaying(true);
+    setIsDisabled(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
-        userId: testUserId,
-        token: testToken,
-        // userId: user.uid,
-        // token: user.token,
+        // userId: testUserId,
+        // token: testToken,
+        userId: user.uid,
+        token: user.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -156,17 +157,25 @@ const Foosball = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setRewardData(response?.data);
-
-        setGameMsg(response?.msg);
-        setTimeout(() => {
-          setIsPlaying(false);
+        if (response.errorCode === 10000004) {
           setGameErrCode(response.errorCode);
+          setIsPlaying(false);
           setGamePopUp(true);
-          getInfo();
-          getFoosballLeaderBoardData();
-          getRecords(2);
-        }, 2000);
+          setIsDisabled(false);
+        } else {
+          setRewardData(response?.data);
+          setIsPlaying(true);
+          setGameMsg(response?.msg);
+          setTimeout(() => {
+            setIsPlaying(false);
+            setGameErrCode(response.errorCode);
+            setGamePopUp(true);
+            getInfo(false);
+            getFoosballLeaderBoardData();
+            getRecords(2);
+            setIsDisabled(false);
+          }, 3300);
+        }
       })
       .catch((error) => {
         console.error("Api error:", error.message);
@@ -213,8 +222,9 @@ const Foosball = () => {
                   {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
                 </span>
                 <span>
-                  has ranked {`top ${index + 1}`} and scored {item?.userScore}{" "}
-                  in foosball game
+                  has ranked{" "}
+                  {`${index === 0 ? "1st" : index === 1 ? "2nd" : "3rd"} `} and
+                  scored {item?.userScore} in foosball game
                 </span>
               </div>
             </div>
@@ -243,9 +253,11 @@ const Foosball = () => {
             </div>
           </div>
           <button
-            className={`playBtn ${isPlaying && "blackNWhite"}`}
-            onClick={playGame}
-            disabled={isPlaying}
+            className={`playBtn ${
+              isPlaying || isDisabled ? "blackNWhite" : ""
+            }`}
+            onClick={isDisabled ? () => {} : playGame}
+            disabled={isPlaying || isDisabled}
           />
         </div>
         <div className="balls-potted">

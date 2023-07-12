@@ -46,7 +46,7 @@ const ClawCrane = ({}) => {
     setGamePopup((prevState) => !prevState);
   };
 
-  const [isSeeMore, setIsSeeMore] = useState(false);
+  const [isSeeMore, setIsSeeMore] = useState(true);
   const [showRecords, setShowRecords] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -65,19 +65,20 @@ const ClawCrane = ({}) => {
       },
       body: JSON.stringify({ type: 3, playCount: 1 }),
     })
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
-        if (response.errorCode === 10000004) {
+        if (response?.errorCode === 10000004) {
           setGamePopup(true);
           setGameErrCode(response.errorCode);
           setIsDisabled(false);
         } else {
           setRewardData(response?.data);
+          setIsPlaying(true);
           setTimeout(() => {
             setIsPlaying(false);
             setGamePopup(true);
-            setGameErrCode(response.errorCode);
-            getInfo();
+            setGameErrCode(response?.errorCode);
+            getInfo(false);
             setGameMsg(response?.msg);
             getCrawlLeaderBoardData();
             getRecords(3);
@@ -114,13 +115,13 @@ const ClawCrane = ({}) => {
               <div className="user-details">
                 <span className="name">{`${item?.nickname?.slice(0, 6)}`}</span>
                 <div>
-                  &nbsp; has &nbsp; won &nbsp;
-                  {rewDescriptions.map((rew) => {
+                  &nbsp; has &nbsp;won &nbsp;
+                  {rewDescriptions?.map((rew) => {
                     return (
-                      <span>{`${rew.desc} ${
+                      <span>{`${rew?.desc}${
                         rew.count > 1
-                          ? `x${rew.count} days`
-                          : `x${rew.count} day`
+                          ? `x${rew?.count} days`
+                          : `x${rew?.count} day`
                       } `}</span>
                     );
                   })}
@@ -146,9 +147,7 @@ const ClawCrane = ({}) => {
             className={`get-btn ${
               isPlaying === true || (isDisabled === true && "blackNWhite")
             }`}
-            onClick={() => {
-              playCrawlCrane();
-            }}
+            onClick={isDisabled ? () => {} : playCrawlCrane}
             disabled={isDisabled || isPlaying}
           />
         </div>
@@ -157,7 +156,7 @@ const ClawCrane = ({}) => {
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {crawlCrane.slice(0, isSeeMore ? 10 : 20).map((user, index) => (
+          {crawlCrane?.slice(0, isSeeMore ? 10 : 20)?.map((user, index) => (
             <LeaderBoardItemWthRewards
               user={user}
               index={index + 1}
@@ -166,7 +165,7 @@ const ClawCrane = ({}) => {
           ))}
         </div>
 
-        {crawlCrane.length > 10 && (
+        {crawlCrane?.length > 10 && (
           <button
             className={isSeeMore ? "see-more" : "see-less"}
             onClick={() => setIsSeeMore((prevState) => !prevState)}

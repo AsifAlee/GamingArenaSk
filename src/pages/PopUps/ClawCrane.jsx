@@ -42,14 +42,18 @@ const ClawCranePopUp = ({ toggleGamePopUp, data, gameErrCode, gameMsg }) => {
                     </div>
                   ))}
                 </div>
-                with the claw.Well done!
+                with the claw. Well done!
               </div>
             )}
 
             {gameErrCode === 10000004 && (
               <div
                 className="game-failed"
-                style={{ position: "relative", bottom: "10vw" }}
+                style={{
+                  position: "relative",
+
+                  // bottom: "10vw"
+                }}
               >
                 You don’t have enough Claw points
                 <img src={clawCarneIcon} /> to get item right now, Play more

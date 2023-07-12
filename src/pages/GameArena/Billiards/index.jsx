@@ -62,6 +62,7 @@ const Billiards = () => {
   const [gameErrCode, setGameErrCode] = useState(null);
   const [rewardData, setRewardData] = useState([]);
   const [gameMsg, setGameMsg] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
   const rewards = [
     {
       rank: "Top 1st",
@@ -169,7 +170,7 @@ const Billiards = () => {
         if (response.data === true) {
           setTimeout(() => {
             setIsQueRecharging(false);
-            getInfo();
+            getInfo(false);
             setShowRechargeQue(true);
             setRechargeMsg(response.msg);
             setQueCode(response?.errorCode);
@@ -177,7 +178,7 @@ const Billiards = () => {
         } else {
           setTimeout(() => {
             setIsQueRecharging(false);
-            getInfo();
+            getInfo(false);
             setShowRechargeQue(true);
             setRechargeMsg(response.msg);
             setQueCode(response?.errorCode);
@@ -198,7 +199,7 @@ const Billiards = () => {
       });
   };
   const playGame = () => {
-    setIsPlaying(true);
+    setIsDisabled(true);
     fetch(`${baseUrl}/api/activity/gamingArena/playGame`, {
       method: "POST",
       headers: {
@@ -215,17 +216,27 @@ const Billiards = () => {
     })
       .then((response) => response?.json())
       .then((response) => {
-        setGameMsg(response.msg);
-        setIsPlaying(true);
-        setRewardData(response?.data);
-        setTimeout(() => {
-          setIsPlaying(false);
+        if (response.errorCode === 10000004) {
+          setIsDisabled(true);
           setGamePopup(true);
-          setGameErrCode(response.errorCode);
-          getInfo();
-          getBilliardsLeaderBoardData();
-          getRecords(1);
-        }, 1000);
+          setGameErrCode(response?.errorCode);
+          setIsDisabled(false);
+        } else {
+          setIsPlaying(true);
+
+          setGameMsg(response.msg);
+          setIsPlaying(true);
+          setRewardData(response?.data);
+          setTimeout(() => {
+            setIsPlaying(false);
+            setGamePopup(true);
+            setGameErrCode(response?.errorCode);
+            getInfo(false);
+            getBilliardsLeaderBoardData();
+            getRecords(1);
+            setIsDisabled(false);
+          }, 3000);
+        }
       })
       .catch((error) => {
         setIsPlaying(false);
@@ -257,8 +268,9 @@ const Billiards = () => {
                   {`${item?.nickname?.slice(0, 6)}`} &nbsp;{" "}
                 </span>
                 <span>
-                  has ranked {`top ${index + 1}`} and potted {item?.userScore}{" "}
-                  number of balls in billiards game
+                  has ranked{" "}
+                  {`${index === 0 ? "1st" : index === 1 ? "2nd" : "3rd"} `} and
+                  potted {item?.userScore} balls in billiards game
                 </span>
               </div>
             </div>
@@ -305,13 +317,17 @@ const Billiards = () => {
             />
           </div>
           <button
-            className={`playBtn ${isPlaying && "blackNWhite"}`}
-            onClick={playGame}
-            style={{
-              filter:
-                isPlaying === true || (rechargeCue === false && "grayScale(1)"),
-            }}
-            disabled={isPlaying === true || rechargeCue === false}
+            className={`playBtn ${
+              isPlaying || isDisabled || rechargeCue === false
+                ? "blackNWhite"
+                : ""
+            }`}
+            onClick={isDisabled ? () => {} : playGame}
+            // style={{
+            //   filter:
+            //     isPlaying === true || (rechargeCue === false && "grayScale(1)"),
+            // }}
+            disabled={isPlaying === true || rechargeCue === false || isDisabled}
           />
         </div>
         <div className="balls-potted">

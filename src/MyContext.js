@@ -26,9 +26,10 @@ const EventProvider = ({ children }) => {
     clawCrane: [],
   });
 
-  const [freeGifts, setFreeGifts] = useState({
-    isClaimed: true,
-  });
+  const [isClaimed, setIsClaimed] = useState("yes");
+  const closeFreeGift = () => {
+    setIsClaimed("yes");
+  };
   const [leaderBoardData, setLeaderBoardData] = useState({
     billiards: [],
     billiardsYest: [],
@@ -50,42 +51,44 @@ const EventProvider = ({ children }) => {
   });
   const [selectedLng, setSelectedLng] = useState(1);
   const [guidePopup, setGuidePopup] = useState(false);
+  let sliderTimer;
   const toggleGuidePopup = () => {
     setGuidePopup((prevState) => !prevState);
   };
 
-  const getInfo = () => {
+  const getInfo = (firstCall) => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${testUserId}`
+      `${baseUrl}/api/activity/gamingArena/getUserEventInfo?userId=${user?.uid}`
     ).then((response) =>
       response
         .json()
         .then((response) => {
           setInfo({
             ...info,
-            gamePoints: response.data.gamePoints,
-            rechargeCue: response.data.rechargeCue,
-            totalBillardsScore: response.data.balls,
-            totalFoosballScore: response.data.foosballScores,
+            gamePoints: response?.data?.gamePoints,
+            rechargeCue: response?.data?.rechargeCue,
+            totalBillardsScore: response?.data?.balls,
+            totalFoosballScore: response?.data?.foosballScores,
             dayIndex: response?.data?.dayIndex,
-            beanPotList: response?.data.beanPotList,
+            beanPotList: response?.data?.beanPotList,
             talentPoints: response?.data?.talentPoints,
             receiveBeans: response?.data?.receiveBeans,
             clawPoints: response?.data?.clawPoints,
           });
-          setFreeGifts({
-            ...freeGifts,
-            isClaimed: response.data.claimDailyFreeGifts,
-          });
+          if (firstCall) {
+            setIsClaimed(
+              response?.data?.claimDailyFreeGifts === true ? "yes" : "no"
+            );
+          }
         })
         .catch((error) => console.error("api error:", error.message))
     );
   };
   const getBilliardsLeaderBoardData = () => {
     fetch(
-      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&&dayIndex=${info.dayIndex}&pageNum=1&pageSize=20`
+      `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=11&&dayIndex=${info?.dayIndex}&pageNum=1&pageSize=20`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -102,7 +105,7 @@ const EventProvider = ({ children }) => {
         info?.dayIndex - 1
       }`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -117,7 +120,7 @@ const EventProvider = ({ children }) => {
     fetch(
       `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=12&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -135,7 +138,7 @@ const EventProvider = ({ children }) => {
         info?.dayIndex - 1
       }`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -150,7 +153,7 @@ const EventProvider = ({ children }) => {
     fetch(
       `${baseUrl}/api/activity/eidF/getWinnerRankInfo?eventDesc=20230714_gamingArena&rankIndex=3&pageNum=1&pageSize=20`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -165,7 +168,7 @@ const EventProvider = ({ children }) => {
     fetch(
       `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=13&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -180,7 +183,7 @@ const EventProvider = ({ children }) => {
     fetch(
       `${baseUrl}/api/activity/eidF/getLeaderboardInfo?eventDesc=20230714_gamingArena&rankIndex=14&pageNum=1&pageSize=20&dayIndex=${info?.dayIndex}`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         setLeaderBoardData((prevState) => ({
           ...prevState,
@@ -208,9 +211,9 @@ const EventProvider = ({ children }) => {
   };
   const getRecords = (type) => {
     fetch(
-      `${baseUrl}/api/activity/gamingArena/getRecord?userId=${user.uid}&pageNum=10&pageSize=20&type=${type}`
+      `${baseUrl}/api/activity/gamingArena/getRecord?userId=${user?.uid}&pageNum=10&pageSize=20&type=${type}`
     )
-      .then((response) => response.json())
+      .then((response) => response?.json())
       .then((response) => {
         if (type === 1)
           setRecords((prevRec) => ({
@@ -241,25 +244,25 @@ const EventProvider = ({ children }) => {
         if (rankIndex === 1) {
           setMarqueeData((prevState) => ({
             ...prevState,
-            billiards: response.data.list,
+            billiards: response?.data?.list,
           }));
         }
         if (rankIndex === 2) {
           setMarqueeData((prevState) => ({
             ...prevState,
-            foosball: response.data.list,
+            foosball: response?.data?.list,
           }));
         }
         if (rankIndex === 3) {
           setMarqueeData((prevState) => ({
             ...prevState,
-            clawCrane: response.data.list,
+            clawCrane: response?.data?.list,
           }));
         }
         if (rankIndex === 4) {
           setMarqueeData((prevState) => ({
             ...prevState,
-            vipWheel: response.data.list,
+            vipWheel: response?.data.list,
           }));
         }
       })
@@ -278,6 +281,7 @@ const EventProvider = ({ children }) => {
           ...prevState,
           luckyTalentWheel: response?.data?.list,
         }));
+        sliderTimer = null;
       })
       .catch((error) => {
         console.error("api error:", error);
@@ -288,25 +292,27 @@ const EventProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getInfo();
-    getRecords(1);
-    getRecords(2);
-    getRecords(3);
+    if (user.uid) {
+      getInfo(true);
+      getRecords(1);
+      getRecords(2);
+      getRecords(3);
+    }
   }, [user.uid]);
 
   useEffect(() => {
-    if (info.dayIndex > 0) {
-      getBilliardsLeaderBoardData();
-      getBilliardsLeaderBoardDataYest();
-      getFoosballLeaderBoardData();
-      getFoosballLeaderBoardDataYest();
-      getCrawlLeaderBoardData();
-      getEventSendLeaderBoardData();
-      getEventRecvLeaderBoardData();
-      getVipWheelLeaderBoardData();
-      getLuckyWheelLeaderbrdData();
-    }
-  }, [info.dayIndex]);
+    // if (info?.dayIndex > 0) {
+    getBilliardsLeaderBoardData();
+    getBilliardsLeaderBoardDataYest();
+    getFoosballLeaderBoardData();
+    getFoosballLeaderBoardDataYest();
+    getCrawlLeaderBoardData();
+    getEventSendLeaderBoardData();
+    getEventRecvLeaderBoardData();
+    getVipWheelLeaderBoardData();
+    getLuckyWheelLeaderbrdData();
+    // }
+  }, [info?.dayIndex]);
 
   useEffect(() => {
     getMarqueeData(1);
@@ -319,8 +325,8 @@ const EventProvider = ({ children }) => {
     try {
       window.phone.getUserInfo(function (userInfo) {
         setUser({
-          uid: userInfo.userId > 0 ? userInfo.userId : 0,
-          token: userInfo.token != "" ? userInfo.token : null,
+          uid: userInfo?.userId > 0 ? userInfo?.userId : 0,
+          token: userInfo?.token != "" ? userInfo?.token : null,
         });
       });
     } catch (_error) {
@@ -334,7 +340,7 @@ const EventProvider = ({ children }) => {
         guidePopup: guidePopup,
         toggleGuidePopup: toggleGuidePopup,
         info: info,
-        freeGifts: freeGifts,
+        // freeGifts: freeGifts,
         leaderBoardData: leaderBoardData,
         marqueeData: marqueeData,
         selectedLng: selectedLng,
@@ -347,8 +353,10 @@ const EventProvider = ({ children }) => {
         getCrawlLeaderBoardData,
         getLuckyWheelLeaderbrdData,
         getVipWheelLeaderBoardData,
-        // setFreeGifts,
+        closeFreeGift: closeFreeGift,
         getRecords,
+        isClaimed: isClaimed,
+        sliderTimer,
       }}
     >
       {children}

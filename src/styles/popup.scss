@@ -47,12 +47,12 @@
     .highlighted {
       background-color: yellow;
     }
-    .noData{
+    .noData {
       display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Acme-Regular';
-  color: white;
+      justify-content: center;
+      align-items: center;
+      font-family: "Acme-Regular";
+      color: white;
     }
 
     .guide-pop-up {
@@ -108,7 +108,6 @@
                 font-size: 2vw;
                 text-align: center;
                 flex-direction: column;
-
               }
             }
           }
@@ -239,7 +238,6 @@
           color: white;
           font-size: 4vw;
           letter-spacing: 0.7vw;
-          
         }
 
         .inner-content {
@@ -402,7 +400,7 @@
                   font-family: "Acme-Regular";
                 }
               }
-              .list{
+              .list {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 2.5vw;
@@ -410,7 +408,7 @@
                 // padding-left: 1vw;
                 max-height: 37vw;
                 justify-content: center;
-                align-items: "center",
+                align-items: "center";
               }
             }
           }
@@ -437,17 +435,46 @@
         height: 65vw;
         position: relative;
 
-        .gift-img {
-          width: 38vw;
-          position: absolute;
-          bottom: 13vw;
-          left: 21vw;
-        }
+        // .gift-img {
+        //   width: 38vw;
+        //   position: absolute;
+        //   bottom: 13vw;
+        //   left: 21vw;
+        // }
         .hand-icon {
           width: 13vw;
           position: absolute;
           right: 10vw;
-          top: 24vw;
+          top: 40vw;
+          animation-name: handAnimation;
+          animation-duration: 2s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+
+          @keyframes handAnimation {
+            0% {
+              transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+              // opacity: 1;
+              transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+              // opacity: 1;
+              transform: translate(-50%, -50%) scale(1);
+            }
+          }
+        }
+        button {
+          width: 38vw;
+          position: absolute;
+          bottom: 13vw;
+          left: 21vw;
+          background-image: url("../assets/images/popup/gift-closed.png");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 43vw;
         }
       }
       .gift-opened {
@@ -464,8 +491,7 @@
           width: 60vw;
         }
 
-
-        .rewards{
+        .rewards {
           display: flex;
           justify-content: center;
           .reward-item {
@@ -481,35 +507,30 @@
               font-size: 2vw;
               font-family: "Acme-Regular";
             }
-          
+          }
         }
-        }
-  
-    
       }
-
-      
     }
   }
 
   ::-webkit-scrollbar {
-    width: 2vw;
+    width: 1vw;
   }
-  
+
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
   }
-   
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #684163; 
+    background: #684163;
     border-radius: 10px;
   }
-  
+
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: #b30000;
   }
 }

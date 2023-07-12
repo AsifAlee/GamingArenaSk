@@ -30,26 +30,26 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
   
-      width: 34vw;
+      // width: 40vw;
       height: 11vw;
-  
       border: none;
       background-color: transparent;
       color: white;
       font-family: "Acme-Regular";
-  
       font-size: 2vw;
       display: flex;
       justify-content: center;
       align-items: center;
       letter-spacing: 0.1vw;
-      img{
+      padding: 3.5vw;
+      img {
         width: 3vw;
         margin-left: 1vw;
       }
-      span{
+      span {
         margin-left: 1vw;
       }
+      padding: 2vw;
     }
   
   }
@@ -329,6 +329,12 @@
         border: none;
         margin: 0 auto;
       }
+    }
+
+    .disabled-button {
+      // opacity: 0.5; 
+      pointer-events: none;
+      cursor: not-allowed;
     }
   }
 

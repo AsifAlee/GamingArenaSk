@@ -15,7 +15,7 @@ const LuckyWheel2 = ({ isRotatingLucky, rotateDegLucky, angleOfRotation }) => {
 
   return (
     <div className="lucky-game">
-      <p className="info">25K Beans = 1 Chance</p>
+      <p className="info">25K Talent points = 1 Chance</p>
       <div className="spin-wheel">
         <img src={wheelTop} className="top" />
         <img

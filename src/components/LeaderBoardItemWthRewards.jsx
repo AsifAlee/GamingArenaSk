@@ -19,12 +19,12 @@ const LeaderBoardItemWthRewards = ({
   isWheel,
 }) => {
   // const [rewards, setCurrentReward] = useState(JSON.parse(user.desc));
-  // const [formatedReward, setFormatedReward] = useState([]);
+  const [formatedReward, setFormatedReward] = useState([]);
 
   const formatData = (originalArray) => {
     const newArray = [];
     for (let i = 0; i < originalArray?.length; i += 3) {
-      newArray.push(originalArray.slice(i, i + 3));
+      newArray?.push(originalArray?.slice(i, i + 3));
     }
     return newArray;
   };
@@ -43,16 +43,16 @@ const LeaderBoardItemWthRewards = ({
         <div className="index">{index}.</div>
         <div className="user-info">
           <img
-            src={user.portrait ? user.portrait : unknown}
+            src={user?.portrait ? user?.portrait : unknown}
             className="avatar"
-            onClick={() => gotoProfile(user.userId)}
+            onClick={() => gotoProfile(user?.userId)}
           />
           <div className="nameNLevel">
-            <span className="name">{user.nickname}</span>
+            <span className="name">{user?.nickname}</span>
             <img
               className="level-img"
               src={getLevelImage(
-                isTalent ? user.actorLevel : user.userLevel,
+                isTalent ? user?.actorLevel : user?.userLevel,
                 isTalent
               )}
             />
@@ -66,19 +66,7 @@ const LeaderBoardItemWthRewards = ({
           </div>
         )}
         <div className={`rewards ${isWheel && "is-talent-wheel"}`}>
-          {
-            /* {reward.map((des) => {
-            return (
-              <LeaderBoardItemReward
-                rewImg={getRewardsImage(des.desc)}
-                days={des.count}
-                desc={des.desc}
-                isClawCrane={isClawCrane}
-              />
-            );
-          })} */
-            <LeaderBoardSlider rewards={currentReward} />
-          }
+          {<LeaderBoardSlider rewards={currentReward} />}
         </div>
       </div>
     </div>
