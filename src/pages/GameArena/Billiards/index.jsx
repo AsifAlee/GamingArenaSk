@@ -22,9 +22,9 @@ import gamePointIcon from "../../../assets/images/gaming-point-icon.png";
 import Marquee from "react-fast-marquee";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
 import RechargeQue from "../../PopUps/RechargeQue";
-import billardSvg from "../../../assets/svgs/PoolGame.svga";
-import clawSvg from "../../../assets/svgs/Claw_Crane_Game.svga";
-import cueStick from "../../../assets/svgs/SnookerStick.svga";
+// import billardSvg from "../../../assets/svgs/PoolGame.svga";
+// import clawSvg from "../../../assets/svgs/Claw_Crane_Game.svga";
+// import cueStick from "../../../assets/svgs/SnookerStick.svga";
 import poolSvg from "../../../assets/svgs/PoolGame.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
 import beansIcon from "../../../assets/images/bean.png";
@@ -290,9 +290,12 @@ const Billiards = () => {
           <div id="extraContent"></div>
         </div>
         <button
-          className={
-            rechargeCue || isQueRecharging ? "recharge-cue-off" : "recharge-cue"
-          }
+          // className={
+          //   rechargeCue || isQueRecharging ? "blackNWhite" : "recharge-cue"
+          // }
+          className={`recharge-cue ${
+            rechargeCue || isQueRecharging ? "blackNWhite" : ""
+          } `}
           onClick={() => doRechargeQue()}
           disabled={rechargeCue === true || isQueRecharging === true}
         />
@@ -301,17 +304,19 @@ const Billiards = () => {
         <div className="play-section">
           <div className="xPlay">
             <button
-              className={playXBtns.x1 ? "x1" : "x1-off"}
+              className={`x1 ${playXBtns.x1 === false && "blackNWhite"}`}
               name="x1"
               onClick={setPlayXTabs}
             />
             <button
-              className={playXBtns.x10 ? "x10" : "x10-off"}
+              // className={playXBtns.x10 ? "x10" : "blackNwhite"}
+              className={`x10 ${playXBtns.x10 === false && "blackNWhite"}`}
               name="x10"
               onClick={setPlayXTabs}
             />
             <button
-              className={playXBtns.x100 ? "x100" : "x100-off"}
+              // className={playXBtns.x100 ? "x100" : "blackNwhite"}
+              className={`x100 ${playXBtns.x100 === false && "blackNWhite"}`}
               name="x100"
               onClick={setPlayXTabs}
             />

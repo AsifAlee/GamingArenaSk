@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "../../../styles/foosball.scss";
-import game from "../../../assets/images/foosball/foosball-game.png";
+// import game from "../../../assets/images/foosball/foosball-game.png";
 import goalIcon from "../../../assets/images/foosball/score-icon.png";
 import TabButton from "../../../components/TabButton";
 import LeaderBoard from "../Billiards/LeaderBoard";
@@ -19,11 +19,11 @@ import { AppContext } from "../../../MyContext";
 import { baseUrl, testToken, testUserId } from "../../../service/api";
 import "../../../styles/marquee.scss";
 import FoosBallGame from "../../PopUps/FoosballGame";
-import SvgPlayer from "../../../components/SvgPlayer";
+// import SvgPlayer from "../../../components/SvgPlayer";
 import foosballSvg from "../../../assets/svgs/FoosBall-Game.svga";
 import unknownUser from "../../../assets/images/unknown-user.png";
 import TravelSvga from "../../../components/Svga2";
-import foosballGameSvgaNew from "../../../assets/svgs/FoosBall-Game-new.svga";
+// import foosballGameSvgaNew from "../../../assets/svgs/FoosBall-Game-new.svga";
 
 const Foosball = () => {
   const {

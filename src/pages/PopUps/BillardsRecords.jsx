@@ -20,7 +20,7 @@ const BillardsRecords = ({ toggleRecordsPopup }) => {
             <div className="inner-content">
               <table>
                 <tr className="head">
-                  <th>Time</th>
+                  <th>Date</th>
                   <th>No of Balls potted</th>
 
                   <th style={{ width: "41vw" }}>Rewards</th>

@@ -19,7 +19,7 @@ const FoosballRecords = ({ toggleRecordsPopup }) => {
             <div className="inner-content">
               <table>
                 <tr className="head">
-                  <th>Time</th>
+                  <th>Date</th>
                   <th>Score</th>
 
                   <th style={{ width: "41vw" }}>Rewards</th>

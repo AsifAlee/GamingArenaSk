@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-import mySvg from "../assets/svgs/SnookerStick.svga";
-import poolSvg from "../assets/svgs/PoolGame.svga";
+// import mySvg from "../assets/svgs/SnookerStick.svga";
+// import poolSvg from "../assets/svgs/PoolGame.svga";
 import "../styles/svgs.scss";
 
 import SVGA from "svgaplayerweb";

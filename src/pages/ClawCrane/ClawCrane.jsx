@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { testData } from "../../testData";
 import "../../styles/claw-crane.scss";
-import LeaderBoardItem from "../../components/LeaderBoardItem";
+// import LeaderBoardItem from "../../components/LeaderBoardItem";
 import ClawCraneDetail from "../PopUps/ClawCraneDetail";
 import { baseUrl, testToken, testUserId } from "../../service/api";
 import Marquee from "react-fast-marquee";
@@ -10,13 +10,13 @@ import { useContext } from "react";
 import { AppContext } from "../../MyContext";
 import ClawCranePopUp from "../PopUps/ClawCrane";
 import ClawCraneRecords from "../PopUps/ClawCraneRecords";
-import SvgPlayer from "../../components/SvgPlayer";
+// import SvgPlayer from "../../components/SvgPlayer";
 import clawCraneSvg from "../../assets/svgs/Claw_Crane_Game.svga";
 import unknowUser from "../../assets/images/unknown-user.png";
 import LeaderBoardItemWthRewards from "../../components/LeaderBoardItemWthRewards";
 import clawCraneIcon from "../../assets/images/claw-crane/claw-point-icon.png";
 import TravelSvga from "../../components/Svga2";
-import clawCraneSvgaNew from "../../assets/svgs/Claw-Crane-Game-new.svga";
+// import clawCraneSvgaNew from "../../assets/svgs/Claw-Crane-Game-new.svga";
 const ClawCrane = ({}) => {
   const {
     info,
@@ -156,13 +156,31 @@ const ClawCrane = ({}) => {
       <div className="leader-board">
         <button className="heading" />
         <div className="winners">
-          {crawlCrane?.slice(0, isSeeMore ? 10 : 20)?.map((user, index) => (
-            <LeaderBoardItemWthRewards
-              user={user}
-              index={index + 1}
-              isClawCrane={true}
-            />
-          ))}
+          {crawlCrane?.length > 10 ? (
+            crawlCrane
+              ?.slice(0, isSeeMore ? 10 : 20)
+              ?.map((user, index) => (
+                <LeaderBoardItemWthRewards
+                  user={user}
+                  index={index + 1}
+                  isClawCrane={true}
+                />
+              ))
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: "5vw",
+                color: "white",
+                fontFamily: "Acme-Regular",
+              }}
+            >
+              No Data Found
+            </div>
+          )}
         </div>
 
         {crawlCrane?.length > 10 && (

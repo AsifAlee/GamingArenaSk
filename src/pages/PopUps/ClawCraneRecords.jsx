@@ -18,7 +18,7 @@ const ClawCraneRecords = ({ toggleRecordsPopup }) => {
             <div className="inner-content">
               <table>
                 <tr className="head">
-                  <th>Time</th>
+                  <th>Date</th>
 
                   <th style={{ width: "41vw" }}>Rewards</th>
                 </tr>

@@ -174,7 +174,7 @@ const Guide = () => {
                       <span className="index">6.</span>
                       <p className="text">
                         Below the Cue Stick, there will be a
-                        <span className="highlighted">"Reccharge Que"</span>
+                        <span className="highlighted">"Reccharge Cue"</span>
                         button. This button will be disabled by default.
                       </p>
                     </div>
@@ -183,7 +183,7 @@ const Guide = () => {
                       <p className="text">
                         After playing a shot successfully and receiving rewards,
                         the
-                        <span className="highlighted">"Recharge Que"</span>
+                        <span className="highlighted">"Recharge Cue"</span>
                         button will enable.
                       </p>
                     </div>
@@ -191,7 +191,7 @@ const Guide = () => {
                       <span className="index">8.</span>
                       <p className="text">
                         Each time when you tap on the
-                        <span className="highlighted">"Recharge Que"</span>
+                        <span className="highlighted">"Recharge Cue"</span>
                         button, Gaming points will be deducted and cue will be
                         charged.
                       </p>
