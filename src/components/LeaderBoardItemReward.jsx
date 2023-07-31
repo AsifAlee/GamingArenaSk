@@ -15,7 +15,6 @@ const LeaderBoardItemReward = ({ days, rewImg, desc, isClawCrane }) => {
           : desc === "gems"
           ? `${days}`
           : `${days > 1 ? `${days} days` : `${days} day`}`}
-        {/* {desc} */}
       </span>
     </div>
   );

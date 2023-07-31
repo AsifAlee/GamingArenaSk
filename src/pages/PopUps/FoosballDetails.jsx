@@ -15,7 +15,7 @@ const FoosballDetails = ({ toggleDetailPopUp }) => {
             <table>
               <tr className="head">
                 <th>Button Name</th>
-                <th>Game Points Required </th>
+                <th>Gaming Points Required </th>
                 <th>Score</th>
 
                 <th style={{ width: "41vw" }}>Rewards</th>

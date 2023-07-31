@@ -155,32 +155,17 @@ const ClawCrane = ({}) => {
 
       <div className="leader-board">
         <button className="heading" />
-        <div className="winners">
-          {crawlCrane?.length > 10 ? (
-            crawlCrane
-              ?.slice(0, isSeeMore ? 10 : 20)
-              ?.map((user, index) => (
-                <LeaderBoardItemWthRewards
-                  user={user}
-                  index={index + 1}
-                  isClawCrane={true}
-                />
-              ))
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100%",
-                fontSize: "5vw",
-                color: "white",
-                fontFamily: "Acme-Regular",
-              }}
-            >
-              No Data Found
-            </div>
-          )}
+        <div
+          className="winners"
+          style={{ overflowY: !isSeeMore ? "auto" : "" }}
+        >
+          {crawlCrane?.slice(0, isSeeMore ? 10 : 20)?.map((user, index) => (
+            <LeaderBoardItemWthRewards
+              user={user}
+              index={index + 1}
+              isClawCrane={true}
+            />
+          ))}
         </div>
 
         {crawlCrane?.length > 10 && (

@@ -301,17 +301,17 @@ const EventProvider = ({ children }) => {
   }, [user.uid]);
 
   useEffect(() => {
-    if (info?.dayIndex > 0) {
-      getBilliardsLeaderBoardData();
-      getBilliardsLeaderBoardDataYest();
-      getFoosballLeaderBoardData();
-      getFoosballLeaderBoardDataYest();
-      getCrawlLeaderBoardData();
-      getEventSendLeaderBoardData();
-      getEventRecvLeaderBoardData();
-      getVipWheelLeaderBoardData();
-      getLuckyWheelLeaderbrdData();
-    }
+    // if (info?.dayIndex > 0) {
+    getBilliardsLeaderBoardData();
+    getBilliardsLeaderBoardDataYest();
+    getFoosballLeaderBoardData();
+    getFoosballLeaderBoardDataYest();
+    getCrawlLeaderBoardData();
+    getEventSendLeaderBoardData();
+    getEventRecvLeaderBoardData();
+    getVipWheelLeaderBoardData();
+    getLuckyWheelLeaderbrdData();
+    // }
   }, [info?.dayIndex]);
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const BilliardsDetail = ({ toggleDetailPopUp }) => {
             <table>
               <tr className="head">
                 <th>Button Name</th>
-                <th>Game Points Required </th>
+                <th>Gaming Points Required </th>
                 <th>Balls potted</th>
 
                 <th style={{ width: "41vw" }}>Rewards</th>

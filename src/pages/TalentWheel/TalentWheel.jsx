@@ -407,7 +407,10 @@ const TalentWheel = () => {
       </div>
       <div className="leader-board">
         <button className="heading" />
-        <div className="winners">
+        <div
+          className="winners"
+          style={{ overflowY: !isSeeMore ? "auto" : "" }}
+        >
           {luckyTalentWheel?.length > 0 ? (
             luckyTalentWheel
               ?.slice(0, isSeeMore ? 10 : 20)

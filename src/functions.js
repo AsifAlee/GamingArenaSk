@@ -113,8 +113,12 @@ export function getRewardsImage(rewDesc) {
 }
 
 export const getLevelImage = (level, isTalent) => {
-  const talentLevelUrl = "http://test.streamkar.tv/streamkar/common/img/tlv";
-  const userLevelUrl = "http://test.streamkar.tv/streamkar/common/img/ulv";
+  // const talentLevelUrl =
+  //   "https://www.streamkarlive.live/streamkar/common/img/tlv";
+  // const userLevelUrl =
+  //   "https://www.streamkarlive.live/streamkar/common/img/ulv";
+  const talentLevelUrl = `${baseUrl}/streamkar/common/img/tlv`;
+  const userLevelUrl = `${baseUrl}/streamkar/common/img/ulv`;
   if (isTalent) {
     return `${talentLevelUrl}/${level}.png`;
   } else {
